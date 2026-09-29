@@ -1,0 +1,86 @@
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-mark">RP</span>
+    <strong>RH PaiePro</strong>
+  </div>
+
+  <nav>
+    <small>Tableau de bord</small>
+    <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="home" /></span>
+      Tableau de bord
+    </a>
+
+    <small>Organisation</small>
+    <a routerLink="/admin/employees" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="users" /></span>
+      Employés
+    </a>
+    <a routerLink="/admin/departments" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="building" /></span>
+      Départements
+    </a>
+    <a routerLink="/admin/job-positions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="briefcase" /></span>
+      Postes
+    </a>
+    <a routerLink="/admin/contracts" routerLinkActive="active">
+      <span class="nav-icon"><app-icon name="file" /></span>
+      Contrats
+    </a>
+    <a routerLink="/admin/employee-exits" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="ban" /></span>
+      Sorties employés
+    </a>
+
+    <small>Temps & Absences</small>
+    <a routerLink="/admin/leave-requests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="calendar" /></span>
+      Demandes d’absence
+    </a>
+    <a routerLink="/admin/leave-balances" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="wallet" /></span>
+      Soldes de congé
+    </a>
+    <a routerLink="/admin/leave-calendar" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="calendar" /></span>
+      Calendrier des absences
+    </a>
+    <a routerLink="/admin/attendance" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="clock" /></span>
+      Pointage
+    </a>
+
+    <small>Paie</small>
+    <a routerLink="/admin/payroll-variables" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="calculator" /></span>
+      Variables de paie
+    </a>
+    <a routerLink="/admin/payroll-calculations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="calculator" /></span>
+      Calcul de paie
+    </a>
+    <a routerLink="/admin/payslips" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="file" /></span>
+      Bulletins de paie
+    </a>
+    <a routerLink="/admin/payroll-exports" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="download" /></span>
+      Exports paie
+    </a>
+
+    <small>Administration</small>
+    <a routerLink="/admin/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="users" /></span>
+      Utilisateurs
+    </a>
+    <a routerLink="/admin/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="settings" /></span>
+      Paramètres
+    </a>
+    <a routerLink="/admin/chat-faq" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="file" /></span>
+      Guide assistant RH
+    </a>
+  </nav>
+</aside>

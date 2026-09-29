@@ -1,0 +1,93 @@
+<section class="page-head">
+  <div>
+    <span>Espace employé</span>
+    <h1>Mon calendrier</h1>
+    <p>Consultez vos absences en attente et approuvées sur le mois.</p>
+  </div>
+  <a routerLink="/employee/leave-requests/create"><app-icon name="plus" /> Absence</a>
+</section>
+
+<section class="calendar-shell">
+  <div class="calendar-toolbar">
+    <button class="month-button" type="button" (click)="previousMonth()" aria-label="Mois précédent">
+      <span aria-hidden="true">←</span>
+      Précédent
+    </button>
+    <div class="month-title">
+      <span>Vue mensuelle</span>
+      <h2>{{ monthLabel() }}</h2>
+    </div>
+    <button class="month-button primary" type="button" (click)="nextMonth()" aria-label="Mois suivant">
+      Suivant
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item pending"><i></i> En attente</span>
+    <span class="legend-item approved"><i></i> Approuvée</span>
+  </div>
+
+  @if (loading()) {
+    <p class="loading">Chargement du calendrier...</p>
+  }
+
+  <div class="calendar-grid">
+    @for (dayName of weekDays; track dayName) {
+      <div class="weekday">{{ dayName }}</div>
+    }
+
+    @for (day of days(); track day.date) {
+      <article class="day-cell" [class.outside]="!day.inMonth" [class.today]="day.today">
+        <strong>{{ day.date | date: 'd' }}</strong>
+        <div class="events-list">
+          @for (event of eventsForDay(day.date); track event.leaveRequestId) {
+            <button
+              type="button"
+              class="event-chip"
+              [class.pending-event]="event.status === 'PENDING'"
+              [class.approved-event]="event.status === 'APPROVED'"
+              [class.rejected-event]="event.status === 'REJECTED'"
+              [class.cancelled-event]="event.status === 'CANCELLED'"
+              (click)="openEvent(event)"
+            >
+              <i aria-hidden="true"></i>
+              <span>{{ typeLabel(event.type) }}</span>
+              <small>{{ statusLabel(event.status) }} · {{ event.totalDays }} j</small>
+            </button>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+@if (selectedEvent(); as event) {
+  <div class="modal-backdrop" (click)="closeEvent()">
+    <section class="details-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <span
+            class="status-pill"
+            [class.pending-event]="event.status === 'PENDING'"
+            [class.approved-event]="event.status === 'APPROVED'"
+            [class.rejected-event]="event.status === 'REJECTED'"
+            [class.cancelled-event]="event.status === 'CANCELLED'"
+          >
+            {{ statusLabel(event.status) }}
+          </span>
+          <h2>{{ typeLabel(event.type) }}</h2>
+          <p>{{ event.totalDays }} jour(s)</p>
+        </div>
+        <button type="button" (click)="closeEvent()"><app-icon name="x" /> Fermer</button>
+      </div>
+
+      <dl>
+        <div><dt>Période</dt><dd>{{ event.startDate | date: 'dd/MM/yyyy' }} - {{ event.endDate | date: 'dd/MM/yyyy' }}</dd></div>
+        <div><dt>Statut</dt><dd>{{ statusLabel(event.status) }}</dd></div>
+        <div><dt>Département</dt><dd>{{ event.departmentName || 'Non affecté' }}</dd></div>
+        <div><dt>Poste</dt><dd>{{ event.jobPositionName || 'Non affecté' }}</dd></div>
+      </dl>
+    </section>
+  </div>
+}

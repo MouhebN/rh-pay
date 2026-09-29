@@ -1,0 +1,1506 @@
+{
+  "referenceDate": "2026-09-16",
+  "source": "Amazon MASSIVE 1.1 temporal slots (fr-FR/en-US) adapted to HR leave utterances",
+  "cases": [
+    {
+      "name": "nat_aujourdhui",
+      "category": "natural",
+      "input": "je veux poser un congé aujourd'hui",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=aujourd'hui",
+      "note": ""
+    },
+    {
+      "name": "nat_demain",
+      "category": "natural",
+      "input": "je voudrais prendre demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=demain",
+      "note": ""
+    },
+    {
+      "name": "nat_apres_demain",
+      "category": "natural",
+      "input": "je veux un congé après-demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=après-demain",
+      "note": ""
+    },
+    {
+      "name": "nat_apres_demain_space",
+      "category": "natural",
+      "input": "congé après demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=après demain",
+      "note": ""
+    },
+    {
+      "name": "nat_pour_demain",
+      "category": "natural",
+      "input": "je veux poser pour demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=pour demain",
+      "note": ""
+    },
+    {
+      "name": "nat_de_demain",
+      "category": "natural",
+      "input": "congé de demain s'il vous plaît",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=de demain",
+      "note": ""
+    },
+    {
+      "name": "nat_vendredi",
+      "category": "natural",
+      "input": "je voudrais poser vendredi",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=vendredi",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_vendredi",
+      "category": "natural",
+      "input": "je veux un congé ce vendredi",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce vendredi",
+      "note": ""
+    },
+    {
+      "name": "nat_mardi",
+      "category": "natural",
+      "input": "je prends mardi",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=mardi",
+      "note": ""
+    },
+    {
+      "name": "nat_lundi",
+      "category": "natural",
+      "input": "pose un congé lundi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=lundi",
+      "note": ""
+    },
+    {
+      "name": "nat_jeudi",
+      "category": "natural",
+      "input": "je veux jeudi en congé",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=jeudi",
+      "note": ""
+    },
+    {
+      "name": "nat_mercredi_today",
+      "category": "natural",
+      "input": "congé mercredi",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=mercredi",
+      "note": ""
+    },
+    {
+      "name": "nat_samedi",
+      "category": "natural",
+      "input": "je veux congé samedi",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=samedi",
+      "note": ""
+    },
+    {
+      "name": "nat_dimanche",
+      "category": "natural",
+      "input": "pose dimanche",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=dimanche",
+      "note": ""
+    },
+    {
+      "name": "nat_lundi_prochain",
+      "category": "natural",
+      "input": "je voudrais lundi prochain",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=lundi prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_vendredi_prochain",
+      "category": "natural",
+      "input": "congé vendredi prochain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=vendredi + prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_samedi_prochain",
+      "category": "natural",
+      "input": "congé samedi prochain",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=samedi prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_dimanche_prochain",
+      "category": "natural",
+      "input": "je prends dimanche prochain",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=dimanche prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_samedi",
+      "category": "natural",
+      "input": "off ce samedi",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce samedi",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_dimanche",
+      "category": "natural",
+      "input": "congé ce dimanche",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce dimanche",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_lundi",
+      "category": "natural",
+      "input": "je veux ce lundi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce lundi",
+      "note": ""
+    },
+    {
+      "name": "nat_weekend",
+      "category": "natural",
+      "input": "je veux le week-end",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=week-end",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_weekend",
+      "category": "natural",
+      "input": "congé ce weekend",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce weekend",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_week_end",
+      "category": "natural",
+      "input": "je prends ce week-end",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce week-end",
+      "note": ""
+    },
+    {
+      "name": "nat_ce_week_end_space",
+      "category": "natural",
+      "input": "pose ce week end",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=ce week end",
+      "note": ""
+    },
+    {
+      "name": "nat_hier",
+      "category": "natural",
+      "input": "j'étais absent hier",
+      "expectedStart": "2026-09-15",
+      "expectedEnd": "2026-09-15",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=hier",
+      "note": ""
+    },
+    {
+      "name": "nat_dans_trois_jours",
+      "category": "natural",
+      "input": "je veux un congé dans trois jours",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=dans trois jours",
+      "note": ""
+    },
+    {
+      "name": "nat_du_lundi_au_vendredi",
+      "category": "natural",
+      "input": "je veux du lundi au vendredi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-25",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=du lundi au vendredi",
+      "note": ""
+    },
+    {
+      "name": "nat_de_mardi_a_jeudi",
+      "category": "natural",
+      "input": "de mardi à jeudi en congé",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-24",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday-range",
+      "note": ""
+    },
+    {
+      "name": "nat_demain_jusqua_vendredi",
+      "category": "natural",
+      "input": "demain jusqu'à vendredi",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:jusqua",
+      "note": ""
+    },
+    {
+      "name": "nat_de_demain_a_apres",
+      "category": "natural",
+      "input": "de demain à après demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:relative-range",
+      "note": ""
+    },
+    {
+      "name": "nat_deux_prochains_jours",
+      "category": "natural",
+      "input": "les deux prochains jours",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=prochains jours",
+      "note": ""
+    },
+    {
+      "name": "nat_demain_et_apres",
+      "category": "natural",
+      "input": "demain et après demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:conjunction",
+      "note": ""
+    },
+    {
+      "name": "nat_demain_pour_deux",
+      "category": "natural",
+      "input": "je prends demain pour deux jours",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:duration",
+      "note": ""
+    },
+    {
+      "name": "nat_a_partir_demain_3",
+      "category": "natural",
+      "input": "à partir de demain pendant 3 jours",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "adapted:duration",
+      "note": ""
+    },
+    {
+      "name": "nat_vendredi_cette_semaine",
+      "category": "natural",
+      "input": "vendredi de cette semaine",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=vendredi + cette semaine",
+      "note": ""
+    },
+    {
+      "name": "nat_lundi_cette_semaine_next",
+      "category": "natural",
+      "input": "lundi cette semaine",
+      "expectedStart": "2026-09-14",
+      "expectedEnd": "2026-09-14",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=lundi cette semaine",
+      "note": "Monday of the current calendar week (may be past); NLP returns referred date"
+    },
+    {
+      "name": "nat_je_veux_prendre_demain",
+      "category": "natural",
+      "input": "je veux prendre un congé demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_poser_apres_demain",
+      "category": "natural",
+      "input": "je voudrais poser après-demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_conge_vendredi",
+      "category": "natural",
+      "input": "congé vendredi s'il te plaît",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_absence_mardi",
+      "category": "natural",
+      "input": "absence mardi",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_off_jeudi",
+      "category": "natural",
+      "input": "je suis off jeudi",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_repos_samedi_dimanche",
+      "category": "natural",
+      "input": "repos samedi et dimanche",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekend-conjunction",
+      "note": ""
+    },
+    {
+      "name": "nat_du_17_au_19",
+      "category": "natural",
+      "input": "du 17 au 19 septembre",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "adapted:calendar-range",
+      "note": ""
+    },
+    {
+      "name": "nat_le_17_septembre",
+      "category": "natural",
+      "input": "le 17 septembre",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:calendar",
+      "note": ""
+    },
+    {
+      "name": "nat_17_septembre",
+      "category": "natural",
+      "input": "17 septembre en congé",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:calendar",
+      "note": ""
+    },
+    {
+      "name": "nat_demain_matin_date",
+      "category": "natural",
+      "input": "congé demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=demain (ignore time-of-day)",
+      "note": ""
+    },
+    {
+      "name": "nat_aujourdhui_fold",
+      "category": "natural",
+      "input": "congé aujourdhui",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=aujourdhui",
+      "note": ""
+    },
+    {
+      "name": "nat_weekend_prochain",
+      "category": "natural",
+      "input": "le weekend prochain",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=week-end + prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_fin_de_semaine",
+      "category": "natural",
+      "input": "en fin de semaine",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "adapted:fin-de-semaine",
+      "note": ""
+    },
+    {
+      "name": "nat_de_lundi_a_mercredi",
+      "category": "natural",
+      "input": "de lundi à mercredi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-23",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday-range",
+      "note": ""
+    },
+    {
+      "name": "nat_jusqua_vendredi_from_demain",
+      "category": "natural",
+      "input": "à partir de demain jusqu'à vendredi",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:range",
+      "note": ""
+    },
+    {
+      "name": "nat_je_prends_vendredi",
+      "category": "natural",
+      "input": "je prends vendredi",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_besoin_conge_demain",
+      "category": "natural",
+      "input": "j'ai besoin d'un congé demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_souhaite_lundi",
+      "category": "natural",
+      "input": "je souhaite un congé lundi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_demander_apres_demain",
+      "category": "natural",
+      "input": "je demande un congé après demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_poser_du_18_au_19",
+      "category": "natural",
+      "input": "poser du 18/09 au 19/09",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "adapted:slash-range",
+      "note": ""
+    },
+    {
+      "name": "nat_17_slash_09",
+      "category": "natural",
+      "input": "congé 17/09",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:slash",
+      "note": ""
+    },
+    {
+      "name": "nat_17_dash_09",
+      "category": "natural",
+      "input": "congé 17-09",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:dash",
+      "note": ""
+    },
+    {
+      "name": "nat_deux_jours_demain",
+      "category": "natural",
+      "input": "demain et le jour d'après",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:fr day-after",
+      "note": ""
+    },
+    {
+      "name": "nat_mardi_prochain",
+      "category": "natural",
+      "input": "mardi prochain",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday+prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_jeudi_prochain",
+      "category": "natural",
+      "input": "jeudi prochain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday+prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_mercredi_prochain",
+      "category": "natural",
+      "input": "mercredi prochain",
+      "expectedStart": "2026-09-23",
+      "expectedEnd": "2026-09-23",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday+prochain",
+      "note": ""
+    },
+    {
+      "name": "nat_conge_ce_jeudi",
+      "category": "natural",
+      "input": "congé ce jeudi",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "adapted:ce + weekday",
+      "note": ""
+    },
+    {
+      "name": "nat_absence_ce_mardi",
+      "category": "natural",
+      "input": "absence ce mardi",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "adapted:ce + weekday",
+      "note": ""
+    },
+    {
+      "name": "nat_je_pose_demain_apres",
+      "category": "natural",
+      "input": "je pose demain et après-demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:conjunction",
+      "note": ""
+    },
+    {
+      "name": "nat_prendre_off_vendredi",
+      "category": "natural",
+      "input": "je veux prendre off vendredi",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:hr-wrapper",
+      "note": ""
+    },
+    {
+      "name": "nat_conge_du_22_au_24",
+      "category": "natural",
+      "input": "congé du 22 au 24 septembre",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-24",
+      "shouldAskClarification": false,
+      "origin": "adapted:calendar-range",
+      "note": ""
+    },
+    {
+      "name": "nat_le_20_septembre",
+      "category": "natural",
+      "input": "le 20 septembre",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "adapted:calendar",
+      "note": ""
+    },
+    {
+      "name": "nat_apres_demain_hyphen_hr",
+      "category": "natural",
+      "input": "je voudrais un congé après-demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=après-demain",
+      "note": ""
+    },
+    {
+      "name": "exp_iso_single",
+      "category": "explicit",
+      "input": "2026-09-17",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:iso",
+      "note": ""
+    },
+    {
+      "name": "exp_iso_range",
+      "category": "explicit",
+      "input": "2026-09-17 au 2026-09-19",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "synthetic:iso-range",
+      "note": ""
+    },
+    {
+      "name": "exp_slash_range",
+      "category": "explicit",
+      "input": "du 17/09/2026 au 19/09/2026",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "synthetic:slash-year",
+      "note": ""
+    },
+    {
+      "name": "exp_le_18_septembre",
+      "category": "explicit",
+      "input": "le 18 septembre 2026",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:month-year",
+      "note": ""
+    },
+    {
+      "name": "exp_19_septembre",
+      "category": "explicit",
+      "input": "19 septembre",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "synthetic:month",
+      "note": ""
+    },
+    {
+      "name": "exp_du_20_au_22",
+      "category": "explicit",
+      "input": "du 20 septembre au 22 septembre",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "synthetic:month-range",
+      "note": ""
+    },
+    {
+      "name": "exp_lundi_seul",
+      "category": "explicit",
+      "input": "lundi",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=lundi",
+      "note": ""
+    },
+    {
+      "name": "exp_mardi_seul",
+      "category": "explicit",
+      "input": "mardi",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=mardi",
+      "note": ""
+    },
+    {
+      "name": "exp_mercredi_seul",
+      "category": "explicit",
+      "input": "mercredi",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=mercredi",
+      "note": ""
+    },
+    {
+      "name": "exp_jeudi_seul",
+      "category": "explicit",
+      "input": "jeudi",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=jeudi",
+      "note": ""
+    },
+    {
+      "name": "exp_vendredi_seul",
+      "category": "explicit",
+      "input": "vendredi",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=vendredi",
+      "note": ""
+    },
+    {
+      "name": "exp_samedi_seul",
+      "category": "explicit",
+      "input": "samedi",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=samedi",
+      "note": ""
+    },
+    {
+      "name": "exp_dimanche_seul",
+      "category": "explicit",
+      "input": "dimanche",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=dimanche",
+      "note": ""
+    },
+    {
+      "name": "exp_today_word",
+      "category": "explicit",
+      "input": "aujourd'hui",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=aujourd'hui",
+      "note": ""
+    },
+    {
+      "name": "exp_tomorrow_word",
+      "category": "explicit",
+      "input": "demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=demain",
+      "note": ""
+    },
+    {
+      "name": "exp_day_after",
+      "category": "explicit",
+      "input": "après-demain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=après-demain",
+      "note": ""
+    },
+    {
+      "name": "exp_17_09",
+      "category": "explicit",
+      "input": "17/09",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:slash",
+      "note": ""
+    },
+    {
+      "name": "exp_18_09",
+      "category": "explicit",
+      "input": "18-09",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:dash",
+      "note": ""
+    },
+    {
+      "name": "exp_du_17_au_18",
+      "category": "explicit",
+      "input": "du 17 au 18 septembre",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:day-range-month",
+      "note": ""
+    },
+    {
+      "name": "exp_weekend_only",
+      "category": "explicit",
+      "input": "weekend",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=weekend",
+      "note": ""
+    },
+    {
+      "name": "exp_week_end_only",
+      "category": "explicit",
+      "input": "week-end",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:fr-FR:date=week-end",
+      "note": ""
+    },
+    {
+      "name": "exp_de_vendredi_a_dimanche",
+      "category": "explicit",
+      "input": "de vendredi à dimanche",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "adapted:weekday-range",
+      "note": ""
+    },
+    {
+      "name": "typo_demian2",
+      "category": "typo",
+      "input": "je veux demian",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo of demain",
+      "note": ""
+    },
+    {
+      "name": "typo_demainn2",
+      "category": "typo",
+      "input": "congé demainn",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_apre_demain2",
+      "category": "typo",
+      "input": "apré demain off",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_vendredi_prochin2",
+      "category": "typo",
+      "input": "vendredi prochin",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_septembr2",
+      "category": "typo",
+      "input": "le 17 septembr",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_aujourdui",
+      "category": "typo",
+      "input": "aujourdui",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo of aujourd'hui",
+      "note": ""
+    },
+    {
+      "name": "typo_vendredii",
+      "category": "typo",
+      "input": "vendredii",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_lundii",
+      "category": "typo",
+      "input": "lundii prochain",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_mardii",
+      "category": "typo",
+      "input": "mardii",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_jeudii",
+      "category": "typo",
+      "input": "jeudii",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_samedii",
+      "category": "typo",
+      "input": "samedii",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_dimanchhe",
+      "category": "typo",
+      "input": "dimanchhe",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_apresdemain",
+      "category": "typo",
+      "input": "apresdemain",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo compact",
+      "note": ""
+    },
+    {
+      "name": "typo_week_endd",
+      "category": "typo",
+      "input": "week-endd",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_deuux_jours",
+      "category": "typo",
+      "input": "les deuux prochains jours",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_mercredii",
+      "category": "typo",
+      "input": "mercredii",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_17_septmbre",
+      "category": "typo",
+      "input": "17 septmbre",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "typo_demain_et_apre",
+      "category": "typo",
+      "input": "demain et apré demain",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "synthetic:typo",
+      "note": ""
+    },
+    {
+      "name": "mix_tomorrow",
+      "category": "mixed",
+      "input": "je veux congé tomorrow",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=tomorrow",
+      "note": ""
+    },
+    {
+      "name": "mix_today",
+      "category": "mixed",
+      "input": "off today",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=today",
+      "note": ""
+    },
+    {
+      "name": "mix_friday",
+      "category": "mixed",
+      "input": "congé friday",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=friday",
+      "note": ""
+    },
+    {
+      "name": "mix_monday",
+      "category": "mixed",
+      "input": "je prends monday",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=monday",
+      "note": ""
+    },
+    {
+      "name": "mix_tuesday",
+      "category": "mixed",
+      "input": "absence tuesday",
+      "expectedStart": "2026-09-22",
+      "expectedEnd": "2026-09-22",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=tuesday",
+      "note": ""
+    },
+    {
+      "name": "mix_wednesday",
+      "category": "mixed",
+      "input": "congé wednesday",
+      "expectedStart": "2026-09-16",
+      "expectedEnd": "2026-09-16",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=wednesday",
+      "note": ""
+    },
+    {
+      "name": "mix_thursday",
+      "category": "mixed",
+      "input": "off thursday",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-17",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=thursday",
+      "note": ""
+    },
+    {
+      "name": "mix_saturday",
+      "category": "mixed",
+      "input": "congé saturday",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-19",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=saturday",
+      "note": ""
+    },
+    {
+      "name": "mix_sunday",
+      "category": "mixed",
+      "input": "pose sunday",
+      "expectedStart": "2026-09-20",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=sunday",
+      "note": ""
+    },
+    {
+      "name": "mix_next_friday",
+      "category": "mixed",
+      "input": "je veux next friday",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=this friday / next friday",
+      "note": ""
+    },
+    {
+      "name": "mix_day_after_tomorrow",
+      "category": "mixed",
+      "input": "day after tomorrow en congé",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=day after tomorrow",
+      "note": ""
+    },
+    {
+      "name": "mix_tomorrow_and_day_after",
+      "category": "mixed",
+      "input": "tomorrow and the day after",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=the day after",
+      "note": ""
+    },
+    {
+      "name": "mix_from_tomorrow_to_friday",
+      "category": "mixed",
+      "input": "from tomorrow to friday",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:from-to",
+      "note": ""
+    },
+    {
+      "name": "mix_from_demain_to_friday",
+      "category": "mixed",
+      "input": "from demain to friday",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:mixed anchors",
+      "note": ""
+    },
+    {
+      "name": "mix_weekend_en",
+      "category": "mixed",
+      "input": "this weekend off",
+      "expectedStart": "2026-09-19",
+      "expectedEnd": "2026-09-20",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=this weekend",
+      "note": ""
+    },
+    {
+      "name": "mix_yesterday",
+      "category": "mixed",
+      "input": "absent yesterday",
+      "expectedStart": "2026-09-15",
+      "expectedEnd": "2026-09-15",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=yesterday",
+      "note": ""
+    },
+    {
+      "name": "mix_je_veux_friday",
+      "category": "mixed",
+      "input": "je veux friday",
+      "expectedStart": "2026-09-18",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:mixed",
+      "note": ""
+    },
+    {
+      "name": "mix_conge_next_monday",
+      "category": "mixed",
+      "input": "congé next monday",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-21",
+      "shouldAskClarification": false,
+      "origin": "massive:en-US:date=next monday",
+      "note": ""
+    },
+    {
+      "name": "mix_from_monday_to_wednesday",
+      "category": "mixed",
+      "input": "from monday to wednesday",
+      "expectedStart": "2026-09-21",
+      "expectedEnd": "2026-09-23",
+      "shouldAskClarification": false,
+      "origin": "adapted:from-to weekdays",
+      "note": ""
+    },
+    {
+      "name": "mix_tomorrow_jusqua_friday",
+      "category": "mixed",
+      "input": "tomorrow jusqu'à friday",
+      "expectedStart": "2026-09-17",
+      "expectedEnd": "2026-09-18",
+      "shouldAskClarification": false,
+      "origin": "adapted:mixed connector",
+      "note": ""
+    },
+    {
+      "name": "amb_cette_semaine",
+      "category": "ambiguous",
+      "input": "cette semaine",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=cette semaine",
+      "note": ""
+    },
+    {
+      "name": "amb_la_semaine_prochaine",
+      "category": "ambiguous",
+      "input": "la semaine prochaine",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=la semaine prochaine",
+      "note": ""
+    },
+    {
+      "name": "amb_semaine_prochaine",
+      "category": "ambiguous",
+      "input": "semaine prochaine",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=semaine prochaine",
+      "note": ""
+    },
+    {
+      "name": "amb_prochaine_semaine",
+      "category": "ambiguous",
+      "input": "prochaine semaine",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=prochaine semaine",
+      "note": ""
+    },
+    {
+      "name": "amb_semaine_a_venir",
+      "category": "ambiguous",
+      "input": "la semaine à venir",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=la semaine à venir",
+      "note": ""
+    },
+    {
+      "name": "amb_this_week",
+      "category": "ambiguous",
+      "input": "this week",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:en-US:date=this week",
+      "note": ""
+    },
+    {
+      "name": "amb_next_week",
+      "category": "ambiguous",
+      "input": "next week",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:en-US:date=next week",
+      "note": ""
+    },
+    {
+      "name": "amb_ce_mois",
+      "category": "ambiguous",
+      "input": "ce mois",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=ce mois",
+      "note": ""
+    },
+    {
+      "name": "amb_ce_mois_ci",
+      "category": "ambiguous",
+      "input": "ce mois-ci",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=ce mois-ci",
+      "note": ""
+    },
+    {
+      "name": "amb_le_mois_prochain",
+      "category": "ambiguous",
+      "input": "le mois prochain",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=le mois prochain",
+      "note": ""
+    },
+    {
+      "name": "amb_next_month",
+      "category": "ambiguous",
+      "input": "next month",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:en-US:date=next month",
+      "note": ""
+    },
+    {
+      "name": "amb_fin_du_mois",
+      "category": "ambiguous",
+      "input": "fin du mois",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=fin du mois",
+      "note": ""
+    },
+    {
+      "name": "amb_bientot",
+      "category": "ambiguous",
+      "input": "bientôt",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "adapted:underspecified",
+      "note": ""
+    },
+    {
+      "name": "amb_quelques_jours",
+      "category": "ambiguous",
+      "input": "quelques jours",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "adapted:underspecified",
+      "note": ""
+    },
+    {
+      "name": "amb_apres_quelques_jours",
+      "category": "ambiguous",
+      "input": "après quelques jours",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=après quelques jours",
+      "note": ""
+    },
+    {
+      "name": "amb_dans_deux_semaines",
+      "category": "ambiguous",
+      "input": "dans deux semaines",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=dans deux semaines",
+      "note": ""
+    },
+    {
+      "name": "amb_prochains_jours_vague",
+      "category": "ambiguous",
+      "input": "prochains jours",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=prochains jours",
+      "note": ""
+    },
+    {
+      "name": "amb_un_de_ces_jours",
+      "category": "ambiguous",
+      "input": "un de ces jours",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "adapted:underspecified",
+      "note": ""
+    },
+    {
+      "name": "amb_coming_week",
+      "category": "ambiguous",
+      "input": "coming week",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:en-US:date=coming week",
+      "note": ""
+    },
+    {
+      "name": "amb_rest_of_week",
+      "category": "ambiguous",
+      "input": "reste de la semaine",
+      "expectedStart": null,
+      "expectedEnd": null,
+      "shouldAskClarification": true,
+      "origin": "massive:fr-FR:date=reste de la semaine",
+      "note": ""
+    }
+  ]
+}

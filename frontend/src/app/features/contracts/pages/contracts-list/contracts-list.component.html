@@ -1,0 +1,159 @@
+<section class="page-header">
+  <div>
+    <h1>Gestion des contrats</h1>
+    <p>Suivi des contrats actifs, expirés, résiliés et renouvelés.</p>
+  </div>
+  <div class="header-actions">
+    <a routerLink="/admin/contracts/create" class="primary-action"><app-icon name="plus" /> Ajouter</a>
+    <button type="button" class="secondary" (click)="refreshExpired()"><app-icon name="refresh" /> Actualiser</button>
+  </div>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid contract-summary">
+    <article><span>Contrats actifs</span><strong>{{ data.activeContracts }}</strong></article>
+    <article><span>Brouillons</span><strong>{{ data.draftContracts }}</strong></article>
+    <article><span>Expirés</span><strong>{{ data.expiredContracts }}</strong></article>
+    <article><span>Résiliés</span><strong>{{ data.terminatedContracts }}</strong></article>
+    <article><span>Expirent bientôt</span><strong>{{ data.expiringSoonCount }}</strong></article>
+  </section>
+}
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadContracts()">
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <select formControlName="type">
+    <option value="">Tous les types</option>
+    @for (type of types; track type) {
+      <option [value]="type">{{ typeLabel(type) }}</option>
+    }
+  </select>
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <input type="date" formControlName="startDateFrom" aria-label="Début de début" />
+  <input type="date" formControlName="endDateTo" aria-label="Fin avant" />
+  <input type="number" min="1" max="365" formControlName="expiringSoonDays" placeholder="Expire dans N jours" />
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel contracts-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Référence</th>
+        <th>Employé</th>
+        <th>Type</th>
+        <th>Statut</th>
+        <th>Date début</th>
+        <th>Date fin</th>
+        <th>Salaire</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="8" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (contract of contracts(); track contract.id) {
+          <tr>
+            <td><strong>{{ contract.contractReference || '-' }}</strong></td>
+            <td>
+              <strong>{{ contract.employeeFullName }}</strong>
+              <span>{{ contract.departmentName || '-' }} · {{ contract.jobPositionName || '-' }}</span>
+            </td>
+            <td>{{ typeLabel(contract.type) }}</td>
+            <td><span class="badge" [class]="contract.status.toLowerCase()">{{ statusLabel(contract.status) }}</span></td>
+            <td>{{ contract.startDate | date: 'mediumDate' }}</td>
+            <td>{{ contract.endDate ? (contract.endDate | date: 'mediumDate') : '-' }}</td>
+            <td>{{ contract.salaryAtSignature | number: '1.2-2' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Voir" aria-label="Voir"><app-icon name="eye" /></a>
+              @if (contract.status === 'DRAFT' || contract.status === 'ACTIVE') {
+                <a class="icon-link" [routerLink]="['/admin/contracts', contract.id, 'edit']" title="Modifier" aria-label="Modifier"><app-icon name="pencil" /></a>
+              }
+              @if (contract.status === 'DRAFT') {
+                <app-icon-action-button icon="check" tooltip="Activer" variant="success" (action)="activate(contract)" />
+                <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="delete(contract)" />
+              }
+              @if (contract.status === 'ACTIVE') {
+                <app-icon-action-button icon="ban" tooltip="Résilier" variant="warning" (action)="openTerminate(contract)" />
+                <app-icon-action-button icon="refresh" tooltip="Renouveler" variant="info" (action)="openRenew(contract)" />
+              }
+              @if (contract.status === 'EXPIRED') {
+                <app-icon-action-button icon="refresh" tooltip="Renouveler" variant="info" (action)="openRenew(contract)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="8" class="empty">Aucun contrat trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (contractToTerminate(); as contract) {
+  <section class="modal-backdrop">
+    <form class="contract-modal" [formGroup]="terminateForm" (ngSubmit)="terminate()">
+      <div class="modal-header">
+        <div>
+          <h2>Résilier le contrat</h2>
+          <p>{{ contract.employeeFullName }} · {{ contract.contractReference }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="contractToTerminate.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <label><span>Date de résiliation</span><input type="date" formControlName="terminationDate" /></label>
+      <label><span>Motif</span><textarea rows="4" formControlName="terminationReason"></textarea></label>
+      <div class="modal-actions">
+        <button type="button" class="secondary" (click)="contractToTerminate.set(null)"><app-icon name="x" /> Annuler</button>
+        <button type="submit"><app-icon name="ban" /> Résilier</button>
+      </div>
+    </form>
+  </section>
+}
+
+@if (contractToRenew(); as contract) {
+  <section class="modal-backdrop">
+    <form class="contract-modal" [formGroup]="renewForm" (ngSubmit)="renew()">
+      <div class="modal-header">
+        <div>
+          <h2>Renouveler le contrat</h2>
+          <p>{{ contract.employeeFullName }} · {{ contract.contractReference }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="contractToRenew.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <div class="form-grid">
+        <label><span>Nouvelle date début</span><input type="date" formControlName="newStartDate" /></label>
+        <label><span>Nouvelle date fin</span><input type="date" formControlName="newEndDate" /></label>
+        <label><span>Fin période d’essai</span><input type="date" formControlName="trialPeriodEndDate" /></label>
+        <label><span>Salaire signature</span><input type="number" min="0.01" step="0.01" formControlName="salaryAtSignature" /></label>
+      </div>
+      <label><span>Notes</span><textarea rows="3" formControlName="notes"></textarea></label>
+      <div class="modal-actions">
+        <button type="button" class="secondary" (click)="contractToRenew.set(null)"><app-icon name="x" /> Annuler</button>
+        <button type="submit"><app-icon name="refresh" /> Renouveler</button>
+      </div>
+    </form>
+  </section>
+}

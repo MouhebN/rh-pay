@@ -1,0 +1,113 @@
+<section class="page-header">
+  <div>
+    <h1>Gestion des bulletins de paie</h1>
+    <p>Générez et téléchargez les bulletins PDF issus des paies finalisées.</p>
+  </div>
+  <button type="button" (click)="generateBulk()"><app-icon name="file" /> Générer</button>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid payroll-summary">
+    <article><span>Bulletins générés</span><strong>{{ data.generatedCount }}</strong></article>
+    <article><span>Bulletins annulés</span><strong>{{ data.cancelledCount }}</strong></article>
+    <article><span>Masse brute</span><strong>{{ data.totalGrossSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Masse nette</span><strong>{{ data.totalNetSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Total retenues</span><strong>{{ data.totalDeductions | number: '1.2-2' }}</strong></article>
+  </section>
+}
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadPayslips()">
+  <input type="number" min="1" max="12" formControlName="month" aria-label="Mois" />
+  <input type="number" min="2020" max="2100" formControlName="year" aria-label="Année" />
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel payslips-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Mois</th>
+        <th>Salaire brut</th>
+        <th>Total retenues</th>
+        <th>Salaire net</th>
+        <th>Statut</th>
+        <th>Date génération</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="8" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (payslip of payslips(); track payslip.id) {
+          <tr>
+            <td><strong>{{ payslip.employeeFullName }}</strong><span>{{ payslip.departmentName || '-' }} · {{ payslip.jobPositionName || '-' }}</span></td>
+            <td>{{ payslip.month }}/{{ payslip.year }}</td>
+            <td>{{ payslip.grossSalary | number: '1.2-2' }}</td>
+            <td>{{ payslip.totalDeductions | number: '1.2-2' }}</td>
+            <td><strong>{{ payslip.netSalary | number: '1.2-2' }}</strong></td>
+            <td><span class="badge" [class]="payslip.status.toLowerCase()">{{ statusLabel(payslip.status) }}</span></td>
+            <td>{{ payslip.generatedAt | date: 'short' }}</td>
+            <td class="actions">
+              <app-icon-action-button icon="eye" tooltip="Voir" variant="info" (action)="openDetails(payslip)" />
+              @if (payslip.status === 'GENERATED') {
+                <app-icon-action-button icon="download" tooltip="Télécharger" variant="success" (action)="download(payslip)" />
+                <app-icon-action-button icon="ban" tooltip="Annuler" variant="warning" (action)="cancel(payslip)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="8" class="empty">Aucun bulletin trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedPayslip(); as payslip) {
+  <section class="modal-backdrop">
+    <article class="payroll-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Bulletin de paie</h2>
+          <p>{{ payslip.employeeFullName }} · {{ payslip.month }}/{{ payslip.year }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="closeDetails()"><app-icon name="x" /> Fermer</button>
+      </div>
+      <div class="details-grid">
+        <span>Salaire de base <strong>{{ payslip.baseSalary | number: '1.2-2' }}</strong></span>
+        <span>Salaire brut <strong>{{ payslip.grossSalary | number: '1.2-2' }}</strong></span>
+        <span>Total retenues <strong>{{ payslip.totalDeductions | number: '1.2-2' }}</strong></span>
+        <span class="net">Salaire net <strong>{{ payslip.netSalary | number: '1.2-2' }}</strong></span>
+        <span>Fichier <strong>{{ payslip.fileName }}</strong></span>
+        <span>Généré par <strong>{{ payslip.generatedByUsername || '-' }}</strong></span>
+      </div>
+    </article>
+  </section>
+}

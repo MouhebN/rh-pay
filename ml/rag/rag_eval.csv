@@ -1,0 +1,35 @@
+query,intent,expected_file,expected_section,split,negative
+Où est-ce que je dépose une demande d'absence ?,FAQ_LEAVE,conges.md,Comment demander un congé (employé),dev,0
+Quel écran sert à choisir les dates et le motif d'un congé ?,FAQ_LEAVE,conges.md,Comment demander un congé (employé),final,0
+Une demande pas encore acceptée bloque-t-elle des jours ?,FAQ_LEAVE,conges.md,Solde de congé,dev,0
+Où voir les jours acquis et ceux qui restent ?,FAQ_LEAVE,conges.md,Solde de congé,dev,0
+Comment le RH refuse une absence en attente ?,FAQ_LEAVE,conges.md,Comment valider une demande (admin RH),dev,0
+Où filtrer les dossiers qui attendent une décision ?,FAQ_LEAVE,conges.md,Comment valider une demande (admin RH),final,0
+Qui peut ouvrir le justificatif d'une demande ?,FAQ_LEAVE,conges.md,Calendrier et pièces jointes,dev,0
+Y a-t-il un calendrier pour l'équipe ?,FAQ_LEAVE,conges.md,Calendrier et pièces jointes,dev,0
+L'assistant peut-il valider mon congé tout seul ?,FAQ_LEAVE,conges.md,Ce que l'assistant ne fait pas,dev,0
+Est-ce que le chat annule une absence à ma place ?,FAQ_LEAVE,conges.md,Ce que l'assistant ne fait pas,final,0
+Où télécharger le PDF de mon bulletin ?,FAQ_PAYROLL,paie.md,Où trouver mon bulletin (employé),dev,0
+Mes salaires affichent-ils les calculs déjà finalisés ?,FAQ_PAYROLL,paie.md,Où trouver mon bulletin (employé),final,0
+Dans quel ordre le RH prépare le mois de paie ?,FAQ_PAYROLL,paie.md,Cycle de paie (admin RH),dev,0
+Après le calcul comment sortir les bulletins PDF ?,FAQ_PAYROLL,paie.md,Cycle de paie (admin RH),dev,0
+Où voir si les calculs du mois sont finalisés ?,FAQ_PAYROLL,paie.md,Comment suivre la paie du mois,dev,0
+Le chat peut-il seulement résumer la paie sans la lancer ?,FAQ_PAYROLL,paie.md,Comment suivre la paie du mois,final,0
+L'assistant lance-t-il le calcul de paie ?,FAQ_PAYROLL,paie.md,Ce que l'assistant ne fait pas,dev,0
+Peut-il générer les variables de paie ?,FAQ_PAYROLL,paie.md,Ce que l'assistant ne fait pas,final,0
+Comment enregistrer mon arrivée puis ma sortie ?,FAQ_ATTENDANCE,pointage.md,Comment pointer (employé),dev,0
+Un congé déjà accepté empêche-t-il de pointer ?,FAQ_ATTENDANCE,pointage.md,Comment pointer (employé),final,0
+Où voir si j'ai déjà pointé aujourd'hui ?,FAQ_ATTENDANCE,pointage.md,Consulter mon pointage du jour,dev,0
+L'écran du jour montre-t-il l'heure d'arrivée ?,FAQ_ATTENDANCE,pointage.md,Consulter mon pointage du jour,dev,0
+L'admin peut-il corriger une journée de présence ?,FAQ_ATTENDANCE,pointage.md,Suivi admin,dev,0
+D'où viennent les pointages web ou saisie manuelle ?,FAQ_ATTENDANCE,pointage.md,Suivi admin,final,0
+Le chat peut-il pointer à ma place ?,FAQ_ATTENDANCE,pointage.md,Ce que l'assistant ne fait pas,dev,0
+Faut-il utiliser le bouton Arrivée dans l'application ?,FAQ_ATTENDANCE,pointage.md,Ce que l'assistant ne fait pas,dev,0
+Quel est le taux de cotisation CNSS ?,FAQ_PAYROLL,,,dev,1
+Combien de jours de RTT le guide prévoit-il ?,FAQ_LEAVE,,,dev,1
+La mutuelle rembourse-t-elle les lunettes ?,FAQ_PAYROLL,,,dev,1
+Quelle est la politique de télétravail ?,FAQ_LEAVE,,,dev,1
+Comment obtenir une avance sur salaire ?,FAQ_PAYROLL,,,dev,1
+Quel est le barème de l'impôt sur le revenu ?,FAQ_PAYROLL,,,final,1
+Quels jours fériés sont chômés cette année ?,FAQ_LEAVE,,,final,1
+Où signer mon contrat de travail ?,FAQ_LEAVE,,,final,1

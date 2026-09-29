@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: rh-paie-backend
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:5434}/${DB_NAME:rh_paie_db}?sslmode=disable&connectTimeout=5&socketTimeout=5
+    username: ${DB_USERNAME:rhpaie_user}
+    password: ${DB_PASSWORD:rhpaie_password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer: ERROR
+
+file:
+  upload-dir: ${FILE_UPLOAD_DIR:uploads/leave-documents}
+  payslip-upload-dir: ${FILE_PAYSLIP_UPLOAD_DIR:uploads/payslips}
+  contract-upload-dir: ${FILE_CONTRACT_UPLOAD_DIR:uploads/contracts}
+  employee-exit-upload-dir: ${FILE_EMPLOYEE_EXIT_UPLOAD_DIR:uploads/employee-exits}
+  chat-faq-upload-dir: ${FILE_CHAT_FAQ_UPLOAD_DIR:uploads/chat-faq}
+
+application:
+  seed:
+    enabled: ${APPLICATION_SEED_ENABLED:false}
+  security:
+    jwt:
+      secret: ${JWT_SECRET:rh-paie-development-secret-key-change-me-please-keep-very-long}
+      access-token-expiration-ms: ${JWT_ACCESS_TOKEN_EXPIRATION_MS:900000}
+      refresh-token-expiration-ms: ${JWT_REFRESH_TOKEN_EXPIRATION_MS:604800000}
+
+chat:
+  intent-url: ${CHAT_INTENT_URL:http://localhost:8010}
+  min-confidence: 0.55
+  ollama:
+    base-url: ${CHAT_OLLAMA_BASE_URL:http://localhost:11434}
+    model: ${CHAT_OLLAMA_MODEL:llama3.2:3b}

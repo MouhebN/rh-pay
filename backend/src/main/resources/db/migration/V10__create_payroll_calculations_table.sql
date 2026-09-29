@@ -1,0 +1,40 @@
+CREATE TABLE payroll_calculations (
+    id BIGSERIAL PRIMARY KEY,
+    employee_id BIGINT NOT NULL,
+    payroll_variable_id BIGINT NOT NULL,
+    month INTEGER NOT NULL,
+    year INTEGER NOT NULL,
+    base_salary NUMERIC(12,2) NOT NULL,
+    daily_rate NUMERIC(12,2) NOT NULL,
+    hourly_rate NUMERIC(12,2) NOT NULL,
+    unpaid_absence_days NUMERIC(5,2) NOT NULL DEFAULT 0,
+    late_minutes INTEGER NOT NULL DEFAULT 0,
+    overtime_minutes INTEGER NOT NULL DEFAULT 0,
+    bonus_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+    advance_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+    deduction_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+    unpaid_absence_deduction NUMERIC(12,2) NOT NULL DEFAULT 0,
+    late_deduction NUMERIC(12,2) NOT NULL DEFAULT 0,
+    overtime_amount NUMERIC(12,2) NOT NULL DEFAULT 0,
+    gross_salary NUMERIC(12,2) NOT NULL DEFAULT 0,
+    total_deductions NUMERIC(12,2) NOT NULL DEFAULT 0,
+    net_salary NUMERIC(12,2) NOT NULL DEFAULT 0,
+    status VARCHAR(30) NOT NULL,
+    calculated_by_id BIGINT,
+    calculated_at TIMESTAMP,
+    finalized_by_id BIGINT,
+    finalized_at TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    CONSTRAINT fk_payroll_calculations_employee FOREIGN KEY (employee_id) REFERENCES employees(id),
+    CONSTRAINT fk_payroll_calculations_variable FOREIGN KEY (payroll_variable_id) REFERENCES payroll_variables(id),
+    CONSTRAINT fk_payroll_calculations_calculated_by FOREIGN KEY (calculated_by_id) REFERENCES users(id),
+    CONSTRAINT fk_payroll_calculations_finalized_by FOREIGN KEY (finalized_by_id) REFERENCES users(id),
+    CONSTRAINT uk_payroll_calculations_employee_month_year UNIQUE (employee_id, month, year),
+    CONSTRAINT chk_payroll_calculations_month CHECK (month >= 1 AND month <= 12),
+    CONSTRAINT chk_payroll_calculations_year CHECK (year >= 2020 AND year <= 2100)
+);
+
+CREATE INDEX idx_payroll_calculations_period ON payroll_calculations(year, month);
+CREATE INDEX idx_payroll_calculations_status ON payroll_calculations(status);
+CREATE INDEX idx_payroll_calculations_employee ON payroll_calculations(employee_id);

@@ -1,0 +1,76 @@
+<section class="page-header">
+  <div>
+    <h1>Utilisateurs</h1>
+    <p>Comptes d'accès à la plateforme RH PaiePro.</p>
+  </div>
+  <a routerLink="/admin/users/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouvel utilisateur
+  </a>
+</section>
+
+<section class="table-panel">
+  @if (loading()) {
+    <app-loading-spinner label="Chargement des utilisateurs..." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Utilisateur</th>
+          <th>Rôle</th>
+          <th>Statut</th>
+          <th>Dernière connexion</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users(); track user.id) {
+          <tr>
+            <td>
+              <strong>{{ user.username }}</strong>
+              <span>{{ user.email }}</span>
+            </td>
+            <td>{{ user.role }}</td>
+            <td>
+              <span class="badge" [class.off]="!user.enabled">
+                {{ user.enabled ? 'Actif' : 'Désactivé' }}
+              </span>
+              @if (user.accountLocked) {
+                <span class="badge locked">Verrouillé</span>
+              }
+            </td>
+            <td>{{ user.lastLoginAt ? (user.lastLoginAt | date: 'short') : 'Jamais' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/users', user.id, 'edit']" title="Modifier" aria-label="Modifier">
+                <app-icon name="pencil" />
+              </a>
+              <app-icon-action-button
+                [icon]="user.enabled ? 'ban' : 'check'"
+                [tooltip]="user.enabled ? 'Désactiver' : 'Activer'"
+                [variant]="user.enabled ? 'warning' : 'success'"
+                (action)="toggleStatus(user)"
+              />
+              @if (user.accountLocked) {
+                <app-icon-action-button icon="unlock" tooltip="Déverrouiller" variant="info" (action)="unlock(user)" />
+              }
+              <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="confirmDelete(user)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="empty">Aucun utilisateur trouvé.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+@if (userToDelete(); as user) {
+  <app-confirm-dialog
+    title="Supprimer l'utilisateur"
+    [message]="'Supprimer le compte ' + user.username + ' ?'"
+    (confirmed)="deleteUser()"
+    (cancelled)="userToDelete.set(null)"
+  />
+}

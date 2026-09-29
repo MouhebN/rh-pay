@@ -1,0 +1,13 @@
+{
+  "source": "Amazon MASSIVE 1.1",
+  "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+  "locales": [
+    "fr-FR",
+    "en-US"
+  ],
+  "fr_date_slot_utterances": 2515,
+  "en_date_slot_utterances": 2523,
+  "deduped_candidates": 4950,
+  "unique_fr_expressions": 413,
+  "unique_en_expressions": 373
+}

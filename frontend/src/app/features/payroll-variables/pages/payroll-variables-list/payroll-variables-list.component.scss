@@ -1,0 +1,153 @@
+@use '../../../attendance/pages/admin-attendance/admin-attendance.component';
+
+.payroll-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 7px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.badge.draft {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.badge.validated {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.badge.locked {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.variable-modal {
+  display: grid;
+  gap: 12px;
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  background: #ffffff;
+  color: #171717;
+  box-shadow: 0 22px 70px rgba(15, 23, 42, 0.22);
+}
+
+.variable-modal h2,
+.variable-modal p {
+  margin: 0;
+}
+
+.variable-modal .modal-header {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+
+.variable-modal .modal-header p {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.variable-modal label {
+  display: grid;
+  gap: 7px;
+}
+
+.variable-modal label span {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.variable-modal input,
+.variable-modal textarea {
+  border: 1px solid #d4d4d4;
+  border-radius: 9px;
+  padding: 8px 10px;
+  background: #ffffff;
+  color: #171717;
+  font: inherit;
+}
+
+.variable-modal input:focus,
+.variable-modal textarea:focus {
+  border-color: var(--color-primary);
+  outline: 3px solid rgba(49, 80, 168, 0.14);
+}
+
+.variable-modal .modal-actions {
+  border-top: 1px solid #eeeeee;
+  padding-top: 14px;
+}
+
+.variable-modal button {
+  border: 0;
+  border-radius: 9px;
+  min-height: 34px;
+  padding: 7px 11px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.variable-modal button.secondary {
+  border: 1px solid #d4d4d4;
+  background: #ffffff;
+  color: var(--color-text);
+}
+
+.details-modal {
+  background: #fbfbfa;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.details-grid span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  background: #ffffff;
+  color: var(--color-muted);
+}
+
+.details-grid strong {
+  color: var(--color-text);
+}
+
+.notes {
+  margin: 12px 0 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  background: #ffffff;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .payroll-summary,
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,40 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Nouveau poste</h1>
+      <p>Créer une fonction liée à un département.</p>
+    </div>
+    <a routerLink="/admin/job-positions">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <label>
+      <span>Titre</span>
+      <input type="text" formControlName="title" />
+    </label>
+
+    <label>
+      <span>Département</span>
+      <select formControlName="departmentId">
+        <option [ngValue]="null">Aucun département</option>
+        @for (department of departments(); track department.id) {
+          <option [ngValue]="department.id">{{ department.name }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Salaire de base</span>
+      <input type="number" formControlName="baseSalary" min="0" step="0.001" />
+    </label>
+
+    <label>
+      <span>Description</span>
+      <textarea formControlName="description" rows="4"></textarea>
+    </label>
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Création...' : 'Créer' }}
+    </button>
+  </form>
+</section>

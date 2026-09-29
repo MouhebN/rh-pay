@@ -1,0 +1,191 @@
+<section class="page-header">
+  <div>
+    <h1>Gestion des sorties employés</h1>
+    <p>Programmez, finalisez ou annulez les départs tout en conservant l’historique RH.</p>
+  </div>
+  <div class="header-actions">
+    <button type="button" class="secondary-action" (click)="processDue()"><app-icon name="refresh" /> Traiter les sorties dues</button>
+    <a routerLink="/admin/employee-exits/create" class="primary-action"><app-icon name="plus" /> Préparer une sortie</a>
+  </div>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid">
+    <article><span>Sorties programmées</span><strong>{{ data.scheduledCount }}</strong></article>
+    <article><span>Sorties complétées</span><strong>{{ data.completedCount }}</strong></article>
+    <article><span>Sorties annulées</span><strong>{{ data.cancelledCount }}</strong></article>
+    <article><span>Sorties à venir</span><strong>{{ data.upcomingCount }}</strong></article>
+  </section>
+}
+
+<form [formGroup]="filterForm" class="filters-panel" (ngSubmit)="loadExits()">
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <select formControlName="type">
+    <option value="">Tous les types</option>
+    @for (type of types; track type) {
+      <option [value]="type">{{ typeLabel(type) }}</option>
+    }
+  </select>
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <input type="date" formControlName="exitDateFrom" />
+  <input type="date" formControlName="exitDateTo" />
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary-action" (click)="resetFilters()"><app-icon name="x" /> Réinit.</button>
+</form>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Département</th>
+        <th>Poste</th>
+        <th>Type de départ</th>
+        <th>Date de sortie</th>
+        <th>Statut</th>
+        <th>Compte désactivé</th>
+        <th>Contrat clôturé</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="9" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (exit of exits(); track exit.id) {
+          <tr>
+            <td><strong>{{ exit.employeeFullName }}</strong></td>
+            <td>{{ exit.departmentName || '-' }}</td>
+            <td>{{ exit.jobPositionName || '-' }}</td>
+            <td>{{ typeLabel(exit.type) }}</td>
+            <td>{{ exit.exitDate | date: 'mediumDate' }}</td>
+            <td><span class="badge" [class]="exit.status.toLowerCase()">{{ statusLabel(exit.status) }}</span></td>
+            <td>{{ exit.accountDisabled ? 'Oui' : 'Non' }}</td>
+            <td>{{ exit.activeContractTerminated ? 'Oui' : 'Non' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/employee-exits', exit.id]" title="Voir" aria-label="Voir">
+                <app-icon name="eye" />
+              </a>
+              @if (canMutate(exit)) {
+                <app-icon-action-button icon="pencil" tooltip="Modifier" variant="neutral" (action)="openEdit(exit)" />
+                <app-icon-action-button icon="check" tooltip="Compléter" variant="success" (action)="openComplete(exit)" />
+                <app-icon-action-button icon="ban" tooltip="Annuler" variant="danger" (action)="openCancel(exit)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="9" class="empty">Aucune sortie employé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (exitToEdit(); as exit) {
+  <section class="modal-backdrop">
+    <article class="contract-modal employee-exit-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Modifier la sortie</h2>
+          <p>{{ exit.employeeFullName }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="exitToEdit.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <form [formGroup]="editForm" class="modal-form" (ngSubmit)="updateExit()">
+        <label>
+          <span>Type de départ</span>
+          <select formControlName="type">
+            @for (type of types; track type) {
+              <option [value]="type">{{ typeLabel(type) }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          <span>Statut</span>
+          <select formControlName="status">
+            <option value="DRAFT">Brouillon</option>
+            <option value="SCHEDULED">Programmée</option>
+          </select>
+        </label>
+        <label>
+          <span>Date de sortie</span>
+          <input type="date" formControlName="exitDate" />
+        </label>
+        <label>
+          <span>Motif</span>
+          <textarea rows="3" formControlName="reason"></textarea>
+        </label>
+        <label>
+          <span>Notes</span>
+          <textarea rows="3" formControlName="notes"></textarea>
+        </label>
+        <button type="submit"><app-icon name="check" /> Enregistrer</button>
+      </form>
+    </article>
+  </section>
+}
+
+@if (exitToComplete(); as exit) {
+  <section class="modal-backdrop">
+    <article class="contract-modal employee-exit-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Finaliser la sortie</h2>
+          <p>{{ exit.employeeFullName }} · {{ exit.exitDate | date: 'mediumDate' }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="exitToComplete.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <p class="warning-box">Cette action va désactiver le compte utilisateur, clôturer le contrat actif et marquer l’employé comme sorti.</p>
+      <form [formGroup]="completeForm" class="modal-form" (ngSubmit)="complete()">
+        <label>
+          <span>Notes finales</span>
+          <textarea rows="3" formControlName="notes"></textarea>
+        </label>
+        <button type="submit"><app-icon name="check" /> Confirmer</button>
+      </form>
+    </article>
+  </section>
+}
+
+@if (exitToCancel(); as exit) {
+  <section class="modal-backdrop">
+    <article class="contract-modal employee-exit-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Annuler</h2>
+          <p>{{ exit.employeeFullName }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="exitToCancel.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <form [formGroup]="cancelForm" class="modal-form" (ngSubmit)="cancel()">
+        <label>
+          <span>Motif d’annulation</span>
+          <textarea rows="3" formControlName="cancellationReason"></textarea>
+        </label>
+        <button type="submit" class="danger"><app-icon name="ban" /> Annuler</button>
+      </form>
+    </article>
+  </section>
+}

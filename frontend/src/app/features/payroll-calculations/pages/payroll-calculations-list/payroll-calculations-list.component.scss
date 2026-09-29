@@ -1,0 +1,28 @@
+@use '../../../payroll-variables/pages/payroll-variables-list/payroll-variables-list.component';
+
+.payroll-modal {
+  display: grid;
+  gap: 12px;
+  width: min(780px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  background: #ffffff;
+  color: #171717;
+  box-shadow: 0 22px 70px rgba(15, 23, 42, 0.22);
+}
+
+.danger {
+  background: #b42318 !important;
+}
+
+.badge.draft { background: var(--color-info-soft); color: var(--color-info); }
+.badge.finalized { background: var(--color-success-soft); color: var(--color-success); }
+.badge.cancelled { background: var(--color-danger-soft); color: var(--color-danger); }
+
+.net {
+  border-color: #0b6b33 !important;
+  background: #f0fff4 !important;
+}

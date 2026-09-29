@@ -1,0 +1,39 @@
+<section class="page-header">
+  <div>
+    <h1>Mes documents de sortie</h1>
+    <p>Documents RH rendus visibles par le service RH.</p>
+  </div>
+</section>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Fichier</th>
+        <th>Taille</th>
+        <th>Date ajout</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="5" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (document of documents(); track document.id) {
+          <tr>
+            <td>{{ documentTypeLabel(document.type) }}</td>
+            <td><strong>{{ document.originalFileName }}</strong></td>
+            <td>{{ document.fileSize ? ((document.fileSize / 1024) | number: '1.0-0') + ' Ko' : '-' }}</td>
+            <td>{{ document.uploadedAt | date: 'medium' }}</td>
+            <td class="actions">
+              <app-icon-action-button icon="download" tooltip="Télécharger" variant="info" (action)="download(document)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="5" class="empty">Aucun document de sortie disponible.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,106 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Nouvelle d'absence</h1>
+      <p>
+        @if (isAdmin) {
+          Enregistrez une absence validée pour un employé.
+        } @else {
+          Renseignez la période et le motif de la demande.
+        }
+      </p>
+    </div>
+    <a [routerLink]="isAdmin ? '/admin/leave-requests' : '/employee/my-leave-requests'">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    @if (!isAdmin && balance(); as leaveBalance) {
+      <section class="balance-preview">
+        <div>
+          <span>Solde de congé</span>
+          <strong>{{ leaveBalance.remainingDays }} jour(s) restants</strong>
+        </div>
+        <dl>
+          <div><dt>Acquis</dt><dd>{{ leaveBalance.acquiredDays }}</dd></div>
+          <div><dt>Consommés</dt><dd>{{ leaveBalance.consumedDays }}</dd></div>
+          <div><dt>En attente</dt><dd>{{ leaveBalance.pendingDays }}</dd></div>
+        </dl>
+      </section>
+    }
+
+    @if (isAdmin) {
+      <label>
+        <span>Employé</span>
+        <select formControlName="employeeId">
+          <option [ngValue]="null">Sélectionner un employé</option>
+          @for (employee of employees(); track employee.id) {
+            <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+          }
+        </select>
+      </label>
+    }
+
+    <label>
+      <span>Type d'absence</span>
+      <select formControlName="type">
+        @for (type of types; track type) {
+          <option [value]="type">{{ typeLabel(type) }}</option>
+        }
+      </select>
+    </label>
+
+    @if (form.controls.type.value === 'SICK_LEAVE') {
+      <p class="info-message">Justificatif recommandé pour congé maladie.</p>
+    }
+
+    <div class="form-grid">
+      <label>
+        <span>Date début</span>
+        <input type="date" formControlName="startDate" />
+      </label>
+
+      <label>
+        <span>Date fin</span>
+        <input type="date" formControlName="endDate" />
+      </label>
+    </div>
+
+    @if (!isDateRangeValid()) {
+      <p class="validation-message">La date de début doit être avant ou égale à la date de fin.</p>
+    }
+
+    @if (exceedsRemainingBalance()) {
+      <p class="validation-message">La durée demandée dépasse vos congés restants.</p>
+    }
+
+    <div class="days-preview">
+      <span>Durée calculée</span>
+      <strong>{{ totalDays() }} jour(s)</strong>
+    </div>
+
+    <label>
+      <span>Motif</span>
+      <textarea formControlName="reason" rows="4"></textarea>
+    </label>
+
+    <section class="document-upload">
+      <div>
+        <span>Justificatif</span>
+        <strong>{{ selectedDocumentName() || 'Aucun fichier sélectionné' }}</strong>
+        <small>PDF, PNG ou JPG/JPEG · 5 Mo maximum</small>
+      </div>
+      <label>
+        Justificatif
+        <input
+          type="file"
+          accept="application/pdf,image/png,image/jpeg"
+          (change)="onDocumentSelected($event)"
+        />
+      </label>
+    </section>
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Enregistrement...' : 'Enregistrer' }}
+    </button>
+  </form>
+</section>

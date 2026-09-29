@@ -1,0 +1,24 @@
+@use '../contracts-list/contracts-list.component';
+
+.monitoring-section {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.section-title h2 {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.section-title p {
+  margin: 3px 0 0;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.expiring-table th:nth-child(7),
+.expiring-table td:nth-child(7) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

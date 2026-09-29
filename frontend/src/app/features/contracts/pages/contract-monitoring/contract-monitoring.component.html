@@ -1,0 +1,137 @@
+<section class="page-header">
+  <div>
+    <h1>Suivi des contrats</h1>
+    <p>Surveillez les échéances, contrats expirés et documents signés manquants.</p>
+  </div>
+  <button type="button" (click)="refreshExpired()"><app-icon name="refresh" /> Actualiser</button>
+</section>
+
+@if (monitoring(); as data) {
+  <section class="summary-grid">
+    <article><span>Contrats actifs</span><strong>{{ data.activeContractsCount }}</strong></article>
+    <article><span>Expirent bientôt</span><strong>{{ data.expiringSoonCount }}</strong></article>
+    <article><span>Contrats expirés</span><strong>{{ data.expiredContractsCount }}</strong></article>
+    <article><span>Documents manquants</span><strong>{{ data.missingDocumentCount }}</strong></article>
+    <article><span>Action RH requise</span><strong>{{ data.actionRequiredCount }}</strong></article>
+  </section>
+}
+
+<section class="monitoring-section">
+  <div class="section-title">
+    <h2>Contrats expirant bientôt</h2>
+    <p>Contrats actifs dont la date de fin approche.</p>
+  </div>
+  <div class="table-panel contract-monitoring-table expiring-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Employé</th>
+          <th>Département</th>
+          <th>Poste</th>
+          <th>Type</th>
+          <th>Date fin</th>
+          <th>Jours restants</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (contract of expiringSoon(); track contract.id) {
+          <tr>
+            <td><strong>{{ contract.contractReference || '-' }}</strong></td>
+            <td>{{ contract.employeeFullName }}</td>
+            <td>{{ contract.departmentName || '-' }}</td>
+            <td>{{ contract.jobPositionName || '-' }}</td>
+            <td>{{ typeLabel(contract.type) }}</td>
+            <td>{{ contract.endDate | date: 'mediumDate' }}</td>
+            <td>{{ daysRemaining(contract) }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Voir contrat"><app-icon name="eye" /></a>
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Renouveler"><app-icon name="refresh" /></a>
+              <a class="icon-link" routerLink="/admin/employee-exits/create" [queryParams]="exitQueryParams(contract)" title="Préparer"><app-icon name="ban" /></a>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="8" class="empty">Aucun contrat proche de l’échéance.</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="monitoring-section">
+  <div class="section-title">
+    <h2>Contrats expirés</h2>
+    <p>Ces contrats nécessitent une décision RH.</p>
+  </div>
+  <div class="table-panel contract-monitoring-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Employé</th>
+          <th>Type</th>
+          <th>Date fin</th>
+          <th>Statut</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (contract of expired(); track contract.id) {
+          <tr>
+            <td><strong>{{ contract.contractReference || '-' }}</strong></td>
+            <td>{{ contract.employeeFullName }}</td>
+            <td>{{ typeLabel(contract.type) }}</td>
+            <td>{{ contract.endDate | date: 'mediumDate' }}</td>
+            <td><span class="badge" [class]="contract.status.toLowerCase()">{{ statusLabel(contract.status) }}</span></td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Voir contrat"><app-icon name="eye" /></a>
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Renouveler"><app-icon name="refresh" /></a>
+              <a class="icon-link" routerLink="/admin/employee-exits/create" [queryParams]="exitQueryParams(contract)" title="Préparer"><app-icon name="ban" /></a>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="6" class="empty">Aucun contrat expiré.</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="monitoring-section">
+  <div class="section-title">
+    <h2>Documents manquants</h2>
+    <p>Contrats sans document signé attaché.</p>
+  </div>
+  <div class="table-panel contract-monitoring-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Employé</th>
+          <th>Type</th>
+          <th>Date début</th>
+          <th>Date fin</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (contract of missingDocuments(); track contract.id) {
+          <tr>
+            <td><strong>{{ contract.contractReference || '-' }}</strong></td>
+            <td>{{ contract.employeeFullName }}</td>
+            <td>{{ typeLabel(contract.type) }}</td>
+            <td>{{ contract.startDate | date: 'mediumDate' }}</td>
+            <td>{{ contract.endDate ? (contract.endDate | date: 'mediumDate') : '-' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Ajouter"><app-icon name="upload" /></a>
+              <a class="icon-link" [routerLink]="['/admin/contracts', contract.id]" title="Voir contrat"><app-icon name="eye" /></a>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="6" class="empty">Tous les contrats ont un document signé.</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

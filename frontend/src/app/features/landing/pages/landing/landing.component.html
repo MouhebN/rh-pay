@@ -1,0 +1,170 @@
+<main class="landing-page">
+  <header class="landing-nav">
+    <a routerLink="/" class="brand">
+      <span>RP</span>
+      <strong>RH PaiePro</strong>
+    </a>
+
+    <nav>
+      <a href="#features">Fonctionnalités</a>
+      <a href="#workflow">Workflow</a>
+      <a routerLink="/login" class="nav-cta">Connexion</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Plateforme RH et paie</span>
+      <h1>RH PaiePro</h1>
+      <p>
+        Une plateforme professionnelle pour piloter les employés, absences, pointages,
+        calculs de paie, bulletins PDF et exports depuis un espace unifié.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/login" class="primary-button">Accéder au tableau de bord</a>
+        <a href="#features" class="secondary-button">Voir les modules</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Aperçu du tableau de bord RH">
+      <img src="/images%20(2).jpeg" alt="Equipe RH en réunion" />
+      <div class="metric-card main-card">
+        <span>Paie finalisée</span>
+        <strong>98%</strong>
+        <small>Cycle mensuel</small>
+      </div>
+      <div class="metric-card side-card">
+        <span>Demandes traitées</span>
+        <strong>42</strong>
+        <small>Absences et congés</small>
+      </div>
+      <div class="preview-table">
+        <div>
+          <span>Département</span>
+          <strong>Finance</strong>
+        </div>
+        <div>
+          <span>Poste</span>
+          <strong>Comptable</strong>
+        </div>
+        <div>
+          <span>Statut</span>
+          <strong>Paie prête</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="feature-section">
+    <div class="section-heading">
+      <span class="eyebrow">Modules disponibles</span>
+      <h2>Un parcours RH complet, prêt pour la paie</h2>
+    </div>
+
+    <div class="feature-grid">
+      @for (feature of features; track feature.title) {
+        <article class="feature-card">
+          <img [src]="feature.icon" [alt]="feature.title" />
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="workflow" class="workflow-section">
+    <div>
+      <span class="eyebrow">Ordre recommandé</span>
+      <h2>Du dossier employé jusqu’aux exports de paie</h2>
+      <p>
+        RH PaiePro structure les données dans un ordre logique pour garder les absences,
+        pointages, variables, bulletins et exports cohérents.
+      </p>
+    </div>
+
+    <ol>
+      @for (item of workflow; track item; let index = $index) {
+        <li>
+          <span>{{ index + 1 }}</span>
+          <strong>{{ item }}</strong>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="partners-section" aria-label="Modules RH PaiePro">
+    <span>Organisation · Temps & absences · Pointage · Paie · Bulletins · Exports</span>
+  </section>
+
+  <section id="roadmap" class="roadmap-section">
+    <div class="section-heading">
+      <span class="eyebrow">Modules métier</span>
+      <h2>Une interface pensée pour les équipes RH</h2>
+    </div>
+
+    <div class="roadmap-grid">
+      <article>
+        <strong>Paie</strong>
+        <p>Variables, calculs mensuels, bulletins PDF et exports comptables.</p>
+      </article>
+      <article>
+        <strong>Présence</strong>
+        <p>Pointage web, retards, heures travaillées et ajustements RH.</p>
+      </article>
+      <article>
+        <strong>Bulletins</strong>
+        <p>Documents PDF professionnels générés depuis les paies finalisées.</p>
+      </article>
+      <article>
+        <strong>IA et reconnaissance</strong>
+        <p>Fondation prête pour l’assistance intelligente et le pointage avancé.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <span class="eyebrow">Espace sécurisé</span>
+    <h2>Accédez à RH PaiePro</h2>
+    <p>Connectez-vous pour gérer les dossiers, absences, pointages, paies et bulletins.</p>
+    <a routerLink="/login" class="primary-button">Se connecter</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a routerLink="/" class="brand">
+          <span>RP</span>
+          <strong>RH PaiePro</strong>
+        </a>
+        <p>
+          Plateforme de gestion RH et paie pour centraliser l’administration du personnel,
+          les absences, le pointage et les cycles de paie.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        @for (group of footerGroups; track group.title) {
+          <section>
+            <h3>{{ group.title }}</h3>
+            @for (link of group.links; track link.label) {
+              @if (link.href.startsWith('/')) {
+                <a [routerLink]="link.href">{{ link.label }}</a>
+              } @else {
+                <a [href]="link.href">{{ link.label }}</a>
+              }
+            }
+          </section>
+        }
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 RH PaiePro. Plateforme RH et paie.</p>
+      <div class="social-links" aria-label="Liens sociaux">
+        <a href="#!" aria-label="LinkedIn">in</a>
+        <a href="#!" aria-label="GitHub">gh</a>
+        <a href="#!" aria-label="Contact">mail</a>
+      </div>
+    </div>
+  </footer>
+</main>

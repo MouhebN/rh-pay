@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div>
+    <h2>RH PaiePro</h2>
+    <p>Gestion du personnel et des accès</p>
+  </div>
+
+  <div class="user-box">
+    <app-chat-widget />
+    <app-notification-menu />
+    <img src="/admin-assets/images/avatar/avatar-1.jpg" alt="" />
+    <span>{{ tokenService.currentUser()?.username }}</span>
+    <button type="button" (click)="logout()">Déconnexion</button>
+  </div>
+</header>

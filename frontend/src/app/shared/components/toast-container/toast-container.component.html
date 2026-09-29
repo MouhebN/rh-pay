@@ -1,0 +1,42 @@
+<section class="toast-stack" aria-live="polite" aria-label="Notifications">
+  @for (notification of notificationService.notifications(); track notification.id) {
+    <article
+      class="toast"
+      [class]="notification.type"
+      [style.--toast-duration]="notification.durationMs + 'ms'"
+      [attr.role]="notification.type === 'error' || notification.type === 'warning' ? 'alert' : 'status'"
+    >
+      <div class="toast-icon" aria-hidden="true">
+        @if (notification.type === 'success') {
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M5 10.5 8.2 13.7 15 6.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+        @if (notification.type === 'error') {
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M10 6.2v4.4M10 13.8h.01M4.4 15.7h11.2A1.8 1.8 0 0 0 17.2 13L11.6 3.7a1.8 1.8 0 0 0-3.2 0L2.8 13a1.8 1.8 0 0 0 1.6 2.7Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+        @if (notification.type === 'warning') {
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M10 6.2v4.4M10 13.8h.01M4.4 15.7h11.2A1.8 1.8 0 0 0 17.2 13L11.6 3.7a1.8 1.8 0 0 0-3.2 0L2.8 13a1.8 1.8 0 0 0 1.6 2.7Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        }
+        @if (notification.type === 'info') {
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="7.2" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M10 9v4.2M10 6.6h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        }
+      </div>
+      <div class="toast-content">
+        <strong>{{ notification.title }}</strong>
+        <p>{{ notification.message }}</p>
+      </div>
+      <button type="button" (click)="notificationService.dismiss(notification.id)" aria-label="Fermer">
+        ×
+      </button>
+      <span class="toast-progress"></span>
+    </article>
+  }
+</section>

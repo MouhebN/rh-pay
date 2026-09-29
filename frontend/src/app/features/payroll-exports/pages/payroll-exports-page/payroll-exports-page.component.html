@@ -1,0 +1,74 @@
+<section class="page-header">
+  <div>
+    <h1>Exports de paie</h1>
+    <p>Prévisualisez et exportez les paies finalisées pour la comptabilité et les virements.</p>
+  </div>
+</section>
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadPreview()">
+  <label>
+    <span>Mois</span>
+    <input type="number" min="1" max="12" formControlName="month" />
+  </label>
+  <label>
+    <span>Année</span>
+    <input type="number" min="2020" max="2100" formControlName="year" />
+  </label>
+  <button type="submit"><app-icon name="eye" /> Aperçu</button>
+</form>
+
+@if (summary(); as data) {
+  <section class="summary-grid payroll-summary">
+    <article><span>Employés</span><strong>{{ data.totalEmployees }}</strong></article>
+    <article><span>Masse brute</span><strong>{{ data.totalGrossSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Masse nette</span><strong>{{ data.totalNetSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Total retenues</span><strong>{{ data.totalDeductions | number: '1.2-2' }}</strong></article>
+    <article><span>Total primes</span><strong>{{ data.totalBonuses | number: '1.2-2' }}</strong></article>
+    <article><span>Total avances</span><strong>{{ data.totalAdvances | number: '1.2-2' }}</strong></article>
+  </section>
+
+  <section class="export-actions">
+    <button type="button" (click)="downloadJournal()"><app-icon name="download" /> Exporter Excel</button>
+    <button type="button" (click)="downloadBankTransfer()"><app-icon name="download" /> Virements Excel</button>
+    <button type="button" class="secondary" (click)="downloadBankTransferCsv()"><app-icon name="download" /> Virements CSV</button>
+  </section>
+}
+
+<section class="table-panel payroll-exports-table">
+  <div class="table-title">
+    <h2>Aperçu des paies finalisées</h2>
+    <span>{{ rows().length }} ligne(s)</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Département</th>
+        <th>Poste</th>
+        <th>Salaire de base</th>
+        <th>Salaire brut</th>
+        <th>Total retenues</th>
+        <th>Salaire net</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="7" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (row of rows(); track row.employeeFullName) {
+          <tr>
+            <td><strong>{{ row.employeeFullName }}</strong></td>
+            <td>{{ row.departmentName || '-' }}</td>
+            <td>{{ row.jobPositionName || '-' }}</td>
+            <td>{{ row.baseSalary | number: '1.2-2' }}</td>
+            <td>{{ row.grossSalary | number: '1.2-2' }}</td>
+            <td>{{ row.totalDeductions | number: '1.2-2' }}</td>
+            <td><strong>{{ row.netSalary | number: '1.2-2' }}</strong></td>
+          </tr>
+        } @empty {
+          <tr><td colspan="7" class="empty">Aucune paie finalisée à exporter pour cette période.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>

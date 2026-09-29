@@ -1,0 +1,98 @@
+<section class="page-header">
+  <div>
+    <h1>Guide assistant RH</h1>
+    <p>Ajoutez des procédures (md, txt, pdf). L’assistant les utilise pour les questions « comment faire ».</p>
+  </div>
+</section>
+
+<section class="upload-card">
+  <div class="section-title">
+    <span class="section-icon"><app-icon name="file" /></span>
+    <div>
+      <h2>Importer un document</h2>
+      <p>Les 3 guides intégrés (congés, paie, pointage) restent toujours disponibles.</p>
+    </div>
+  </div>
+
+  <div class="upload-grid">
+    <label>
+      <span>Titre</span>
+      <input type="text" [(ngModel)]="title" placeholder="Ex. Télétravail" maxlength="160" />
+    </label>
+    <label>
+      <span>Catégorie</span>
+      <select [(ngModel)]="category">
+        <option value="GENERAL">Général</option>
+        <option value="LEAVE">Congés</option>
+        <option value="PAYROLL">Paie</option>
+        <option value="ATTENDANCE">Pointage</option>
+      </select>
+    </label>
+    <label>
+      <span>Fichier</span>
+      <input
+        #fileInput
+        type="file"
+        accept=".md,.txt,.pdf,text/markdown,text/plain,application/pdf"
+        (change)="onFile($event)"
+      />
+    </label>
+    <button type="button" class="primary-action" (click)="upload()" [disabled]="uploading()">
+      {{ uploading() ? 'Import…' : 'Ajouter au guide' }}
+    </button>
+  </div>
+  @if (selectedFile) {
+    <p class="file-name">{{ selectedFile.name }}</p>
+  }
+</section>
+
+<section class="table-panel">
+  @if (loading()) {
+    <app-loading-spinner label="Chargement des documents..." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Catégorie</th>
+          <th>Fichier</th>
+          <th>Par</th>
+          <th>Ajouté le</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (document of documents(); track document.id) {
+          <tr>
+            <td><strong>{{ document.title }}</strong></td>
+            <td>{{ categoryLabel(document.category) }}</td>
+            <td>{{ document.fileName }}</td>
+            <td>{{ document.uploadedByUsername || '-' }}</td>
+            <td>{{ document.createdAt | date: 'short' }}</td>
+            <td class="actions">
+              <app-icon-action-button
+                icon="trash"
+                tooltip="Supprimer"
+                variant="danger"
+                (action)="confirmDelete(document)"
+              />
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" class="empty">Aucun document importé. Les guides intégrés restent actifs.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+@if (documentToDelete(); as document) {
+  <app-confirm-dialog
+    title="Retirer du guide"
+    [message]="'Supprimer ' + document.title + ' du guide de l’assistant ?'"
+    (confirmed)="deleteDocument()"
+    (cancelled)="documentToDelete.set(null)"
+  />
+}

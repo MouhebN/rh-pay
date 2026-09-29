@@ -1,0 +1,70 @@
+<section class="page-header">
+  <div>
+    <h1>Mes salaires</h1>
+    <p>Consultez les salaires mensuels finalisés par le service RH.</p>
+  </div>
+</section>
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadSalaries()">
+  <input type="number" min="2020" max="2100" formControlName="year" aria-label="Année" />
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+</form>
+
+<section class="table-panel payroll-calculations-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Année</th>
+        <th>Salaire brut</th>
+        <th>Total retenues</th>
+        <th>Salaire net</th>
+        <th>Statut</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="7" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (salary of salaries(); track salary.id) {
+          <tr>
+            <td>{{ salary.month }}</td>
+            <td>{{ salary.year }}</td>
+            <td>{{ salary.grossSalary | number: '1.2-2' }}</td>
+            <td>{{ salary.totalDeductions | number: '1.2-2' }}</td>
+            <td><strong>{{ salary.netSalary | number: '1.2-2' }}</strong></td>
+            <td><span class="badge finalized">Finalisée</span></td>
+            <td class="actions">
+              <app-icon-action-button icon="eye" tooltip="Voir" variant="info" (action)="openDetails(salary)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="7" class="empty">Aucun salaire finalisé trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedDetails(); as item) {
+  <section class="modal-backdrop">
+    <article class="payroll-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Détail du salaire</h2>
+          <p>{{ item.month }}/{{ item.year }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="closeDetails()"><app-icon name="x" /> Fermer</button>
+      </div>
+      <div class="details-grid">
+        <span>Salaire de base <strong>{{ item.baseSalary | number: '1.2-2' }}</strong></span>
+        <span>Heures supplémentaires <strong>{{ item.overtimeAmount | number: '1.2-2' }}</strong></span>
+        <span>Prime <strong>{{ item.bonusAmount | number: '1.2-2' }}</strong></span>
+        <span>Avance <strong>{{ item.advanceAmount | number: '1.2-2' }}</strong></span>
+        <span>Retenues <strong>{{ item.totalDeductions | number: '1.2-2' }}</strong></span>
+        <span class="net">Salaire net <strong>{{ item.netSalary | number: '1.2-2' }}</strong></span>
+      </div>
+    </article>
+  </section>
+}

@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div>
+    <h2>Espace employé</h2>
+    <p>Demandes et suivi personnel</p>
+  </div>
+
+  <div class="user-box">
+    <app-chat-widget />
+    <app-notification-menu />
+    <img src="/admin-assets/images/avatar/avatar-2.jpg" alt="" />
+    <span>{{ tokenService.currentUser()?.username }}</span>
+    <button type="button" (click)="logout()">Déconnexion</button>
+  </div>
+</header>

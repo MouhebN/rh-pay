@@ -1,0 +1,81 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Préparer une sortie</h1>
+      <p>Programmez un départ employé sans supprimer son historique RH.</p>
+    </div>
+    <a routerLink="/admin/employee-exits"><app-icon name="x" /> Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <section class="account-section">
+      <div class="section-title">
+        <h2>Sortie employé</h2>
+        <p>La finalisation désactivera le compte et clôturera le contrat actif si disponible.</p>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Employé</span>
+          <select formControlName="employeeId">
+            <option [ngValue]="null">Sélectionner un employé</option>
+            @for (employee of employees(); track employee.id) {
+              <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }} · {{ employee.matricule }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>Type de départ</span>
+          <select formControlName="type">
+            @for (type of types; track type) {
+              <option [value]="type">{{ typeLabel(type) }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>Statut</span>
+          <select formControlName="status">
+            @for (status of statuses; track status) {
+              <option [value]="status">{{ statusLabel(status) }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>Date de sortie</span>
+          <input type="date" formControlName="exitDate" />
+        </label>
+
+        <label class="full-field">
+          <span>Motif</span>
+          <textarea rows="3" formControlName="reason" placeholder="Motif du départ"></textarea>
+        </label>
+
+        <label class="full-field">
+          <span>Notes</span>
+          <textarea rows="3" formControlName="notes" placeholder="Solde de tout compte, matériel, passation..."></textarea>
+        </label>
+      </div>
+    </section>
+
+    @if (createdExitId(); as exitId) {
+      <section class="success-panel">
+        <div>
+          <h2>Sortie préparée</h2>
+          <p>Vous pouvez ajouter les documents RH liés au départ.</p>
+        </div>
+        <div class="success-actions">
+          <a [routerLink]="['/admin/employee-exits', exitId]">Documents</a>
+          <a routerLink="/admin/employee-exits">Sorties</a>
+        </div>
+      </section>
+    }
+
+    <button type="submit" [disabled]="saving()">
+      <app-icon name="check" />
+      {{ saving() ? 'Enregistrement...' : 'Préparer' }}
+    </button>
+  </form>
+</section>

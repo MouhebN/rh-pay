@@ -1,0 +1,63 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+  <div class="form-header">
+    <span>Connexion</span>
+    <h2>Bienvenue sur RH PaiePro</h2>
+    <p>Utilisez votre compte RH ou employé pour continuer.</p>
+  </div>
+
+  @if (error()) {
+    <div class="alert" role="alert">
+      <strong>Connexion refusée</strong>
+      <span>{{ error() }}</span>
+    </div>
+  }
+
+  <label>
+    <span>Nom d'utilisateur ou email</span>
+    <input
+      type="text"
+      formControlName="username"
+      autocomplete="username"
+      placeholder="admin ou admin@paiepro.com"
+      [class.invalid]="form.controls.username.invalid && form.controls.username.touched"
+    />
+    @if (form.controls.username.invalid && form.controls.username.touched) {
+      <small>Ce champ est obligatoire.</small>
+    }
+  </label>
+
+  <label>
+    <span>Mot de passe</span>
+    <div class="password-field">
+      <input
+        [type]="showPassword() ? 'text' : 'password'"
+        formControlName="password"
+        autocomplete="current-password"
+        placeholder="Votre mot de passe"
+        [class.invalid]="form.controls.password.invalid && form.controls.password.touched"
+      />
+      <button type="button" class="ghost-button" (click)="togglePasswordVisibility()">
+        {{ showPassword() ? 'Masquer' : 'Afficher' }}
+      </button>
+    </div>
+    @if (form.controls.password.invalid && form.controls.password.touched) {
+      <small>Le mot de passe est obligatoire.</small>
+    }
+  </label>
+
+  <div class="form-row">
+    <label class="remember-row">
+      <input type="checkbox" />
+      <span>Garder la session locale</span>
+    </label>
+    <span class="support-text">Compte créé par l'admin RH</span>
+  </div>
+
+  <button type="submit" class="submit-button" [disabled]="loading()">
+    <span>{{ loading() ? 'Connexion...' : 'Se connecter' }}</span>
+  </button>
+
+  <p class="form-note">
+    Pas de compte public. Les accès sont créés par l’administrateur RH.
+  </p>
+</form>

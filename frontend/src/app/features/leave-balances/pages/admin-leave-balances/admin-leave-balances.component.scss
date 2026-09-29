@@ -1,0 +1,56 @@
+@use '../../../users/pages/users-list/users-list.component';
+
+.filters-panel {
+  display: grid;
+  grid-template-columns: 180px minmax(240px, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.filters-panel label {
+  display: grid;
+  gap: 6px;
+  color: #262626;
+  font-weight: 700;
+}
+
+.filters-panel input {
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font: inherit;
+}
+
+.balance-badge {
+  display: inline-flex;
+  min-width: 48px;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 5px 9px;
+  font-weight: 800;
+}
+
+.balance-badge.success {
+  background: rgba(0, 201, 81, 0.12);
+  color: #008236;
+}
+
+.balance-badge.warning {
+  background: rgba(240, 177, 0, 0.16);
+  color: #9a6b00;
+}
+
+.balance-badge.danger {
+  background: rgba(251, 44, 54, 0.1);
+  color: #c10007;
+}
+
+@media (max-width: 680px) {
+  .filters-panel {
+    grid-template-columns: 1fr;
+  }
+}

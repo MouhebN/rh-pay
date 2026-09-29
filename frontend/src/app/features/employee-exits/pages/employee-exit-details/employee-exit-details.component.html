@@ -1,0 +1,121 @@
+@if (exit(); as item) {
+  <section class="details-card contract-details">
+    <a routerLink="/admin/employee-exits"><app-icon name="x" /> Retour</a>
+    <div class="details-head">
+      <div>
+        <span class="badge" [class]="item.status.toLowerCase()">{{ statusLabel(item.status) }}</span>
+        <h1>Sortie employé</h1>
+        <p>{{ item.employeeFullName }} · {{ typeLabel(item.type) }}</p>
+      </div>
+    </div>
+
+    <dl>
+      <div><dt>Département</dt><dd>{{ item.departmentName || '-' }}</dd></div>
+      <div><dt>Poste</dt><dd>{{ item.jobPositionName || '-' }}</dd></div>
+      <div><dt>Date de sortie</dt><dd>{{ item.exitDate | date: 'mediumDate' }}</dd></div>
+      <div><dt>Créé par</dt><dd>{{ item.createdByUsername || '-' }}</dd></div>
+      <div><dt>Compte désactivé</dt><dd>{{ item.accountDisabled ? 'Oui' : 'Non' }}</dd></div>
+      <div><dt>Contrat clôturé</dt><dd>{{ item.activeContractTerminated ? 'Oui' : 'Non' }}</dd></div>
+    </dl>
+
+    <section class="notes-box">
+      <h2>Motif</h2>
+      <p>{{ item.reason }}</p>
+    </section>
+
+    <section class="notes-box">
+      <h2>Notes</h2>
+      <p>{{ item.notes || 'Aucune note.' }}</p>
+    </section>
+
+    @if (item.completedAt) {
+      <section class="notes-box">
+        <h2>Finalisation</h2>
+        <p>{{ item.completedAt | date: 'medium' }} · {{ item.completedByUsername || '-' }}</p>
+      </section>
+    }
+
+    @if (item.cancelledAt) {
+      <section class="termination-box">
+        <h2>Annulation</h2>
+        <p>{{ item.cancelledAt | date: 'medium' }} · {{ item.cancelledByUsername || '-' }}</p>
+        <small>{{ item.cancellationReason }}</small>
+      </section>
+    }
+
+    <section class="notes-box exit-documents">
+      <div class="documents-head">
+        <div>
+          <h2>Documents de sortie</h2>
+          <p>Pièces RH associées au départ de l’employé.</p>
+        </div>
+        <button type="button" (click)="showUploadModal.set(true)"><app-icon name="upload" /> Ajouter</button>
+      </div>
+
+      <div class="table-panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Fichier</th>
+              <th>Taille</th>
+              <th>Date ajout</th>
+              <th>Visible employé</th>
+              <th class="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (document of documents(); track document.id) {
+              <tr>
+                <td>{{ documentTypeLabel(document.type) }}</td>
+                <td><strong>{{ document.originalFileName }}</strong></td>
+                <td>{{ document.fileSize ? ((document.fileSize / 1024) | number: '1.0-0') + ' Ko' : '-' }}</td>
+                <td>{{ document.uploadedAt | date: 'medium' }}</td>
+                <td><span class="badge" [class]="document.visibleToEmployee ? 'active' : 'off'">{{ document.visibleToEmployee ? 'Oui' : 'Non' }}</span></td>
+                <td class="actions">
+                  <app-icon-action-button icon="download" tooltip="Télécharger" variant="info" (action)="downloadDocument(document)" />
+                  <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="deleteDocument(document)" />
+                </td>
+              </tr>
+            } @empty {
+              <tr><td colspan="6" class="empty">Aucun document de sortie.</td></tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+}
+
+@if (showUploadModal()) {
+  <section class="modal-backdrop">
+    <article class="employee-exit-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Ajouter</h2>
+          <p>PDF, PNG, JPG/JPEG · 5 Mo maximum</p>
+        </div>
+        <button type="button" class="secondary" (click)="showUploadModal.set(false)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <form [formGroup]="documentForm" class="modal-form" (ngSubmit)="uploadDocument()">
+        <label>
+          <span>Type de document</span>
+          <select formControlName="type">
+            @for (type of documentTypes; track type) {
+              <option [value]="type">{{ documentTypeLabel(type) }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          <span>Fichier</span>
+          <input type="file" accept="application/pdf,image/png,image/jpeg" (change)="onFileSelected($event)" />
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" formControlName="visibleToEmployee" />
+          <span>Visible par l’employé</span>
+        </label>
+        <button type="submit"><app-icon name="upload" /> Ajouter</button>
+      </form>
+    </article>
+  </section>
+}

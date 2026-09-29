@@ -1,0 +1,42 @@
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-mark">RP</span>
+    <strong>RH PaiePro</strong>
+  </div>
+
+  <nav>
+    <small>Tableau de bord</small>
+    <a routerLink="/employee/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="home" /></span>
+      Tableau de bord
+    </a>
+    <a routerLink="/employee/my-leave-requests" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="calendar" /></span>
+      Mes demandes d’absence
+    </a>
+    <a routerLink="/employee/leave-requests/create" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="plus" /></span>
+      Nouvelle
+    </a>
+    <a routerLink="/employee/my-attendance" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="clock" /></span>
+      Mon pointage
+    </a>
+    <a routerLink="/employee/my-contracts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="file" /></span>
+      Mes contrats
+    </a>
+    <a routerLink="/employee/my-salaries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="wallet" /></span>
+      Mes salaires
+    </a>
+    <a routerLink="/employee/my-payslips" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="file" /></span>
+      Mes bulletins
+    </a>
+    <a routerLink="/employee/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="nav-icon"><app-icon name="users" /></span>
+      Mon profil
+    </a>
+  </nav>
+</aside>

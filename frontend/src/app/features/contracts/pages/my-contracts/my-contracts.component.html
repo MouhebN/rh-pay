@@ -1,0 +1,75 @@
+<section class="page-header">
+  <div>
+    <h1>Mes contrats</h1>
+    <p>Consultez vos contrats actifs et historiques.</p>
+  </div>
+</section>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Référence</th>
+        <th>Type</th>
+        <th>Statut</th>
+        <th>Date début</th>
+        <th>Date fin</th>
+        <th>Salaire signature</th>
+        <th>Document</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="8" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (contract of contracts(); track contract.id) {
+          <tr>
+            <td><strong>{{ contract.contractReference || '-' }}</strong></td>
+            <td>{{ typeLabel(contract.type) }}</td>
+            <td><span class="badge" [class]="contract.status.toLowerCase()">{{ statusLabel(contract.status) }}</span></td>
+            <td>{{ contract.startDate | date: 'mediumDate' }}</td>
+            <td>{{ contract.endDate ? (contract.endDate | date: 'mediumDate') : '-' }}</td>
+            <td>{{ contract.salaryAtSignature | number: '1.2-2' }}</td>
+            <td>{{ contract.documentFileName ? 'PDF disponible' : '-' }}</td>
+            <td class="actions">
+              <app-icon-action-button icon="eye" tooltip="Voir contrat" variant="info" (action)="openDetails(contract)" />
+              @if (contract.documentFileName) {
+                <app-icon-action-button icon="download" tooltip="Télécharger" variant="success" (action)="downloadDocument(contract)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="8" class="empty">Aucun contrat disponible.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedContract(); as contract) {
+  <section class="modal-backdrop">
+    <article class="contract-modal">
+      <div class="modal-header">
+        <div>
+          <h2>{{ contract.contractReference || 'Contrat' }}</h2>
+          <p>{{ typeLabel(contract.type) }} · {{ statusLabel(contract.status) }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="selectedContract.set(null)"><app-icon name="x" /> Fermer</button>
+      </div>
+      <div class="details-grid">
+        <span>Date début <strong>{{ contract.startDate | date: 'mediumDate' }}</strong></span>
+        <span>Date fin <strong>{{ contract.endDate ? (contract.endDate | date: 'mediumDate') : '-' }}</strong></span>
+        <span>Période d’essai <strong>{{ contract.trialPeriodEndDate ? (contract.trialPeriodEndDate | date: 'mediumDate') : '-' }}</strong></span>
+        <span>Salaire signature <strong>{{ contract.salaryAtSignature | number: '1.2-2' }}</strong></span>
+      </div>
+      @if (contract.documentFileName) {
+        <button type="button" class="download-contract" (click)="downloadDocument(contract)">
+          <app-icon name="download" />
+          Télécharger
+        </button>
+      }
+      <p class="notes">{{ contract.notes || 'Aucune note.' }}</p>
+    </article>
+  </section>
+}

@@ -1,0 +1,43 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Nouvel utilisateur</h1>
+      <p>Créer un compte d'accès pour RH PaiePro.</p>
+    </div>
+    <a routerLink="/admin/users">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <label>
+      <span>Nom d'utilisateur</span>
+      <input type="text" formControlName="username" />
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" formControlName="email" />
+    </label>
+
+    <label>
+      <span>Mot de passe</span>
+      <input type="password" formControlName="password" />
+    </label>
+
+    <label>
+      <span>Rôle</span>
+      <select formControlName="role">
+        <option value="ADMIN_RH">ADMIN_RH</option>
+        <option value="EMPLOYE">EMPLOYE</option>
+      </select>
+    </label>
+
+    <label class="checkbox">
+      <input type="checkbox" formControlName="enabled" />
+      <span>Compte actif</span>
+    </label>
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Création...' : 'Créer' }}
+    </button>
+  </form>
+</section>

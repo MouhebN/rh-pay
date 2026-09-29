@@ -1,0 +1,76 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Ajouter</h1>
+      <p>Créer un contrat rattaché à un employé.</p>
+    </div>
+    <a routerLink="/admin/contracts">Retour</a>
+  </div>
+
+  <form class="form-card contract-form" [formGroup]="form" (ngSubmit)="submit()">
+    <section class="form-section">
+      <h2><app-icon name="users" /> Employé</h2>
+      <div class="form-grid">
+        <label>
+          <span>Employé</span>
+          <select formControlName="employeeId" (change)="applyEmployeeSalary()">
+            <option [ngValue]="null">Sélectionner un employé</option>
+            @for (employee of employees(); track employee.id) {
+              <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }} · {{ employee.matricule }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          <span>Référence</span>
+          <input type="text" formControlName="contractReference" placeholder="Automatique si vide" />
+        </label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2><app-icon name="file" /> Informations du contrat</h2>
+      <div class="form-grid">
+        <label>
+          <span>Type</span>
+          <select formControlName="type">
+            @for (type of types; track type) {
+              <option [value]="type">{{ typeLabel(type) }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          <span>Statut</span>
+          <select formControlName="status">
+            @for (status of statuses; track status) {
+              <option [value]="status">{{ status === 'DRAFT' ? 'Brouillon' : 'Actif' }}</option>
+            }
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2><app-icon name="calendar" /> Dates</h2>
+      <div class="form-grid">
+        <label><span>Date début</span><input type="date" formControlName="startDate" /></label>
+        <label><span>Date fin</span><input type="date" formControlName="endDate" /></label>
+        <label><span>Fin période d’essai</span><input type="date" formControlName="trialPeriodEndDate" /></label>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2><app-icon name="wallet" /> Salaire</h2>
+      <label>
+        <span>Salaire à la signature</span>
+        <input type="number" min="0.01" step="0.01" formControlName="salaryAtSignature" />
+      </label>
+    </section>
+
+    <section class="form-section">
+      <h2><app-icon name="pencil" /> Notes</h2>
+      <textarea rows="4" formControlName="notes"></textarea>
+    </section>
+
+    <button type="submit" [disabled]="saving()"><app-icon name="check" /> {{ saving() ? 'Création...' : 'Créer' }}</button>
+  </form>
+</section>

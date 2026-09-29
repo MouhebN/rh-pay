@@ -1,0 +1,16 @@
+@use '../../../payroll-calculations/pages/payroll-calculations-list/payroll-calculations-list.component';
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contract-modal {
+  display: grid;
+  gap: 12px;
+  width: min(620px, calc(100vw - 28px));
+  border-radius: 10px;
+  padding: 14px;
+  background: #ffffff;
+}

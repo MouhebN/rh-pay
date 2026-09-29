@@ -1,0 +1,25 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Nouveau département</h1>
+      <p>Créer une unité organisationnelle.</p>
+    </div>
+    <a routerLink="/admin/departments">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <label>
+      <span>Nom</span>
+      <input type="text" formControlName="name" />
+    </label>
+
+    <label>
+      <span>Description</span>
+      <textarea formControlName="description" rows="4"></textarea>
+    </label>
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Création...' : 'Créer' }}
+    </button>
+  </form>
+</section>

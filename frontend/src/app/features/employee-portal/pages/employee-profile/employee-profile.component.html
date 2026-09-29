@@ -1,0 +1,18 @@
+<section class="profile-card">
+  <div>
+    <span>Mon profil</span>
+    <h1>{{ tokenService.currentUser()?.username }}</h1>
+    <p>{{ tokenService.currentUser()?.email }}</p>
+  </div>
+
+  <dl>
+    <div>
+      <dt>Rôle</dt>
+      <dd>{{ tokenService.currentUser()?.role }}</dd>
+    </div>
+    <div>
+      <dt>Accès</dt>
+      <dd>Actif</dd>
+    </div>
+  </dl>
+</section>

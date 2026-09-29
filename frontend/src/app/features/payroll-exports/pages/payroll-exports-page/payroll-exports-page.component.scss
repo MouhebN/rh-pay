@@ -1,0 +1,39 @@
+@use '../../../payroll-calculations/pages/payroll-calculations-list/payroll-calculations-list.component';
+
+.filters-panel label {
+  display: grid;
+  gap: 5px;
+}
+
+.filters-panel span {
+  color: #737373;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.table-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 12px 0;
+}
+
+.table-title h2 {
+  margin: 0;
+  color: #171717;
+  font-size: 16px;
+}
+
+.table-title span {
+  color: #737373;
+  font-size: 12px;
+  font-weight: 700;
+}

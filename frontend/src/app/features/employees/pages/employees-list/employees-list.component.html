@@ -1,0 +1,72 @@
+<section class="page-header">
+  <div>
+    <h1>Employés</h1>
+    <p>Dossiers administratifs des employés.</p>
+  </div>
+  <a routerLink="/admin/employees/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouvel employé
+  </a>
+</section>
+
+<section class="table-panel employees-table">
+  @if (loading()) {
+    <app-loading-spinner label="Chargement des employés..." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Employé</th>
+          <th>Département</th>
+          <th>Poste</th>
+          <th>Salaire</th>
+          <th>Compte</th>
+          <th>Statut</th>
+          <th>Embauche</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (employee of employees(); track employee.id) {
+          <tr>
+            <td>
+              <strong>{{ employee.firstName }} {{ employee.lastName }}</strong>
+              <span>{{ employee.matricule }} · {{ employee.email }}</span>
+            </td>
+            <td>{{ employee.department?.name || '-' }}</td>
+            <td>{{ employee.jobPosition?.title || '-' }}</td>
+            <td>{{ employee.baseSalary !== null ? (employee.baseSalary | currency: 'TND':'symbol':'1.2-2') : '-' }}</td>
+            <td>{{ employee.username || '-' }}</td>
+            <td>
+              <select [value]="employee.status" (change)="updateStatus(employee, $any($event.target).value)">
+                @for (status of statuses; track status) {
+                  <option [value]="status">{{ status }}</option>
+                }
+              </select>
+            </td>
+            <td>{{ employee.hireDate | date: 'mediumDate' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/employees', employee.id, 'edit']" title="Modifier" aria-label="Modifier">
+                <app-icon name="pencil" />
+              </a>
+              <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="confirmDelete(employee)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="8" class="empty">Aucun employé trouvé.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+@if (employeeToDelete(); as employee) {
+  <app-confirm-dialog
+    title="Supprimer l'employé"
+    [message]="'Supprimer le dossier ' + employee.firstName + ' ' + employee.lastName + ' ?'"
+    (confirmed)="deleteEmployee()"
+    (cancelled)="employeeToDelete.set(null)"
+  />
+}

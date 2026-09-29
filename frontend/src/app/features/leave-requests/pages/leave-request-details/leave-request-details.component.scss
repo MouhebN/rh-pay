@@ -1,0 +1,110 @@
+.details-card {
+  max-width: 760px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 14px;
+  background: #ffffff;
+}
+
+a {
+  color: #3150a8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 12px 0;
+  font-size: 22px;
+  font-weight: 720;
+}
+
+dl {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+}
+
+dl > div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+}
+
+dt {
+  color: #737373;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+}
+
+.document-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+  border: 1px solid rgba(49, 80, 168, 0.22);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff7ed;
+}
+
+.document-panel span,
+.document-panel small {
+  display: block;
+  color: #737373;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.document-panel strong {
+  display: block;
+  margin-top: 5px;
+  color: #171717;
+}
+
+.document-panel small {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.document-actions button,
+.document-actions label {
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #3150a8;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.document-actions .danger {
+  background: #dc2626;
+}
+
+.document-actions input {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .document-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .document-actions {
+    justify-content: flex-start;
+  }
+}

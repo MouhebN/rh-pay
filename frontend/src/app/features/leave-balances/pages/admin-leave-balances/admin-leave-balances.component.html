@@ -1,0 +1,61 @@
+<section class="page-header">
+  <div>
+    <h1>Soldes de congé</h1>
+    <p>Suivi annuel des congés acquis, consommés, en attente et restants.</p>
+  </div>
+</section>
+
+<section class="filters-panel">
+  <label>
+    <span>Année</span>
+    <input type="number" [value]="year()" (input)="updateYear($event)" />
+  </label>
+  <label>
+    <span>Rechercher</span>
+    <input type="search" placeholder="Employé, département, poste" [value]="search()" (input)="updateSearch($event)" />
+  </label>
+</section>
+
+<section class="table-panel leave-balances-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Année</th>
+        <th>Congés acquis</th>
+        <th>Congés consommés</th>
+        <th>Congés en attente</th>
+        <th>Congés restants</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="7" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (balance of filteredBalances(); track balance.id) {
+          <tr>
+            <td>
+              <strong>{{ balance.employeeFullName }}</strong>
+              <span>{{ balance.departmentName || '-' }} · {{ balance.jobPositionName || '-' }}</span>
+            </td>
+            <td>{{ balance.year }}</td>
+            <td>{{ balance.acquiredDays }}</td>
+            <td>{{ balance.consumedDays }}</td>
+            <td>{{ balance.pendingDays }}</td>
+            <td>
+              <span class="balance-badge" [class]="remainingTone(balance)">
+                {{ balance.remainingDays }}
+              </span>
+            </td>
+            <td class="actions">
+              <app-icon-action-button icon="pencil" tooltip="Modifier" variant="info" (action)="editAcquiredDays(balance)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="7" class="empty">Aucun solde trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>

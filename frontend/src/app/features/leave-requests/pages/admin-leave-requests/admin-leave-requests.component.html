@@ -1,0 +1,235 @@
+<section class="page-header">
+  <div>
+    <h1>Demandes d'absence</h1>
+    <p>Suivi, validation et historique des demandes du personnel.</p>
+  </div>
+  <a routerLink="/admin/leave-requests/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouvelle
+  </a>
+</section>
+
+@if (summary(); as data) {
+  <section class="leave-summary">
+    <article>
+      <span>En attente</span>
+      <strong>{{ data.pendingCount }}</strong>
+    </article>
+    <article>
+      <span>Approuvées ce mois</span>
+      <strong>{{ data.approvedThisMonth }}</strong>
+    </article>
+    <article>
+      <span>Refusées ce mois</span>
+      <strong>{{ data.rejectedThisMonth }}</strong>
+    </article>
+    <article>
+      <span>Annulées ce mois</span>
+      <strong>{{ data.cancelledThisMonth }}</strong>
+    </article>
+  </section>
+}
+
+@if (statistics(); as stats) {
+  <section class="statistics-panel">
+    <div>
+      <h2>Statistiques des absences</h2>
+      <p>Absences par mois, type et département.</p>
+    </div>
+    <div class="statistics-grid">
+      <article>
+        <h3>Absences par mois</h3>
+        @for (row of stats.monthlyStats; track row.month) {
+          <p><span>Mois {{ row.month }}</span><strong>{{ row.approvedDays }} j</strong></p>
+        } @empty {
+          <p>Aucune donnée.</p>
+        }
+      </article>
+      <article>
+        <h3>Absences par type</h3>
+        @for (row of stats.leaveTypeStats; track row.type) {
+          <p><span>{{ row.type }}</span><strong>{{ row.totalDays }} j</strong></p>
+        } @empty {
+          <p>Aucune donnée.</p>
+        }
+      </article>
+      <article>
+        <h3>Absences par département</h3>
+        @for (row of stats.departmentStats; track row.departmentName) {
+          <p><span>{{ row.departmentName }}</span><strong>{{ row.totalDays }} j</strong></p>
+        } @empty {
+          <p>Aucune donnée.</p>
+        }
+      </article>
+    </div>
+  </section>
+}
+
+<form [formGroup]="filterForm" (ngSubmit)="loadLeaveRequests()" class="filters-panel">
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+
+  <select formControlName="type">
+    <option value="">Tous les types</option>
+    @for (type of types; track type) {
+      <option [value]="type">{{ typeLabel(type) }}</option>
+    }
+  </select>
+
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+
+  <input type="date" formControlName="startDate" />
+  <input type="date" formControlName="endDate" />
+
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Type</th>
+        <th>Période</th>
+        <th>Jours</th>
+        <th>Statut</th>
+        <th>Motif</th>
+        <th>Justificatif</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr>
+          <td colspan="8" class="empty">Chargement...</td>
+        </tr>
+      } @else {
+        @for (request of leaveRequests(); track request.id) {
+          <tr>
+            <td>
+              <strong>{{ request.employeeFullName }}</strong>
+              <span>{{ request.departmentName || '-' }} · {{ request.jobPositionName || '-' }}</span>
+            </td>
+            <td>{{ typeLabel(request.type) }}</td>
+            <td>{{ request.startDate | date: 'mediumDate' }} - {{ request.endDate | date: 'mediumDate' }}</td>
+            <td>{{ request.totalDays }}</td>
+            <td><span class="badge" [class]="request.status.toLowerCase()">{{ statusLabel(request.status) }}</span></td>
+            <td>{{ request.reason || '-' }}</td>
+            <td>
+              @if (request.hasDocument) {
+                <app-icon-action-button icon="download" tooltip="Télécharger" variant="info" (action)="downloadDocument(request)" />
+                <small class="document-name">{{ request.documentFileName }}</small>
+              } @else {
+                <span class="muted">Aucun justificatif</span>
+                @if (request.type === 'SICK_LEAVE') {
+                  <small class="document-hint">Recommandé</small>
+                }
+              }
+            </td>
+            <td class="actions">
+              @if (request.status === 'PENDING') {
+                <app-icon-action-button icon="eye" tooltip="Vérifier" variant="info" (action)="validateOnly(request)" />
+                <app-icon-action-button icon="check" tooltip="Approuver" variant="success" (action)="approve(request)" />
+                <app-icon-action-button icon="x" tooltip="Refuser" variant="danger" (action)="reject(request)" />
+                <app-icon-action-button icon="ban" tooltip="Annuler" variant="warning" (action)="cancel(request)" />
+              } @else {
+                <span>-</span>
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="8" class="empty">Aucune demande trouvée.</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (validation(); as result) {
+  <section class="validation-backdrop">
+    <div class="validation-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Vérification de la demande</h2>
+          @if (requestToValidate(); as request) {
+            <p>{{ request.employeeFullName }} · {{ typeLabel(request.type) }}</p>
+          }
+        </div>
+        <button type="button" class="close-button" title="Fermer" aria-label="Fermer" (click)="closeValidationModal()">
+          <app-icon name="x" />
+        </button>
+      </div>
+
+      <div class="validation-metrics">
+        <article>
+          <span>Jours demandés</span>
+          <strong>{{ result.requestedDays }}</strong>
+        </article>
+        <article>
+          <span>Solde restant</span>
+          <strong>{{ result.remainingLeaveBalance === null ? '-' : result.remainingLeaveBalance }}</strong>
+        </article>
+        <article>
+          <span>Impact sur la paie</span>
+          <strong>{{ result.affectsPayroll ? 'Oui' : 'Non' }}</strong>
+        </article>
+      </div>
+
+      @if (result.blockingErrors.length > 0) {
+        <div class="validation-alert danger">
+          <h3>Erreurs bloquantes</h3>
+          <ul>
+            @for (error of result.blockingErrors; track error) {
+              <li>{{ error }}</li>
+            }
+          </ul>
+        </div>
+      }
+
+      @if (result.warnings.length > 0) {
+        <div class="validation-alert warning">
+          <h3>Avertissements</h3>
+          <ul>
+            @for (warning of result.warnings; track warning) {
+              <li>{{ warning }}</li>
+            }
+          </ul>
+        </div>
+      }
+
+      @if (result.blockingErrors.length === 0 && result.warnings.length === 0) {
+        <div class="validation-alert success">
+          <h3>Demande conforme</h3>
+          <p>Aucune alerte détectée.</p>
+        </div>
+      }
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" (click)="closeValidationModal()"><app-icon name="x" /> Retour</button>
+        <button type="button" [disabled]="result.blockingErrors.length > 0" (click)="approveValidatedRequest()">
+          <app-icon name="check" />
+          {{ result.warnings.length > 0 ? 'Approuver quand même' : 'Approuver' }}
+        </button>
+      </div>
+    </div>
+  </section>
+}

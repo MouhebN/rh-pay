@@ -1,0 +1,66 @@
+<div class="notification-menu">
+  <button
+    type="button"
+    class="notification-trigger"
+    (click)="toggle()"
+    [class.active]="open()"
+    [attr.aria-expanded]="open()"
+    aria-label="Notifications"
+  >
+    <span>🔔</span>
+    @if (!open() && notificationService.unreadCount() > 0) {
+      <strong>{{ notificationService.unreadCount() }}</strong>
+    }
+  </button>
+
+  <section
+    class="notification-panel"
+    [class.visible]="open()"
+    [attr.aria-hidden]="!open()"
+    role="dialog"
+    aria-label="Notifications"
+  >
+    <div class="panel-head">
+      <div>
+        <h3>Notifications</h3>
+        <small>Dernières activités</small>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      @for (notification of notificationService.recentNotifications(); track notification.id) {
+        @if (notification.link) {
+          <a
+            [href]="notification.link"
+            class="notification-item"
+            [class.unread]="!notification.read"
+            [class.info]="notification.type === 'INFO'"
+            [class.success]="notification.type === 'SUCCESS'"
+            [class.warning]="notification.type === 'WARNING'"
+            [class.error]="notification.type === 'ERROR'"
+            (click)="openLink(notification.link, $event)"
+          >
+            <strong>{{ notification.title }}</strong>
+            <span>{{ notification.message }}</span>
+            <small>{{ notification.createdAt | date: 'short' }}</small>
+          </a>
+        } @else {
+          <article
+            class="notification-item"
+            [class.unread]="!notification.read"
+            [class.info]="notification.type === 'INFO'"
+            [class.success]="notification.type === 'SUCCESS'"
+            [class.warning]="notification.type === 'WARNING'"
+            [class.error]="notification.type === 'ERROR'"
+          >
+            <strong>{{ notification.title }}</strong>
+            <span>{{ notification.message }}</span>
+            <small>{{ notification.createdAt | date: 'short' }}</small>
+          </article>
+        }
+      } @empty {
+        <p class="empty">Aucune notification.</p>
+      }
+    </div>
+  </section>
+</div>

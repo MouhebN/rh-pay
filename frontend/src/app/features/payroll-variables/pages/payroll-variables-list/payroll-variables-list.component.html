@@ -1,0 +1,178 @@
+<section class="page-header">
+  <div>
+    <h1>Gestion des variables de paie</h1>
+    <p>Préparation mensuelle des éléments variables avant le calcul salarial.</p>
+  </div>
+  <button type="button" (click)="generate()"><app-icon name="refresh" /> Générer</button>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid payroll-summary">
+    <article><span>Employés</span><strong>{{ data.totalEmployees }}</strong></article>
+    <article><span>Brouillons</span><strong>{{ data.draftCount }}</strong></article>
+    <article><span>Validées</span><strong>{{ data.validatedCount }}</strong></article>
+    <article><span>Verrouillées</span><strong>{{ data.lockedCount }}</strong></article>
+    <article><span>Total primes</span><strong>{{ data.totalBonusAmount | number: '1.2-2' }}</strong></article>
+    <article><span>Total avances</span><strong>{{ data.totalAdvanceAmount | number: '1.2-2' }}</strong></article>
+    <article><span>Total retenues</span><strong>{{ data.totalDeductionAmount | number: '1.2-2' }}</strong></article>
+    <article><span>Retards</span><strong>{{ data.totalLateMinutes }} min</strong></article>
+    <article><span>Heures supplémentaires</span><strong>{{ data.totalOvertimeMinutes }} min</strong></article>
+  </section>
+}
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadVariables()">
+  <input type="number" min="1" max="12" formControlName="month" aria-label="Mois" />
+  <input type="number" min="2020" max="2100" formControlName="year" aria-label="Année" />
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel payroll-variables-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Mois</th>
+        <th>Absences sans solde</th>
+        <th>Congés payés</th>
+        <th>Retards</th>
+        <th>Heures sup.</th>
+        <th>Prime</th>
+        <th>Avance</th>
+        <th>Retenue</th>
+        <th>Statut</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="11" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (variable of variables(); track variable.id) {
+          <tr>
+            <td>
+              <strong>{{ variable.employeeFullName }}</strong>
+              <span>{{ variable.departmentName || '-' }} · {{ variable.jobPositionName || '-' }}</span>
+            </td>
+            <td>{{ variable.month }}/{{ variable.year }}</td>
+            <td>{{ variable.unpaidAbsenceDays | number: '1.2-2' }}</td>
+            <td>{{ variable.paidLeaveDays | number: '1.2-2' }}</td>
+            <td>{{ variable.lateMinutes }} min</td>
+            <td>{{ variable.overtimeMinutes }} min</td>
+            <td>{{ variable.bonusAmount | number: '1.2-2' }}</td>
+            <td>{{ variable.advanceAmount | number: '1.2-2' }}</td>
+            <td>{{ variable.deductionAmount | number: '1.2-2' }}</td>
+            <td>
+              <span
+                class="badge"
+                [class.draft]="variable.status === 'DRAFT'"
+                [class.validated]="variable.status === 'VALIDATED'"
+                [class.locked]="variable.status === 'LOCKED'"
+              >
+                {{ statusLabel(variable.status) }}
+              </span>
+            </td>
+            <td class="actions">
+              <app-icon-action-button icon="eye" tooltip="Voir" variant="info" (action)="openDetails(variable)" />
+              @if (variable.status === 'DRAFT') {
+                <app-icon-action-button icon="pencil" tooltip="Modifier" variant="neutral" (action)="openEdit(variable)" />
+                <app-icon-action-button icon="check" tooltip="Valider" variant="success" (action)="validate(variable)" />
+              }
+              @if (variable.status === 'VALIDATED') {
+                <app-icon-action-button icon="unlock" tooltip="Réouvrir" variant="warning" (action)="reopen(variable)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="11" class="empty">Aucune variable trouvée.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedVariable(); as variable) {
+  <section class="modal-backdrop">
+    <form class="variable-modal" [formGroup]="editForm" (ngSubmit)="submitEdit()">
+      <div class="modal-header">
+        <div>
+          <h2>Variables manuelles</h2>
+          <p>{{ variable.employeeFullName }} · {{ variable.month }}/{{ variable.year }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="closeEdit()"><app-icon name="x" /> Fermer</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Prime</span>
+          <input type="number" min="0" step="0.01" formControlName="bonusAmount" />
+        </label>
+        <label>
+          <span>Avance</span>
+          <input type="number" min="0" step="0.01" formControlName="advanceAmount" />
+        </label>
+        <label>
+          <span>Retenue</span>
+          <input type="number" min="0" step="0.01" formControlName="deductionAmount" />
+        </label>
+      </div>
+
+      <label>
+        <span>Notes RH</span>
+        <textarea rows="4" formControlName="notes"></textarea>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" (click)="closeEdit()"><app-icon name="x" /> Annuler</button>
+        <button type="submit"><app-icon name="check" /> Enregistrer</button>
+      </div>
+    </form>
+  </section>
+}
+
+@if (detailVariable(); as variable) {
+  <section class="modal-backdrop">
+    <article class="variable-modal details-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Détails</h2>
+          <p>{{ variable.employeeFullName }} · {{ variable.month }}/{{ variable.year }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="closeDetails()"><app-icon name="x" /> Fermer</button>
+      </div>
+      <div class="details-grid">
+        <span>Jours travaillés <strong>{{ variable.workedDays | number: '1.2-2' }}</strong></span>
+        <span>Jours absents <strong>{{ variable.absentDays | number: '1.2-2' }}</strong></span>
+        <span>Absences sans solde <strong>{{ variable.unpaidAbsenceDays | number: '1.2-2' }}</strong></span>
+        <span>Congés maladie <strong>{{ variable.sickLeaveDays | number: '1.2-2' }}</strong></span>
+        <span>Retards <strong>{{ variable.lateMinutes }} min</strong></span>
+        <span>Heures supplémentaires <strong>{{ variable.overtimeMinutes }} min</strong></span>
+      </div>
+      <p class="notes">{{ variable.notes || 'Aucune note RH.' }}</p>
+    </article>
+  </section>
+}

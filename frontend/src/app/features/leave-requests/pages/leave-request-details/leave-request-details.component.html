@@ -1,0 +1,49 @@
+@if (leaveRequest(); as request) {
+  <section class="details-card">
+    <a routerLink="../">Retour</a>
+    <h1>Demande d'absence</h1>
+    <dl>
+      <div><dt>Employé</dt><dd>{{ request.employeeFullName }}</dd></div>
+      <div><dt>Période</dt><dd>{{ request.startDate | date: 'mediumDate' }} - {{ request.endDate | date: 'mediumDate' }}</dd></div>
+      <div><dt>Durée</dt><dd>{{ request.totalDays }} jour(s)</dd></div>
+      <div><dt>Statut</dt><dd>{{ request.status }}</dd></div>
+      <div><dt>Type</dt><dd>{{ typeLabel(request.type) }}</dd></div>
+      <div><dt>Motif</dt><dd>{{ request.reason || '-' }}</dd></div>
+    </dl>
+
+    <section class="document-panel">
+      <div>
+        <span>Justificatif</span>
+        @if (request.hasDocument) {
+          <strong>{{ request.documentFileName }}</strong>
+          <small>{{ request.documentSize }} octets · {{ request.documentUploadedAt | date: 'medium' }}</small>
+        } @else {
+          <strong>Aucun justificatif</strong>
+          @if (request.type === 'SICK_LEAVE') {
+            <small>Justificatif recommandé pour congé maladie.</small>
+          }
+        }
+      </div>
+
+      <div class="document-actions">
+        @if (request.hasDocument) {
+          <button type="button" (click)="downloadDocument(request)"><app-icon name="download" /> Télécharger</button>
+        }
+        @if (request.status === 'PENDING') {
+          <label>
+            <app-icon name="upload" />
+            Justificatif
+            <input
+              type="file"
+              accept="application/pdf,image/png,image/jpeg"
+              (change)="uploadDocument($event)"
+            />
+          </label>
+          @if (request.hasDocument) {
+            <button type="button" class="danger" (click)="deleteDocument(request)"><app-icon name="trash" /> Supprimer</button>
+          }
+        }
+      </div>
+    </section>
+  </section>
+}

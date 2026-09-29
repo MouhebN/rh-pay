@@ -1,0 +1,149 @@
+<section class="page-header">
+  <div>
+    <h1>Pointage</h1>
+    <p>Suivi des présences, retards, absences et ajustements manuels.</p>
+  </div>
+  <div class="generation-box">
+    <input type="date" [value]="generationDate()" (change)="setGenerationDate($event)" />
+    <button type="button" (click)="generateDailyAbsences()"><app-icon name="refresh" /> Générer</button>
+  </div>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid">
+    <article><span>Présents aujourd’hui</span><strong>{{ data.presentTodayCount }}</strong></article>
+    <article><span>En retard aujourd’hui</span><strong>{{ data.lateTodayCount }}</strong></article>
+    <article><span>Absents aujourd’hui</span><strong>{{ data.absentTodayCount }}</strong></article>
+    <article><span>En congé aujourd’hui</span><strong>{{ data.onLeaveTodayCount }}</strong></article>
+    <article><span>Pointages incomplets</span><strong>{{ data.incompleteTodayCount }}</strong></article>
+    <article><span>Heures supplémentaires ce mois</span><strong>{{ data.totalOvertimeMinutesThisMonth }} min</strong></article>
+  </section>
+}
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadRecords()">
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <input type="date" formControlName="startDate" />
+  <input type="date" formControlName="endDate" />
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <select formControlName="source">
+    <option value="">Toutes les sources</option>
+    @for (source of sources; track source) {
+      <option [value]="source">{{ sourceLabel(source) }}</option>
+    }
+  </select>
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel attendance-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Date</th>
+        <th>Arrivée</th>
+        <th>Sortie</th>
+        <th>Heures</th>
+        <th>Retard</th>
+        <th>Supplémentaires</th>
+        <th>Statut</th>
+        <th>Source</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="10" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (record of records(); track record.id) {
+          <tr>
+            <td>
+              <strong>{{ record.employeeFullName }}</strong>
+              <span>{{ record.departmentName || '-' }} · {{ record.jobPositionName || '-' }}</span>
+            </td>
+            <td>{{ record.workDate | date: 'mediumDate' }}</td>
+            <td>{{ record.checkInTime || '-' }}</td>
+            <td>{{ record.checkOutTime || '-' }}</td>
+            <td>{{ record.workedHours ?? '-' }}</td>
+            <td>{{ record.lateMinutes ?? 0 }} min</td>
+            <td>{{ record.overtimeMinutes ?? 0 }} min</td>
+            <td><span class="badge" [class]="record.status.toLowerCase()">{{ statusLabel(record.status) }}</span></td>
+            <td>{{ sourceLabel(record.source) }}</td>
+            <td class="actions">
+              <app-icon-action-button icon="pencil" tooltip="Ajuster le pointage" variant="info" (action)="openAdjust(record)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="10" class="empty">Aucun pointage trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedRecord(); as record) {
+  <section class="modal-backdrop">
+    <form class="adjust-modal" [formGroup]="adjustForm" (ngSubmit)="submitAdjust()">
+      <div class="modal-header">
+        <div>
+          <h2>Ajuster le pointage</h2>
+          <p>{{ record.employeeFullName }}</p>
+        </div>
+        <button type="button" class="secondary" (click)="closeAdjust()"><app-icon name="x" /> Fermer</button>
+      </div>
+
+      <label>
+        <span>Date</span>
+        <input type="date" formControlName="workDate" />
+      </label>
+      <div class="form-grid">
+        <label>
+          <span>Heure d’arrivée</span>
+          <input type="time" formControlName="checkInTime" />
+        </label>
+        <label>
+          <span>Heure de sortie</span>
+          <input type="time" formControlName="checkOutTime" />
+        </label>
+      </div>
+      <label>
+        <span>Statut</span>
+        <select formControlName="status">
+          @for (status of statuses; track status) {
+            <option [value]="status">{{ statusLabel(status) }}</option>
+          }
+        </select>
+      </label>
+      <label>
+        <span>Note RH</span>
+        <textarea formControlName="adminNote" rows="3"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="secondary" (click)="closeAdjust()"><app-icon name="x" /> Annuler</button>
+        <button type="submit"><app-icon name="check" /> Enregistrer</button>
+      </div>
+    </form>
+  </section>
+}

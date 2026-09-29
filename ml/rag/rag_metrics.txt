@@ -1,0 +1,116 @@
+FAQ retrieval evaluation
+Encoder: pretrained Lajavaness/sentence-camembert-base (not trained here)
+Index: in-memory chunks, cosine similarity, no vector database
+Rank: cosine + 0.06 when the chunk intent matches
+Cutoff: raw cosine > 0.32 (the intent boost does not keep a weak chunk)
+Questions: 34  positives: 26  negatives: 8
+
+DEV margin candidates (not applied). Accept if raw > 0.32, and if the strongest kept raw is <= ceiling then top1-top2 raw margin must be >= min.
+  current  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 2/5
+  ceiling 0.34 margin 0.02  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 1/5
+  ceiling 0.34 margin 0.04  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 1/5
+  ceiling 0.34 margin 0.05  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 1/5
+  ceiling 0.34 margin 0.08  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 0/5
+  ceiling 0.36 margin 0.02  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 1/5
+  ceiling 0.36 margin 0.04  Recall@1 0.4444 (8/18)  Recall@3 0.7222 (13/18)  false answers 1/5
+  ceiling 0.36 margin 0.05  Recall@1 0.4444 (8/18)  Recall@3 0.7222 (13/18)  false answers 1/5
+  ceiling 0.36 margin 0.08  Recall@1 0.3889 (7/18)  Recall@3 0.6667 (12/18)  false answers 0/5
+  ceiling 0.40 margin 0.02  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 1/5
+  ceiling 0.40 margin 0.04  Recall@1 0.4444 (8/18)  Recall@3 0.7222 (13/18)  false answers 1/5
+  ceiling 0.40 margin 0.05  Recall@1 0.4444 (8/18)  Recall@3 0.7222 (13/18)  false answers 1/5
+  ceiling 0.40 margin 0.08  Recall@1 0.3889 (7/18)  Recall@3 0.6667 (12/18)  false answers 0/5
+
+Frozen rule from DEV only: strongest kept raw > 0.34 or (top1 raw > 0.32 and top1-top2 margin >= 0.08). Not retuned on final.
+== dev ==
+before  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 2/5
+frozen  Recall@1 0.5000 (9/18)  Recall@3 0.7778 (14/18)  false answers 0/5
+misses (expected section absent from the returned top 3):
+  [Calendrier et pièces jointes | got ['Comment demander un congé (employé)', 'Comment valider une demande (admin RH)', 'Solde de congé']] Qui peut ouvrir le justificatif d'une demande ?  raw1=0.556 score1=0.616 (Comment demander un congé (employé))
+  [Calendrier et pièces jointes | got ABSTAIN] Y a-t-il un calendrier pour l'équipe ?  raw1=0.307 score1=0.367 (Calendrier et pièces jointes)
+  [Ce que l'assistant ne fait pas | got ['Solde de congé', 'Comment demander un congé (employé)']] L'assistant peut-il valider mon congé tout seul ?  raw1=0.363 score1=0.423 (Solde de congé)
+  [Ce que l'assistant ne fait pas | got ABSTAIN] Le chat peut-il pointer à ma place ?  raw1=0.267 score1=0.327 (Consulter mon pointage du jour)
+top scores:
+  OK Où est-ce que je dépose une demande d'absence ? :: Comment demander un congé (e raw=0.466 score=0.526 | Comment valider une demande  raw=0.459 score=0.519 | Solde de congé raw=0.421 score=0.481  margin=0.007 current=yes
+  OK Une demande pas encore acceptée bloque-t-elle des jours ? :: Solde de congé raw=0.352 score=0.412 | Comment valider une demande  raw=0.299 score=0.359 | Ce que l'assistant ne fait p raw=0.287 score=0.347  margin=0.053 current=yes
+  OK Où voir les jours acquis et ceux qui restent ? :: Solde de congé raw=0.355 score=0.415 | Suivi admin raw=0.317 score=0.317 | Consulter mon pointage du jo raw=0.292 score=0.292  margin=0.038 current=yes
+  MISS Comment le RH refuse une absence en attente ? :: Solde de congé raw=0.571 score=0.631 | Comment valider une demande  raw=0.571 score=0.631 | Comment demander un congé (e raw=0.506 score=0.566  margin=0.000 current=yes
+  MISS Qui peut ouvrir le justificatif d'une demande ? :: Comment demander un congé (e raw=0.556 score=0.616 | Comment valider une demande  raw=0.486 score=0.546 | Solde de congé raw=0.355 score=0.415  margin=0.070 current=yes
+  MISS Y a-t-il un calendrier pour l'équipe ? :: Calendrier et pièces jointes raw=0.307 score=0.367 | Consulter mon pointage du jo raw=0.257 score=0.257 | Cycle de paie (admin RH) raw=0.255 score=0.255  margin=0.050 current=no
+  MISS L'assistant peut-il valider mon congé tout seul ? :: Solde de congé raw=0.363 score=0.423 | Comment demander un congé (e raw=0.345 score=0.405 | Comment valider une demande  raw=0.314 score=0.374  margin=0.019 current=yes
+  OK Où télécharger le PDF de mon bulletin ? :: Où trouver mon bulletin (emp raw=0.462 score=0.522 | Cycle de paie (admin RH) raw=0.327 score=0.387 | Comment suivre la paie du mo raw=0.280 score=0.340  margin=0.135 current=yes
+  MISS Dans quel ordre le RH prépare le mois de paie ? :: Comment suivre la paie du mo raw=0.616 score=0.676 | Où trouver mon bulletin (emp raw=0.597 score=0.657 | Cycle de paie (admin RH) raw=0.556 score=0.616  margin=0.019 current=yes
+  MISS Après le calcul comment sortir les bulletins PDF ? :: Où trouver mon bulletin (emp raw=0.507 score=0.567 | Cycle de paie (admin RH) raw=0.445 score=0.505 | Comment suivre la paie du mo raw=0.382 score=0.442  margin=0.062 current=yes
+  OK Où voir si les calculs du mois sont finalisés ? :: Comment suivre la paie du mo raw=0.548 score=0.608 | Où trouver mon bulletin (emp raw=0.447 score=0.507 | Cycle de paie (admin RH) raw=0.444 score=0.504  margin=0.101 current=yes
+  MISS L'assistant lance-t-il le calcul de paie ? :: Comment suivre la paie du mo raw=0.517 score=0.577 | Où trouver mon bulletin (emp raw=0.493 score=0.553 | Ce que l'assistant ne fait p raw=0.433 score=0.493  margin=0.024 current=yes
+  MISS Comment enregistrer mon arrivée puis ma sortie ? :: Consulter mon pointage du jo raw=0.417 score=0.477 | Ce que l'assistant ne fait p raw=0.401 score=0.461 | Comment pointer (employé) raw=0.385 score=0.445  margin=0.016 current=yes
+  OK Où voir si j'ai déjà pointé aujourd'hui ? :: Consulter mon pointage du jo raw=0.381 score=0.441 | Comment pointer (employé) raw=0.285 score=0.345 | Suivi admin raw=0.282 score=0.342  margin=0.097 current=yes
+  OK L'écran du jour montre-t-il l'heure d'arrivée ? :: Consulter mon pointage du jo raw=0.545 score=0.605 | Comment pointer (employé) raw=0.346 score=0.406 | Suivi admin raw=0.342 score=0.402  margin=0.199 current=yes
+  OK L'admin peut-il corriger une journée de présence ? :: Suivi admin raw=0.460 score=0.520 | Consulter mon pointage du jo raw=0.383 score=0.443 | Comment pointer (employé) raw=0.346 score=0.406  margin=0.077 current=yes
+  MISS Le chat peut-il pointer à ma place ? :: Consulter mon pointage du jo raw=0.267 score=0.327 | Ce que l'assistant ne fait p raw=0.211 score=0.271 | Comment pointer (employé) raw=0.183 score=0.243  margin=0.055 current=no
+  OK Faut-il utiliser le bouton Arrivée dans l'application ? :: Ce que l'assistant ne fait p raw=0.539 score=0.599 | Comment pointer (employé) raw=0.315 score=0.375 | Consulter mon pointage du jo raw=0.297 score=0.357  margin=0.224 current=yes
+  NEG Quel est le taux de cotisation CNSS ? :: Où trouver mon bulletin (emp raw=0.282 score=0.342 | Cycle de paie (admin RH) raw=0.268 score=0.328 | Comment suivre la paie du mo raw=0.207 score=0.267  margin=0.014 current=no
+  NEG Combien de jours de RTT le guide prévoit-il ? :: Solde de congé raw=0.333 score=0.393 | Comment demander un congé (e raw=0.272 score=0.332 | Calendrier et pièces jointes raw=0.265 score=0.325  margin=0.061 current=yes
+  NEG La mutuelle rembourse-t-elle les lunettes ? :: Cycle de paie (admin RH) raw=0.152 score=0.212 | Où trouver mon bulletin (emp raw=0.144 score=0.204 | Suivi admin raw=0.147 score=0.147  margin=0.008 current=no
+  NEG Quelle est la politique de télétravail ? :: Comment demander un congé (e raw=0.210 score=0.270 | Où trouver mon bulletin (emp raw=0.235 score=0.235 | Cycle de paie (admin RH) raw=0.234 score=0.234  margin=-0.025 current=no
+  NEG Comment obtenir une avance sur salaire ? :: Où trouver mon bulletin (emp raw=0.308 score=0.368 | Solde de congé raw=0.323 score=0.323 | Cycle de paie (admin RH) raw=0.262 score=0.322  margin=-0.015 current=yes
+
+== final ==
+before  Recall@1 0.7500 (6/8)  Recall@3 1.0000 (8/8)  false answers 1/3
+frozen  Recall@1 0.7500 (6/8)  Recall@3 1.0000 (8/8)  false answers 1/3
+top scores:
+  OK Quel écran sert à choisir les dates et le motif d'un congé ? :: Comment demander un congé (e raw=0.448 score=0.508 | Solde de congé raw=0.441 score=0.501 | Calendrier et pièces jointes raw=0.378 score=0.438  margin=0.007 current=yes
+  OK Où filtrer les dossiers qui attendent une décision ? :: Comment valider une demande  raw=0.406 score=0.466 | Comment demander un congé (e raw=0.347 score=0.407 | Solde de congé raw=0.289 score=0.349  margin=0.059 current=yes
+  MISS Est-ce que le chat annule une absence à ma place ? :: Comment valider une demande  raw=0.345 score=0.405 | Ce que l'assistant ne fait p raw=0.333 score=0.393 | Solde de congé raw=0.323 score=0.383  margin=0.012 current=yes
+  OK Mes salaires affichent-ils les calculs déjà finalisés ? :: Où trouver mon bulletin (emp raw=0.583 score=0.643 | Comment suivre la paie du mo raw=0.531 score=0.591 | Cycle de paie (admin RH) raw=0.502 score=0.562  margin=0.052 current=yes
+  OK Le chat peut-il seulement résumer la paie sans la lancer ? :: Comment suivre la paie du mo raw=0.349 score=0.409 | Où trouver mon bulletin (emp raw=0.307 score=0.367 | Ce que l'assistant ne fait p raw=0.280 score=0.340  margin=0.042 current=yes
+  MISS Peut-il générer les variables de paie ? :: Cycle de paie (admin RH) raw=0.525 score=0.585 | Où trouver mon bulletin (emp raw=0.525 score=0.585 | Ce que l'assistant ne fait p raw=0.472 score=0.532  margin=0.000 current=yes
+  OK Un congé déjà accepté empêche-t-il de pointer ? :: Comment pointer (employé) raw=0.363 score=0.423 | Solde de congé raw=0.353 score=0.353 | Consulter mon pointage du jo raw=0.293 score=0.353  margin=0.009 current=yes
+  OK D'où viennent les pointages web ou saisie manuelle ? :: Suivi admin raw=0.523 score=0.583 | Ce que l'assistant ne fait p raw=0.398 score=0.458 | Consulter mon pointage du jo raw=0.324 score=0.384  margin=0.125 current=yes
+  NEG Quel est le barème de l'impôt sur le revenu ? :: Cycle de paie (admin RH) raw=0.265 score=0.325 | Où trouver mon bulletin (emp raw=0.256 score=0.316 | Comment suivre la paie du mo raw=0.239 score=0.299  margin=0.009 current=no
+  NEG Quels jours fériés sont chômés cette année ? :: Solde de congé raw=0.285 score=0.345 | Calendrier et pièces jointes raw=0.178 score=0.238 | Cycle de paie (admin RH) raw=0.233 score=0.233  margin=0.107 current=no
+  NEG Où signer mon contrat de travail ? :: Comment demander un congé (e raw=0.331 score=0.391 | Comment valider une demande  raw=0.223 score=0.283 | Où trouver mon bulletin (emp raw=0.252 score=0.252  margin=0.108 current=yes
+
+== all ==
+before  Recall@1 0.5769 (15/26)  Recall@3 0.8462 (22/26)  false answers 3/8
+frozen  Recall@1 0.5769 (15/26)  Recall@3 0.8462 (22/26)  false answers 1/8
+misses (expected section absent from the returned top 3):
+  [Calendrier et pièces jointes | got ['Comment demander un congé (employé)', 'Comment valider une demande (admin RH)', 'Solde de congé']] Qui peut ouvrir le justificatif d'une demande ?  raw1=0.556 score1=0.616 (Comment demander un congé (employé))
+  [Calendrier et pièces jointes | got ABSTAIN] Y a-t-il un calendrier pour l'équipe ?  raw1=0.307 score1=0.367 (Calendrier et pièces jointes)
+  [Ce que l'assistant ne fait pas | got ['Solde de congé', 'Comment demander un congé (employé)']] L'assistant peut-il valider mon congé tout seul ?  raw1=0.363 score1=0.423 (Solde de congé)
+  [Ce que l'assistant ne fait pas | got ABSTAIN] Le chat peut-il pointer à ma place ?  raw1=0.267 score1=0.327 (Consulter mon pointage du jour)
+top scores:
+  OK Où est-ce que je dépose une demande d'absence ? :: Comment demander un congé (e raw=0.466 score=0.526 | Comment valider une demande  raw=0.459 score=0.519 | Solde de congé raw=0.421 score=0.481  margin=0.007 current=yes
+  OK Quel écran sert à choisir les dates et le motif d'un congé ? :: Comment demander un congé (e raw=0.448 score=0.508 | Solde de congé raw=0.441 score=0.501 | Calendrier et pièces jointes raw=0.378 score=0.438  margin=0.007 current=yes
+  OK Une demande pas encore acceptée bloque-t-elle des jours ? :: Solde de congé raw=0.352 score=0.412 | Comment valider une demande  raw=0.299 score=0.359 | Ce que l'assistant ne fait p raw=0.287 score=0.347  margin=0.053 current=yes
+  OK Où voir les jours acquis et ceux qui restent ? :: Solde de congé raw=0.355 score=0.415 | Suivi admin raw=0.317 score=0.317 | Consulter mon pointage du jo raw=0.292 score=0.292  margin=0.038 current=yes
+  MISS Comment le RH refuse une absence en attente ? :: Solde de congé raw=0.571 score=0.631 | Comment valider une demande  raw=0.571 score=0.631 | Comment demander un congé (e raw=0.506 score=0.566  margin=0.000 current=yes
+  OK Où filtrer les dossiers qui attendent une décision ? :: Comment valider une demande  raw=0.406 score=0.466 | Comment demander un congé (e raw=0.347 score=0.407 | Solde de congé raw=0.289 score=0.349  margin=0.059 current=yes
+  MISS Qui peut ouvrir le justificatif d'une demande ? :: Comment demander un congé (e raw=0.556 score=0.616 | Comment valider une demande  raw=0.486 score=0.546 | Solde de congé raw=0.355 score=0.415  margin=0.070 current=yes
+  MISS Y a-t-il un calendrier pour l'équipe ? :: Calendrier et pièces jointes raw=0.307 score=0.367 | Consulter mon pointage du jo raw=0.257 score=0.257 | Cycle de paie (admin RH) raw=0.255 score=0.255  margin=0.050 current=no
+  MISS L'assistant peut-il valider mon congé tout seul ? :: Solde de congé raw=0.363 score=0.423 | Comment demander un congé (e raw=0.345 score=0.405 | Comment valider une demande  raw=0.314 score=0.374  margin=0.019 current=yes
+  MISS Est-ce que le chat annule une absence à ma place ? :: Comment valider une demande  raw=0.345 score=0.405 | Ce que l'assistant ne fait p raw=0.333 score=0.393 | Solde de congé raw=0.323 score=0.383  margin=0.012 current=yes
+  OK Où télécharger le PDF de mon bulletin ? :: Où trouver mon bulletin (emp raw=0.462 score=0.522 | Cycle de paie (admin RH) raw=0.327 score=0.387 | Comment suivre la paie du mo raw=0.280 score=0.340  margin=0.135 current=yes
+  OK Mes salaires affichent-ils les calculs déjà finalisés ? :: Où trouver mon bulletin (emp raw=0.583 score=0.643 | Comment suivre la paie du mo raw=0.531 score=0.591 | Cycle de paie (admin RH) raw=0.502 score=0.562  margin=0.052 current=yes
+  MISS Dans quel ordre le RH prépare le mois de paie ? :: Comment suivre la paie du mo raw=0.616 score=0.676 | Où trouver mon bulletin (emp raw=0.597 score=0.657 | Cycle de paie (admin RH) raw=0.556 score=0.616  margin=0.019 current=yes
+  MISS Après le calcul comment sortir les bulletins PDF ? :: Où trouver mon bulletin (emp raw=0.507 score=0.567 | Cycle de paie (admin RH) raw=0.445 score=0.505 | Comment suivre la paie du mo raw=0.382 score=0.442  margin=0.062 current=yes
+  OK Où voir si les calculs du mois sont finalisés ? :: Comment suivre la paie du mo raw=0.548 score=0.608 | Où trouver mon bulletin (emp raw=0.447 score=0.507 | Cycle de paie (admin RH) raw=0.444 score=0.504  margin=0.101 current=yes
+  OK Le chat peut-il seulement résumer la paie sans la lancer ? :: Comment suivre la paie du mo raw=0.349 score=0.409 | Où trouver mon bulletin (emp raw=0.307 score=0.367 | Ce que l'assistant ne fait p raw=0.280 score=0.340  margin=0.042 current=yes
+  MISS L'assistant lance-t-il le calcul de paie ? :: Comment suivre la paie du mo raw=0.517 score=0.577 | Où trouver mon bulletin (emp raw=0.493 score=0.553 | Ce que l'assistant ne fait p raw=0.433 score=0.493  margin=0.024 current=yes
+  MISS Peut-il générer les variables de paie ? :: Cycle de paie (admin RH) raw=0.525 score=0.585 | Où trouver mon bulletin (emp raw=0.525 score=0.585 | Ce que l'assistant ne fait p raw=0.472 score=0.532  margin=0.000 current=yes
+  MISS Comment enregistrer mon arrivée puis ma sortie ? :: Consulter mon pointage du jo raw=0.417 score=0.477 | Ce que l'assistant ne fait p raw=0.401 score=0.461 | Comment pointer (employé) raw=0.385 score=0.445  margin=0.016 current=yes
+  OK Un congé déjà accepté empêche-t-il de pointer ? :: Comment pointer (employé) raw=0.363 score=0.423 | Solde de congé raw=0.353 score=0.353 | Consulter mon pointage du jo raw=0.293 score=0.353  margin=0.009 current=yes
+  OK Où voir si j'ai déjà pointé aujourd'hui ? :: Consulter mon pointage du jo raw=0.381 score=0.441 | Comment pointer (employé) raw=0.285 score=0.345 | Suivi admin raw=0.282 score=0.342  margin=0.097 current=yes
+  OK L'écran du jour montre-t-il l'heure d'arrivée ? :: Consulter mon pointage du jo raw=0.545 score=0.605 | Comment pointer (employé) raw=0.346 score=0.406 | Suivi admin raw=0.342 score=0.402  margin=0.199 current=yes
+  OK L'admin peut-il corriger une journée de présence ? :: Suivi admin raw=0.460 score=0.520 | Consulter mon pointage du jo raw=0.383 score=0.443 | Comment pointer (employé) raw=0.346 score=0.406  margin=0.077 current=yes
+  OK D'où viennent les pointages web ou saisie manuelle ? :: Suivi admin raw=0.523 score=0.583 | Ce que l'assistant ne fait p raw=0.398 score=0.458 | Consulter mon pointage du jo raw=0.324 score=0.384  margin=0.125 current=yes
+  MISS Le chat peut-il pointer à ma place ? :: Consulter mon pointage du jo raw=0.267 score=0.327 | Ce que l'assistant ne fait p raw=0.211 score=0.271 | Comment pointer (employé) raw=0.183 score=0.243  margin=0.055 current=no
+  OK Faut-il utiliser le bouton Arrivée dans l'application ? :: Ce que l'assistant ne fait p raw=0.539 score=0.599 | Comment pointer (employé) raw=0.315 score=0.375 | Consulter mon pointage du jo raw=0.297 score=0.357  margin=0.224 current=yes
+  NEG Quel est le taux de cotisation CNSS ? :: Où trouver mon bulletin (emp raw=0.282 score=0.342 | Cycle de paie (admin RH) raw=0.268 score=0.328 | Comment suivre la paie du mo raw=0.207 score=0.267  margin=0.014 current=no
+  NEG Combien de jours de RTT le guide prévoit-il ? :: Solde de congé raw=0.333 score=0.393 | Comment demander un congé (e raw=0.272 score=0.332 | Calendrier et pièces jointes raw=0.265 score=0.325  margin=0.061 current=yes
+  NEG La mutuelle rembourse-t-elle les lunettes ? :: Cycle de paie (admin RH) raw=0.152 score=0.212 | Où trouver mon bulletin (emp raw=0.144 score=0.204 | Suivi admin raw=0.147 score=0.147  margin=0.008 current=no
+  NEG Quelle est la politique de télétravail ? :: Comment demander un congé (e raw=0.210 score=0.270 | Où trouver mon bulletin (emp raw=0.235 score=0.235 | Cycle de paie (admin RH) raw=0.234 score=0.234  margin=-0.025 current=no
+  NEG Comment obtenir une avance sur salaire ? :: Où trouver mon bulletin (emp raw=0.308 score=0.368 | Solde de congé raw=0.323 score=0.323 | Cycle de paie (admin RH) raw=0.262 score=0.322  margin=-0.015 current=yes
+  NEG Quel est le barème de l'impôt sur le revenu ? :: Cycle de paie (admin RH) raw=0.265 score=0.325 | Où trouver mon bulletin (emp raw=0.256 score=0.316 | Comment suivre la paie du mo raw=0.239 score=0.299  margin=0.009 current=no
+  NEG Quels jours fériés sont chômés cette année ? :: Solde de congé raw=0.285 score=0.345 | Calendrier et pièces jointes raw=0.178 score=0.238 | Cycle de paie (admin RH) raw=0.233 score=0.233  margin=0.107 current=no
+  NEG Où signer mon contrat de travail ? :: Comment demander un congé (e raw=0.331 score=0.391 | Comment valider une demande  raw=0.223 score=0.283 | Où trouver mon bulletin (emp raw=0.252 score=0.252  margin=0.108 current=yes
+

@@ -1,0 +1,35 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Modifier utilisateur</h1>
+      <p>Mettre à jour les informations du compte.</p>
+    </div>
+    <a routerLink="/admin/users">Retour</a>
+  </div>
+
+  @if (!loading()) {
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+      <label>
+        <span>Nom d'utilisateur</span>
+        <input type="text" formControlName="username" />
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="email" />
+      </label>
+
+      <label>
+        <span>Rôle</span>
+        <select formControlName="role">
+          <option value="ADMIN_RH">ADMIN_RH</option>
+          <option value="EMPLOYE">EMPLOYE</option>
+        </select>
+      </label>
+
+      <button type="submit" [disabled]="saving()">
+        {{ saving() ? 'Enregistrement...' : 'Enregistrer' }}
+      </button>
+    </form>
+  }
+</section>

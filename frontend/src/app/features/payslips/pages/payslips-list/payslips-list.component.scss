@@ -1,0 +1,4 @@
+@use '../../../payroll-calculations/pages/payroll-calculations-list/payroll-calculations-list.component';
+
+.badge.generated { background: var(--color-success-soft); color: var(--color-success); }
+.badge.cancelled { background: var(--color-danger-soft); color: var(--color-danger); }

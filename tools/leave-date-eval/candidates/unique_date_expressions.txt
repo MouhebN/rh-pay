@@ -1,0 +1,786 @@
+fr	746	aujourd'hui
+fr	347	demain
+fr	144	cette semaine
+fr	96	vendredi
+fr	86	mardi
+fr	62	d'aujourd'hui
+fr	61	samedi
+fr	58	lundi
+fr	56	jeudi
+fr	50	mercredi
+fr	37	hier
+fr	35	la semaine prochaine
+fr	29	dimanche
+fr	27	ce weekend
+fr	21	ce week-end
+fr	21	semaine prochaine
+fr	18	mars
+fr	16	cette année
+fr	15	de demain
+fr	13	de cette semaine
+fr	12	aujourd’hui
+fr	12	ce mois
+fr	11	ce mois-ci
+fr	10	la semaine dernière
+fr	9	ce week end
+fr	9	week-end
+fr	7	ce vendredi
+fr	7	mois
+fr	6	d'hier
+fr	6	le mois prochain
+fr	6	mille neuf cent quatre-vingt-dix
+fr	5	hier soir
+fr	5	lendemain
+fr	4	deux jours
+fr	4	dimanche prochain
+fr	4	douze février
+fr	4	l'année prochaine
+fr	4	le quinze mars
+fr	4	le sept mars
+fr	4	mois prochain
+fr	4	premier avril
+fr	4	tous les jours
+fr	4	un jour avant
+fr	4	weekend
+fr	3	avril
+fr	3	ce samedi
+fr	3	dix
+fr	3	douze
+fr	3	l'année dernière
+fr	3	le cinq mars
+fr	3	le douze
+fr	3	le lendemain
+fr	3	le premier avril
+fr	3	le premier janvier
+fr	3	le premier mars
+fr	3	le quatre avril
+fr	3	le quinze
+fr	3	le vingt avril
+fr	3	le vingt-deux
+fr	3	les dimanches
+fr	3	semaine
+fr	3	semaine dernière
+fr	3	vingt cinq mars
+fr	3	vingt trois mars
+fr	3	vingt-deux
+fr	3	vingt-deuxième
+fr	2	ce dimanche
+fr	2	ce mois ci
+fr	2	cinq avril
+fr	2	cinq jours
+fr	2	cinq mai
+fr	2	cinq mars
+fr	2	de mardi
+fr	2	dernier jour
+fr	2	deux avril
+fr	2	deux mille
+fr	2	dix-huit mars
+fr	2	dix-neuf mars
+fr	2	douze juillet
+fr	2	douzième
+fr	2	du lundi
+fr	2	février
+fr	2	jour de la semaine
+fr	2	jours de la semaine
+fr	2	juillet
+fr	2	juin
+fr	2	la semaine
+fr	2	la veille
+fr	2	le cinq
+fr	2	le cinq décembre
+fr	2	le cinq mai
+fr	2	le deux janvier
+fr	2	le deux mars
+fr	2	le mois dernier
+fr	2	le quatorze avril
+fr	2	le quinze août
+fr	2	le trente mars
+fr	2	le trois juillet
+fr	2	le vingt et un mars
+fr	2	le vingt et un mars deux mille dix-sept
+fr	2	le vingt trois
+fr	2	les trois prochains dimanches
+fr	2	mai
+fr	2	maintenant
+fr	2	mois dernier
+fr	2	nuit dernière
+fr	2	plus tôt aujourd'hui
+fr	2	premier février vingt dix-sept
+fr	2	quatre février
+fr	2	quinze
+fr	2	quinze mars
+fr	2	quinzième
+fr	2	reste de l'année
+fr	2	seize mars
+fr	2	sept mars
+fr	2	tous les dimanches
+fr	2	tous les vendredis
+fr	2	trois jours
+fr	2	trois juillet
+fr	2	trois mars
+fr	2	troisième
+fr	2	une semaine
+fr	2	vingt cinq janvier
+fr	2	vingt mars deux mille dix-sept
+fr	2	vingt six
+fr	2	vingt six mars
+fr	2	vingt-deux mars
+fr	2	vingt-troisième
+fr	1	après deux jours
+fr	1	après quelques jours
+fr	1	après vendredi
+fr	1	après-demain
+fr	1	au vingt-sept mars
+fr	1	aujourdhui
+fr	1	avril deux mille dix-sept
+fr	1	ce jour
+fr	1	ce lundi
+fr	1	ce mercredi
+fr	1	ce soir
+fr	1	ce trois janvier
+fr	1	cette semaine à venir
+fr	1	chaque
+fr	1	chaque dimanche
+fr	1	chaque jour de
+fr	1	chaque mercredi
+fr	1	chaque mois
+fr	1	chaque troisième juin
+fr	1	cinq décembre
+fr	1	cinq mai deux mille dix-sept
+fr	1	cinquième mars
+fr	1	d'avril
+fr	1	dans deux samedis
+fr	1	dans deux semaines
+fr	1	dans trois jours
+fr	1	date
+fr	1	de la journée
+fr	1	de samedis en mars
+fr	1	demain lundi
+fr	1	demain soir
+fr	1	dernier deux mois
+fr	1	dernier lundi de ce mois
+fr	1	dernier nuit
+fr	1	dernier vendredi du mois
+fr	1	des cinq prochains jours
+fr	1	deux jours après celui ci
+fr	1	deux mai
+fr	1	deux mercredis à partir d'aujourd'hui
+fr	1	deux mille dix sept
+fr	1	deux mille dix-huit
+fr	1	deux mille dix-sept
+fr	1	deux mille quatorze
+fr	1	deux mille seize
+fr	1	deux milles
+fr	1	deuxième
+fr	1	deuxième samedi le douze
+fr	1	dimanches
+fr	1	dix jours
+fr	1	dix juillet
+fr	1	dix mars
+fr	1	dix mars deux mille dix-sept
+fr	1	dix neuf mars
+fr	1	dix-huit mai
+fr	1	dix-neuf quatre-vingt-dix
+fr	1	dix-neuvième
+fr	1	du lundi au vendredi
+fr	1	du mois
+fr	1	du mois dernier
+fr	1	du mois prochain
+fr	1	du quatorze de ce mois
+fr	1	du quinze mars
+fr	1	du trois avril
+fr	1	du vendredi
+fr	1	du vingt-deux avril
+fr	1	du vingt-sept mars deux mille dix-sept
+fr	1	décembre
+fr	1	est
+fr	1	fin du mois
+fr	1	hebdomadaire
+fr	1	huit juillet
+fr	1	huit novembre
+fr	1	huit prochains jours
+fr	1	jeudi demain
+fr	1	jeudis
+fr	1	jour commémoratif
+fr	1	jour suivant
+fr	1	jusqu'au vingt cinq mai
+fr	1	l'an deux mille dix-huit
+fr	1	l'anniversaire
+fr	1	la date du vingt-deux mars
+fr	1	la journée
+fr	1	la semaine prochaine dimanche
+fr	1	la semaine prochaine jeudi
+fr	1	la semaine prochaine lundi
+fr	1	la semaine prochaine mardi
+fr	1	la semaine qui arrive
+fr	1	la semaine à venir
+fr	1	le
+fr	1	le cinq avril
+fr	1	le deux juillet
+fr	1	le deux mai
+fr	1	le dix
+fr	1	le dix mars
+fr	1	le dix neuf janvier
+fr	1	le dix novembre
+fr	1	le dix sept juillet
+fr	1	le dix-huit
+fr	1	le dix-neuf
+fr	1	le douze avril
+fr	1	le douze juillet
+fr	1	le mois
+fr	1	le mois de mai
+fr	1	le neuf février deux mille dix-sept
+fr	1	le onze mars
+fr	1	le premier jour du mois prochain
+fr	1	le premier mai
+fr	1	le premier mai et le trente un décembre
+fr	1	le premier octobre
+fr	1	le premier vendredi du mois prochain
+fr	1	le prochain
+fr	1	le quatorze
+fr	1	le quatorze février
+fr	1	le quatorze juin deux mille dix-sept
+fr	1	le quatorze novembre
+fr	1	le quatre
+fr	1	le quatre décembre mille neuf cent quatre-vingt-deux
+fr	1	le quatre février
+fr	1	le quatre juillet
+fr	1	le quatre juillet cette année
+fr	1	le quatre juillet de cette année
+fr	1	le quatre septembre
+fr	1	le quinze avril
+fr	1	le quinze de ce mois
+fr	1	le seize avril
+fr	1	le sept
+fr	1	le sept avril
+fr	1	le sept mai
+fr	1	le treize de ce mois
+fr	1	le treize juin
+fr	1	le trente
+fr	1	le trente et un
+fr	1	le trente juillet
+fr	1	le trois juin
+fr	1	le trois lundi de ce mois
+fr	1	le trois mars
+fr	1	le vingt cinq
+fr	1	le vingt deux mars
+fr	1	le vingt et un
+fr	1	le vingt février
+fr	1	le vingt mars deux mille dix-sept
+fr	1	le vingt novembre
+fr	1	le vingt octobre
+fr	1	le vingt trois mars
+fr	1	le vingt-deux ce mois
+fr	1	le vingt-deux mai
+fr	1	le vingt-deux mars
+fr	1	le vingt-deux septembre
+fr	1	le vingt-quatrième
+fr	1	le vingt-sept juin
+fr	1	le vingt-sept mars
+fr	1	le vingt-six
+fr	1	le vingt-trois avril
+fr	1	le vingt-trois de ce mois
+fr	1	le vingt-trois mai
+fr	1	le vingt-trois mars
+fr	1	les deux prochains dimanches
+fr	1	les jours de semaine
+fr	1	lundi aujourd'hui
+fr	1	lundi cette semaine
+fr	1	lundi le vingt
+fr	1	lundi matin
+fr	1	lundi prochain
+fr	1	lundi soir prochain
+fr	1	lundis
+fr	1	lundis suivants
+fr	1	ma date de naissance
+fr	1	mardi vingt et un
+fr	1	mardis
+fr	1	mercredis
+fr	1	mille neuf cent soixante dix
+fr	1	mille neuf cent soixante huit
+fr	1	mille neuf cent soixante-douze
+fr	1	mois-ci
+fr	1	neuvième
+fr	1	onze mars
+fr	1	partir
+fr	1	pour demain
+fr	1	premier février deux mille dix-sept
+fr	1	premier janvier et le douze janvier
+fr	1	premier juin
+fr	1	premier mars
+fr	1	premier octobre
+fr	1	première février et le seize mars
+fr	1	prochain jour libre
+fr	1	prochaine semaine
+fr	1	prochains jours
+fr	1	quatorze
+fr	1	quatorze heure
+fr	1	quatre avril
+fr	1	quatre décembre
+fr	1	quatre février mil neuf cent soixante-douze
+fr	1	quatre juillet
+fr	1	quatre mars deux mille dix-sept
+fr	1	quatre octobre
+fr	1	quatrième lundi de mars de cette année
+fr	1	quinze premiers jours
+fr	1	quinzième mars
+fr	1	reste de la semaine
+fr	1	samedi prochain
+fr	1	samedi vingt-cinq mars
+fr	1	second janvier
+fr	1	semaine scolaire
+fr	1	semaine à partir d'aujourd'hui
+fr	1	semaine à venir
+fr	1	sept avril
+fr	1	sept jours
+fr	1	sept juillet
+fr	1	septième
+fr	1	six juin deux mille dix-sept
+fr	1	six mars
+fr	1	sixième mars
+fr	1	tous les deux jours à partir de maintenant
+fr	1	tous les lundis
+fr	1	treize décembre
+fr	1	treize juillet
+fr	1	treize octobre de cette année
+fr	1	treizième
+fr	1	trente
+fr	1	trente et un mars vingt dix-sept
+fr	1	trois juin
+fr	1	trois la semaine de ce mois
+fr	1	trois mois
+fr	1	un
+fr	1	un jour à l'avance
+fr	1	un mars
+fr	1	un mois et deux jours
+fr	1	une semaine à partir d'aujourd'hui
+fr	1	une semaine à partir de maintenant
+fr	1	vendredi après-midi
+fr	1	vendredi cette année
+fr	1	vendredi dernier
+fr	1	vendredi le quatre avril
+fr	1	vendredi le treize
+fr	1	vendredi le treize cette année
+fr	1	vendredi treize
+fr	1	vendredis
+fr	1	vingt
+fr	1	vingt ce mois-ci
+fr	1	vingt cinq
+fr	1	vingt deux juin
+fr	1	vingt deux mars
+fr	1	vingt et un août
+fr	1	vingt et un avril
+fr	1	vingt et un mai
+fr	1	vingt mars
+fr	1	vingt mars aujourd'hui
+fr	1	vingt neuf
+fr	1	vingt quatre mars
+fr	1	vingt sept mars vingt dix-sept
+fr	1	vingt trois mai
+fr	1	vingt trois mars vingt dix-sept
+fr	1	vingt trois octobre
+fr	1	vingt un
+fr	1	vingt un mars
+fr	1	vingt-cinq
+fr	1	vingt-cinq décembre deux mille dix-sept
+fr	1	vingt-cinq mars
+fr	1	vingt-deux avril
+fr	1	vingt-deux ce mois
+fr	1	vingt-deux janvier
+fr	1	vingt-deux juin
+fr	1	vingt-deux mai
+fr	1	vingt-et-un janvier deux milles dix sept
+fr	1	vingt-huitième
+fr	1	vingt-neuf
+fr	1	vingt-neuf mars
+fr	1	vingt-neuvième
+fr	1	vingt-quatre la semaine prochaine
+fr	1	vingt-quatre mars deux mille dix-sept
+fr	1	vingt-quatrième
+fr	1	vingt-quatrième mardi
+fr	1	vingt-quatrième mars
+fr	1	vingt-sept juin
+fr	1	vingt-sept mars
+fr	1	vingt-six décembre
+fr	1	vingt-trois mars
+fr	1	vingtième
+fr	1	vingtième mars
+fr	1	vingtième octobre
+fr	1	week-end dans trois semaines
+fr	1	week-end suivant
+fr	1	weekend du jour du souvenir
+fr	1	weekend du vingt-six
+fr	1	weekends et vacances
+en	736	today
+en	325	tomorrow
+en	141	this week
+en	93	friday
+en	85	tuesday
+en	72	today's
+en	64	this weekend
+en	60	saturday
+en	55	monday
+en	55	thursday
+en	51	next week
+en	50	wednesday
+en	37	yesterday
+en	30	this month
+en	28	sunday
+en	28	tomorrow's
+en	18	march
+en	17	this year
+en	15	this week's
+en	15	todays
+en	11	last week
+en	11	next month
+en	11	tomorrows
+en	9	twenty second
+en	8	last night
+en	6	one thousand nine hundred and ninety
+en	6	this friday
+en	6	weekend
+en	5	april first
+en	5	fifteenth
+en	5	fifteenth march
+en	5	last month
+en	5	mondays
+en	5	month
+en	5	next day
+en	5	next week's
+en	5	sundays
+en	5	twelfth
+en	4	april
+en	4	february twelfth
+en	4	fifth march
+en	4	friday's
+en	4	july three
+en	4	march seven
+en	4	may fifth
+en	4	next sunday
+en	4	next year
+en	4	tenth
+en	4	twelveth
+en	4	yesterday's
+en	3	april fourth
+en	3	april twenty
+en	3	every friday
+en	3	every sunday
+en	3	everyday
+en	3	feb four
+en	3	fifth april
+en	3	first of february twenty seventeen
+en	3	july fourth
+en	3	last year
+en	3	march fifth
+en	3	march twentieth two thousand and seventeen
+en	3	march twenty third
+en	3	the month
+en	3	this saturday
+en	3	this weeks
+en	3	tuesday's
+en	3	twelveth july
+en	3	twenty first
+en	3	twenty fourth
+en	3	twenty ninth
+en	3	twenty third
+en	3	two days
+en	3	two thousand
+en	3	week
+en	3	weekdays
+en	2	april fourteenth
+en	2	august fifteenth
+en	2	coming week
+en	2	day after
+en	2	day before
+en	2	day of the week
+en	2	december
+en	2	earlier today
+en	2	february
+en	2	fifth
+en	2	fifth december
+en	2	first of january
+en	2	fourteenth
+en	2	friday the thirteenth
+en	2	january second
+en	2	january twenty five
+en	2	july
+en	2	july seventh
+en	2	june
+en	2	june third
+en	2	june twenty seventh
+en	2	last day
+en	2	mar twenty five
+en	2	march first
+en	2	march nineteenth
+en	2	march one
+en	2	march seventh
+en	2	march twenty first
+en	2	march twenty five
+en	2	march twenty seventh
+en	2	may
+en	2	may two
+en	2	next three sundays
+en	2	next weeks
+en	2	october first
+en	2	one day before
+en	2	rest of the year
+en	2	second march
+en	2	seventh
+en	2	the fifteenth
+en	2	the twenty first of march two thousand and seventeen
+en	2	the twenty second
+en	2	third
+en	2	thirteenth
+en	2	this sunday
+en	2	three days
+en	2	tuesdays
+en	2	twentieth october
+en	2	twenty second april
+en	2	twenty second march
+en	2	twenty sixth
+en	2	twenty third march
+en	2	two thousand and seventeen
+en	2	week from today
+en	2	yesterdays
+en	1	a day before
+en	1	a week ago
+en	1	after friday
+en	1	after some days
+en	1	after two days
+en	1	all days
+en	1	april fifteenth
+en	1	april one two thousand and seventeen
+en	1	april second
+en	1	april seven
+en	1	april sixteenth
+en	1	april twelfth
+en	1	april two
+en	1	august twenty one
+en	1	birthday
+en	1	date
+en	1	day after tomorrow
+en	1	dec twenty sixth
+en	1	december fifth
+en	1	december four one thousand nine hundred and eighty two
+en	1	december fourth
+en	1	december thirteenth
+en	1	december twenty five two thousand and seventeen
+en	1	easter
+en	1	eighteen may
+en	1	eighteenth
+en	1	eighth july
+en	1	eighth november
+en	1	eleven march
+en	1	end of the month
+en	1	every june third
+en	1	every monday
+en	1	every month
+en	1	every other wednesday
+en	1	every two days from now
+en	1	every week day
+en	1	february four nineteen seventy two
+en	1	february fourteenth
+en	1	february one and march sixteen
+en	1	fifteenth of march
+en	1	fifteenth of this month
+en	1	first april
+en	1	first fifteen days
+en	1	first friday of next month
+en	1	first january
+en	1	first of april
+en	1	five day
+en	1	five days
+en	1	four april
+en	1	fourteenth of this month
+en	1	fourth
+en	1	fourth monday of march this year
+en	1	fourth october
+en	1	friday afternoon
+en	1	friday april fourteenth
+en	1	friday this year
+en	1	fridays
+en	1	in one day advance
+en	1	in two weeks
+en	1	january nineteenth
+en	1	january one and january twelve
+en	1	january the third
+en	1	july thirtieth
+en	1	july two
+en	1	june first
+en	1	june fourteenth two thousand and seventeen
+en	1	last friday
+en	1	last friday of the month
+en	1	last monday of this month
+en	1	last two months
+en	1	march eighteen
+en	1	march eighteenth
+en	1	march eleventh
+en	1	march fifteenth
+en	1	march fourth two thousand and seventeenth
+en	1	march nineteen
+en	1	march sixteen
+en	1	march sixteenth
+en	1	march sixth
+en	1	march tenth
+en	1	march third
+en	1	march thirtieth
+en	1	march thirty first
+en	1	march three
+en	1	march twentieth
+en	1	march twenty
+en	1	march twenty four
+en	1	march twenty four two thousand and seventeen
+en	1	march twenty second
+en	1	march twenty seven
+en	1	march twenty two
+en	1	may fifth two thousand and seventeen
+en	1	may one
+en	1	may one and december thirty one
+en	1	may seventh
+en	1	may twenty two
+en	1	memorial day
+en	1	memorial day weekend
+en	1	monday morning
+en	1	monday the twentieth
+en	1	monday this week
+en	1	monday through friday
+en	1	monday today
+en	1	monday's
+en	1	month of may
+en	1	my birth date
+en	1	next available
+en	1	next day's
+en	1	next eight days
+en	1	next few days
+en	1	next five days
+en	1	next free day
+en	1	next monday night
+en	1	next monday's
+en	1	next month's
+en	1	next saturdays
+en	1	next two sundays
+en	1	next two weeks
+en	1	next week monday
+en	1	next week sunday
+en	1	next week thursday
+en	1	next week tuesday
+en	1	night before
+en	1	nineteen ninety
+en	1	nineteenth
+en	1	ninth
+en	1	ninth february two thousand and seventeen
+en	1	november fourteenth
+en	1	november twenty
+en	1	one month and two days
+en	1	one thousand nine hundred and seventy
+en	1	one thousand nine hundred and seventy two
+en	1	one thousand nine hundred and sixty eight
+en	1	one week
+en	1	one week from now
+en	1	past week
+en	1	rest of the week
+en	1	right now
+en	1	saturday march twenty fifth
+en	1	saturdays are in march
+en	1	school week
+en	1	second january
+en	1	second saturday
+en	1	september four
+en	1	september twenty two
+en	1	seven days
+en	1	seventh april
+en	1	sixth march
+en	1	sixth of june two thousand seventeen
+en	1	sunday's
+en	1	ten day
+en	1	ten july
+en	1	ten march
+en	1	tenth november
+en	1	tenth of march two thousand seventeen
+en	1	the day
+en	1	the day after
+en	1	the first day of next month
+en	1	the following monday
+en	1	the fourth of july this year
+en	1	the nineteenth
+en	1	the past week
+en	1	the second
+en	1	the third monday of this month
+en	1	the thirty first
+en	1	the twenty fifth
+en	1	the twenty fourth
+en	1	the twenty second of january
+en	1	the twenty sixth
+en	1	the twenty third
+en	1	the twenty third of april
+en	1	the twenty third of this month
+en	1	third march
+en	1	third of april
+en	1	third week of this month
+en	1	thirteen october of this year
+en	1	thirteenth july
+en	1	thirteenth june
+en	1	thirteenth this year
+en	1	thirtieth
+en	1	thirtieth of march
+en	1	thirty first of march twenty seventeen
+en	1	this coming week
+en	1	this day
+en	1	this friday's
+en	1	this monday
+en	1	this month's
+en	1	this wednesday
+en	1	three days from now
+en	1	three of months
+en	1	thursday tomorrow
+en	1	thursday's
+en	1	thursdays
+en	1	tomorrow monday
+en	1	tomorrow night
+en	1	tonight
+en	1	tuesday the twenty first
+en	1	twentieth
+en	1	twentieth march today
+en	1	twentieth of february
+en	1	twentieth this month
+en	1	twenty eighth
+en	1	twenty fifth
+en	1	twenty fifth may
+en	1	twenty first april
+en	1	twenty first of may
+en	1	twenty fourth march
+en	1	twenty ninth march
+en	1	twenty one january two thousand and seventeen
+en	1	twenty one march
+en	1	twenty second of june
+en	1	twenty second of march twenty seventeen
+en	1	twenty second of may
+en	1	twenty seventh march two thousand seventeen
+en	1	twenty seventh of march twenty seventeen
+en	1	twenty six march
+en	1	twenty sixth march
+en	1	twenty third may
+en	1	twenty third october
+en	1	twenty third of march twenty seventeen
+en	1	twenty third of may
+en	1	twenty three of march
+en	1	twenty two june
+en	1	twenty two march
+en	1	two day after this day
+en	1	two days from now
+en	1	two hundred p. m.
+en	1	two saturdays from now
+en	1	two thousand and eighteen
+en	1	two thousand and fourteen
+en	1	two thousand and sixteen
+en	1	two wednesdays back from today
+en	1	until may twenty fifth
+en	1	upcoming week
+en	1	wednesday next week
+en	1	wednesdays
+en	1	weekend after next
+en	1	weekend of the twenty sixth
+en	1	weekend three weeks from now
+en	1	weekends and holidays
+en	1	weekly
+en	1	year two thousand and eighteen

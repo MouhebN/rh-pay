@@ -1,0 +1,134 @@
+<section class="page-header">
+  <div>
+    <h1>Calcul de paie</h1>
+    <p>Calcul simplifié des salaires mensuels à partir des variables validées.</p>
+  </div>
+  <button type="button" (click)="generate()"><app-icon name="calculator" /> Calculer</button>
+</section>
+
+@if (summary(); as data) {
+  <section class="summary-grid payroll-summary">
+    <article><span>Employés calculés</span><strong>{{ data.totalEmployeesCalculated }}</strong></article>
+    <article><span>Brouillons</span><strong>{{ data.draftCount }}</strong></article>
+    <article><span>Finalisées</span><strong>{{ data.finalizedCount }}</strong></article>
+    <article><span>Masse brute</span><strong>{{ data.totalGrossSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Masse nette</span><strong>{{ data.totalNetSalary | number: '1.2-2' }}</strong></article>
+    <article><span>Total retenues</span><strong>{{ data.totalDeductions | number: '1.2-2' }}</strong></article>
+    <article><span>Total primes</span><strong>{{ data.totalBonuses | number: '1.2-2' }}</strong></article>
+    <article><span>Heures sup.</span><strong>{{ data.totalOvertimeAmount | number: '1.2-2' }}</strong></article>
+  </section>
+}
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadCalculations()">
+  <input type="number" min="1" max="12" formControlName="month" aria-label="Mois" />
+  <input type="number" min="2020" max="2100" formControlName="year" aria-label="Année" />
+  <select formControlName="employeeId">
+    <option [ngValue]="null">Tous les employés</option>
+    @for (employee of employees(); track employee.id) {
+      <option [ngValue]="employee.id">{{ employee.firstName }} {{ employee.lastName }}</option>
+    }
+  </select>
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+  <select formControlName="jobPositionId">
+    <option [ngValue]="null">Tous les postes</option>
+    @for (position of jobPositions(); track position.id) {
+      <option [ngValue]="position.id">{{ position.title }}</option>
+    }
+  </select>
+  <select formControlName="status">
+    <option value="">Tous les statuts</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button type="button" class="secondary" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="table-panel payroll-calculations-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Employé</th>
+        <th>Mois</th>
+        <th>Salaire de base</th>
+        <th>Prime</th>
+        <th>Heures sup.</th>
+        <th>Retenues</th>
+        <th>Salaire brut</th>
+        <th>Salaire net</th>
+        <th>Statut</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="10" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (calculation of calculations(); track calculation.id) {
+          <tr>
+            <td><strong>{{ calculation.employeeFullName }}</strong><span>{{ calculation.departmentName || '-' }} · {{ calculation.jobPositionName || '-' }}</span></td>
+            <td>{{ calculation.month }}/{{ calculation.year }}</td>
+            <td>{{ calculation.baseSalary | number: '1.2-2' }}</td>
+            <td>{{ calculation.bonusAmount | number: '1.2-2' }}</td>
+            <td>{{ calculation.overtimeAmount | number: '1.2-2' }}</td>
+            <td>{{ calculation.totalDeductions | number: '1.2-2' }}</td>
+            <td>{{ calculation.grossSalary | number: '1.2-2' }}</td>
+            <td><strong>{{ calculation.netSalary | number: '1.2-2' }}</strong></td>
+            <td><span class="badge" [class]="calculation.status.toLowerCase()">{{ statusLabel(calculation.status) }}</span></td>
+            <td class="actions">
+              <app-icon-action-button icon="eye" tooltip="Voir" variant="info" (action)="openDetails(calculation)" />
+              @if (calculation.status === 'DRAFT') {
+                <app-icon-action-button icon="check" tooltip="Finaliser" variant="success" (action)="finalize(calculation)" />
+                <app-icon-action-button icon="ban" tooltip="Annuler" variant="warning" (action)="cancel(calculation)" />
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="10" class="empty">Aucun calcul trouvé.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (selectedDetails(); as item) {
+  <section class="modal-backdrop">
+    <article class="payroll-modal">
+      <div class="modal-header">
+        <div>
+          <h2>Détail du salaire</h2>
+          <p>{{ item.employeeFullName }} · {{ item.month }}/{{ item.year }}</p>
+        </div>
+        <div class="modal-actions">
+          @if (item.status === 'FINALIZED') {
+            <button type="button" (click)="generatePayslip(item)"><app-icon name="file" /> Bulletin</button>
+          }
+          <button type="button" class="secondary" (click)="closeDetails()"><app-icon name="x" /> Fermer</button>
+        </div>
+      </div>
+      <div class="details-grid">
+        <span>Salaire de base <strong>{{ item.baseSalary | number: '1.2-2' }}</strong></span>
+        <span>Taux journalier <strong>{{ item.dailyRate | number: '1.2-2' }}</strong></span>
+        <span>Taux horaire <strong>{{ item.hourlyRate | number: '1.2-2' }}</strong></span>
+        <span>Absences sans solde <strong>{{ item.unpaidAbsenceDays | number: '1.2-2' }}</strong></span>
+        <span>Retenue absences <strong>{{ item.unpaidAbsenceDeduction | number: '1.2-2' }}</strong></span>
+        <span>Retards <strong>{{ item.lateMinutes }} min</strong></span>
+        <span>Retenue retards <strong>{{ item.lateDeduction | number: '1.2-2' }}</strong></span>
+        <span>Heures supplémentaires <strong>{{ item.overtimeMinutes }} min</strong></span>
+        <span>Montant heures sup. <strong>{{ item.overtimeAmount | number: '1.2-2' }}</strong></span>
+        <span>Prime <strong>{{ item.bonusAmount | number: '1.2-2' }}</strong></span>
+        <span>Avance <strong>{{ item.advanceAmount | number: '1.2-2' }}</strong></span>
+        <span>Retenue manuelle <strong>{{ item.deductionAmount | number: '1.2-2' }}</strong></span>
+        <span>Salaire brut <strong>{{ item.grossSalary | number: '1.2-2' }}</strong></span>
+        <span>Total retenues <strong>{{ item.totalDeductions | number: '1.2-2' }}</strong></span>
+        <span class="net">Salaire net <strong>{{ item.netSalary | number: '1.2-2' }}</strong></span>
+      </div>
+    </article>
+  </section>
+}

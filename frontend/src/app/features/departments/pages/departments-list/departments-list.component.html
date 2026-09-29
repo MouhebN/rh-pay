@@ -1,0 +1,55 @@
+<section class="page-header">
+  <div>
+    <h1>Départements</h1>
+    <p>Unités organisationnelles de l'établissement.</p>
+  </div>
+  <a routerLink="/admin/departments/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouveau département
+  </a>
+</section>
+
+<section class="table-panel">
+  @if (loading()) {
+    <app-loading-spinner label="Chargement des départements..." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Créé le</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (department of departments(); track department.id) {
+          <tr>
+            <td><strong>{{ department.name }}</strong></td>
+            <td>{{ department.description || '-' }}</td>
+            <td>{{ department.createdAt | date: 'short' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/departments', department.id, 'edit']" title="Modifier" aria-label="Modifier">
+                <app-icon name="pencil" />
+              </a>
+              <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="confirmDelete(department)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="empty">Aucun département trouvé.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+@if (departmentToDelete(); as department) {
+  <app-confirm-dialog
+    title="Supprimer le département"
+    [message]="'Supprimer le département ' + department.name + ' ?'"
+    (confirmed)="deleteDepartment()"
+    (cancelled)="departmentToDelete.set(null)"
+  />
+}

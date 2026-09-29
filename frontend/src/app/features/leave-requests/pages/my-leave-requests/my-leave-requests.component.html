@@ -1,0 +1,92 @@
+<section class="page-header">
+  <div>
+    <h1>Mes demandes d'absence</h1>
+    <p>Historique et suivi de vos demandes.</p>
+  </div>
+  <a routerLink="/employee/leave-requests/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouvelle
+  </a>
+</section>
+
+@if (balance(); as leaveBalance) {
+  <section class="balance-strip">
+    <article>
+      <span>Solde annuel</span>
+      <strong>{{ leaveBalance.acquiredDays }}</strong>
+    </article>
+    <article>
+      <span>Consommé</span>
+      <strong>{{ leaveBalance.consumedDays }}</strong>
+    </article>
+    <article>
+      <span>En attente</span>
+      <strong>{{ leaveBalance.pendingDays }}</strong>
+    </article>
+    <article>
+      <span>Restant</span>
+      <strong>{{ leaveBalance.remainingDays }}</strong>
+    </article>
+  </section>
+}
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Période</th>
+        <th>Jours</th>
+        <th>Statut</th>
+        <th>Motif</th>
+        <th>Justificatif</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (loading()) {
+        <tr><td colspan="7" class="empty">Chargement...</td></tr>
+      } @else {
+        @for (request of leaveRequests(); track request.id) {
+          <tr>
+            <td>{{ typeLabel(request.type) }}</td>
+            <td>{{ request.startDate | date: 'mediumDate' }} - {{ request.endDate | date: 'mediumDate' }}</td>
+            <td>{{ request.totalDays }}</td>
+            <td><span class="badge" [class]="request.status.toLowerCase()">{{ statusLabel(request.status) }}</span></td>
+            <td>{{ request.reason || '-' }}</td>
+            <td>
+              @if (request.hasDocument) {
+                <app-icon-action-button icon="download" tooltip="Télécharger" variant="info" (action)="downloadDocument(request)" />
+              } @else {
+                <span class="muted">Aucun justificatif</span>
+                @if (request.type === 'SICK_LEAVE') {
+                  <small class="document-hint">Justificatif recommandé</small>
+                }
+              }
+            </td>
+            <td class="actions">
+              @if (request.status === 'PENDING') {
+                <label class="upload-action icon-upload" title="Justificatif" aria-label="Justificatif">
+                  <app-icon name="upload" />
+                  <input
+                    type="file"
+                    accept="application/pdf,image/png,image/jpeg"
+                    (change)="uploadDocument($event, request)"
+                  />
+                </label>
+                @if (request.hasDocument) {
+                  <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="deleteDocument(request)" />
+                }
+                <app-icon-action-button icon="ban" tooltip="Annuler" variant="warning" (action)="cancel(request)" />
+              } @else {
+                <span>-</span>
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="7" class="empty">Aucune demande trouvée.</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>

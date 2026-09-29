@@ -1,0 +1,45 @@
+backend/target/
+backend/uploads/
+uploads/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+!.mvn/wrapper/maven-wrapper.jar
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.classpath
+.project
+.settings/
+
+### VS Code ###
+.vscode/
+
+### Environment ###
+.env
+*.local
+*.log
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Python (intent ML) ###
+ml/**/__pycache__/
+ml/**/*.pyc
+ml/**/.cache/
+ml/intent/models/
+ml/intent/avature_fr_cache.json
+.venv/
+
+### Leave-date MASSIVE tooling (local download only) ###
+tools/leave-date-eval/amazon-massive-dataset-*.tar.gz
+tools/leave-date-eval/1.1/
+tools/leave-date-eval/candidates/date_slot_candidates.jsonl
+tools/leave-date-eval/__pycache__/
+

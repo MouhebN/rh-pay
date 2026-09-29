@@ -1,0 +1,261 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Nouvel employé</h1>
+      <p>Créer un dossier employé administratif.</p>
+    </div>
+    <a routerLink="/admin/employees">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <div class="form-grid">
+      <label>
+        <span>Matricule</span>
+        <input type="text" formControlName="matricule" />
+      </label>
+
+      <label>
+        <span>Statut</span>
+        <select formControlName="status">
+          @for (status of statuses; track status) {
+            <option [value]="status">{{ status }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Prénom</span>
+        <input type="text" formControlName="firstName" />
+      </label>
+
+      <label>
+        <span>Nom</span>
+        <input type="text" formControlName="lastName" />
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="email" />
+      </label>
+
+      <label>
+        <span>Téléphone</span>
+        <input type="tel" formControlName="phone" />
+      </label>
+
+      <label>
+        <span>Date de naissance</span>
+        <input type="date" formControlName="birthDate" />
+      </label>
+
+      <label>
+        <span>Date d'embauche</span>
+        <input type="date" formControlName="hireDate" />
+      </label>
+
+      <label>
+        <span>Département</span>
+        <select formControlName="departmentId">
+          <option [ngValue]="null">Aucun département</option>
+          @for (department of departments(); track department.id) {
+            <option [ngValue]="department.id">{{ department.name }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Poste</span>
+        <select formControlName="jobPositionId" (change)="applySelectedJobSalary()">
+          <option [ngValue]="null">Aucun poste</option>
+          @for (jobPosition of jobPositions(); track jobPosition.id) {
+            <option [ngValue]="jobPosition.id">{{ jobPosition.title }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Salaire de base</span>
+        <input type="number" min="0" step="0.01" formControlName="baseSalary" placeholder="Salaire propre à l'employé" />
+      </label>
+    </div>
+
+    <section class="account-section">
+      <div class="section-title">
+        <h2>Informations de paiement</h2>
+        <p>Données utilisées pour préparer les virements de paie.</p>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>RIB</span>
+          <input type="text" formControlName="rib" placeholder="RIB de l'employé" />
+        </label>
+
+        <label>
+          <span>Banque</span>
+          <input type="text" formControlName="bankName" placeholder="Nom de la banque" />
+        </label>
+
+        <label>
+          <span>Méthode de paiement</span>
+          <select formControlName="paymentMethod">
+            <option [ngValue]="null">Non définie</option>
+            @for (method of paymentMethods; track method) {
+              <option [value]="method">{{ method }}</option>
+            }
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="account-section">
+      <div class="section-title">
+        <h2>Accès à l'application</h2>
+        <p>Associez un compte maintenant ou créez-le avec le dossier employé.</p>
+      </div>
+
+      <div class="account-modes">
+        <label>
+          <input type="radio" formControlName="accountMode" value="none" />
+          <span>Sans compte</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="accountMode" value="existing" />
+          <span>Compte existant</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="accountMode" value="create" />
+          <span>Créer un compte</span>
+        </label>
+      </div>
+
+      @if (form.controls.accountMode.value === 'existing') {
+        <label>
+          <span>Compte utilisateur</span>
+          <select formControlName="userAccountId">
+            <option [ngValue]="null">Sélectionner un compte</option>
+            @for (user of users(); track user.id) {
+              <option [ngValue]="user.id">{{ user.username }} · {{ user.email }} · {{ user.role }}</option>
+            }
+          </select>
+        </label>
+      }
+
+      @if (form.controls.accountMode.value === 'create') {
+        <div class="form-grid account-grid">
+          <label>
+            <span>Nom d'utilisateur</span>
+            <input type="text" formControlName="accountUsername" placeholder="ex: m.benali" />
+          </label>
+
+          <label>
+            <span>Email du compte</span>
+            <div class="inline-field">
+              <input type="email" formControlName="accountEmail" placeholder="email de connexion" />
+              <button type="button" (click)="useEmployeeEmailForAccount()">Utiliser email</button>
+            </div>
+          </label>
+
+          <label>
+            <span>Mot de passe provisoire</span>
+            <input type="password" formControlName="accountPassword" placeholder="8 caractères minimum" />
+          </label>
+
+          <label>
+            <span>Rôle</span>
+            <select formControlName="accountRole">
+              @for (role of roles; track role) {
+                <option [value]="role">{{ role }}</option>
+              }
+            </select>
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" formControlName="accountEnabled" />
+            <span>Compte actif</span>
+          </label>
+        </div>
+      }
+    </section>
+
+    <section class="account-section contract-section">
+      <div class="section-title">
+        <h2>Contrat</h2>
+        <p>Créez le premier contrat maintenant ou ajoutez-le plus tard depuis le module Contrats.</p>
+      </div>
+
+      <label class="checkbox contract-toggle">
+        <input type="checkbox" formControlName="createContract" (change)="toggleContractDefaults()" />
+        <span>Créer un contrat pour cet employé</span>
+      </label>
+
+      @if (form.controls.createContract.value) {
+        <div class="form-grid account-grid">
+          <label>
+            <span>Type de contrat</span>
+            <select formControlName="contractType">
+              @for (type of contractTypes; track type) {
+                <option [value]="type">{{ contractTypeLabel(type) }}</option>
+              }
+            </select>
+          </label>
+
+          <label>
+            <span>Date de début</span>
+            <input type="date" formControlName="contractStartDate" />
+          </label>
+
+          <label>
+            <span>Date de fin</span>
+            <input type="date" formControlName="contractEndDate" />
+          </label>
+
+          <label>
+            <span>Période d’essai</span>
+            <input type="date" formControlName="contractTrialPeriodEndDate" />
+          </label>
+
+          <label>
+            <span>Salaire à la signature</span>
+            <input type="number" min="0.01" step="0.01" formControlName="contractSalaryAtSignature" placeholder="Par défaut: salaire de base" />
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" formControlName="contractActivateImmediately" />
+            <span>Activer immédiatement</span>
+          </label>
+
+          <label class="full-field">
+            <span>Notes</span>
+            <textarea formControlName="contractNotes" rows="3" placeholder="Notes du contrat"></textarea>
+          </label>
+        </div>
+
+        <p class="contract-hint">Le document signé pourra être ajouté plus tard depuis la fiche du contrat.</p>
+      }
+    </section>
+
+    @if (createdEmployeeId(); as employeeId) {
+      <section class="success-panel">
+        <div>
+          <h2>Employé créé avec succès</h2>
+          <p>
+            @if (createdWithContract()) {
+              Contrat associé avec succès. Vous pouvez maintenant consulter le dossier ou gérer les contrats.
+            } @else {
+              Le dossier employé est prêt. Vous pouvez créer un contrat plus tard depuis le module Contrats.
+            }
+          </p>
+        </div>
+        <div class="success-actions">
+          <a [routerLink]="['/admin/employees', employeeId, 'edit']">Employé</a>
+          <a routerLink="/admin/contracts" [queryParams]="{ employeeId: employeeId }">Contrats</a>
+        </div>
+      </section>
+    }
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Création...' : 'Créer l’employé' }}
+    </button>
+  </form>
+</section>

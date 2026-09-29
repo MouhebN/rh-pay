@@ -1,0 +1,125 @@
+<section class="form-page">
+  <div class="form-header">
+    <div>
+      <h1>Modifier l'employé</h1>
+      <p>Mettre à jour le dossier administratif.</p>
+    </div>
+    <a routerLink="/admin/employees">Retour</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-card">
+    <div class="form-grid">
+      <label>
+        <span>Matricule</span>
+        <input type="text" formControlName="matricule" />
+      </label>
+
+      <label>
+        <span>Statut</span>
+        <select formControlName="status">
+          @for (status of statuses; track status) {
+            <option [value]="status">{{ status }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Prénom</span>
+        <input type="text" formControlName="firstName" />
+      </label>
+
+      <label>
+        <span>Nom</span>
+        <input type="text" formControlName="lastName" />
+      </label>
+
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="email" />
+      </label>
+
+      <label>
+        <span>Téléphone</span>
+        <input type="tel" formControlName="phone" />
+      </label>
+
+      <label>
+        <span>Date de naissance</span>
+        <input type="date" formControlName="birthDate" />
+      </label>
+
+      <label>
+        <span>Date d'embauche</span>
+        <input type="date" formControlName="hireDate" />
+      </label>
+
+      <label>
+        <span>Département</span>
+        <select formControlName="departmentId">
+          <option [ngValue]="null">Aucun département</option>
+          @for (department of departments(); track department.id) {
+            <option [ngValue]="department.id">{{ department.name }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Poste</span>
+        <select formControlName="jobPositionId" (change)="applySelectedJobSalary()">
+          <option [ngValue]="null">Aucun poste</option>
+          @for (jobPosition of jobPositions(); track jobPosition.id) {
+            <option [ngValue]="jobPosition.id">{{ jobPosition.title }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Salaire de base</span>
+        <input type="number" min="0" step="0.01" formControlName="baseSalary" />
+      </label>
+
+      <label>
+        <span>Compte utilisateur</span>
+        <select formControlName="userAccountId">
+          <option [ngValue]="null">Aucun compte</option>
+          @for (user of users(); track user.id) {
+            <option [ngValue]="user.id">{{ user.username }} · {{ user.role }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <section class="account-section">
+      <div class="section-title">
+        <h2>Informations de paiement</h2>
+        <p>Données utilisées pour préparer les virements de paie.</p>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>RIB</span>
+          <input type="text" formControlName="rib" placeholder="RIB de l'employé" />
+        </label>
+
+        <label>
+          <span>Banque</span>
+          <input type="text" formControlName="bankName" placeholder="Nom de la banque" />
+        </label>
+
+        <label>
+          <span>Méthode de paiement</span>
+          <select formControlName="paymentMethod">
+            <option [ngValue]="null">Non définie</option>
+            @for (method of paymentMethods; track method) {
+              <option [value]="method">{{ method }}</option>
+            }
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <button type="submit" [disabled]="saving()">
+      {{ saving() ? 'Enregistrement...' : 'Enregistrer' }}
+    </button>
+  </form>
+</section>

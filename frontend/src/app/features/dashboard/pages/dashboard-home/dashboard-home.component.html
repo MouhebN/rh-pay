@@ -1,0 +1,103 @@
+<section class="dashboard-hero">
+  <div>
+    <span>Tableau de bord</span>
+    <h1>Bonjour, {{ tokenService.currentUser()?.username }}</h1>
+    <p>{{ today | date: 'EEEE d MMMM y' : undefined : 'fr-FR' }} · Vue complète RH, temps, absences et paie.</p>
+  </div>
+  <div class="quick-actions">
+    <a routerLink="/admin/employees/create"><app-icon name="plus" /> Ajouter</a>
+    <a routerLink="/admin/leave-requests/create"><app-icon name="calendar" /> Nouvelle absence</a>
+    <a routerLink="/admin/payroll-variables"><app-icon name="calculator" /> Générer</a>
+    <a routerLink="/admin/payroll-calculations"><app-icon name="calculator" /> Calculer paie</a>
+    <a routerLink="/admin/payroll-exports"><app-icon name="download" /> Exporter</a>
+  </div>
+</section>
+
+@if (loading()) {
+  <section class="dashboard-grid">
+    @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+      <article class="metric-card loading-card"></article>
+    }
+  </section>
+} @else if (summary(); as data) {
+  <section class="dashboard-grid">
+    @for (stat of data.mainStats; track stat.label) {
+      <a [routerLink]="stat.route" class="metric-card" [class]="stat.severity">
+        <span class="metric-icon"><app-icon [name]="stat.icon" /></span>
+        <span>{{ stat.label }}</span>
+        <strong>{{ stat.value }}</strong>
+        <small>{{ stat.helper }}</small>
+      </a>
+    }
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-title">
+      <h2>RH & Contrats</h2>
+      <p>Effectif, contrats et sorties à surveiller.</p>
+    </div>
+    <div class="mini-grid">
+      <a routerLink="/admin/employees" class="mini-card success"><span>Employés actifs</span><strong>{{ data.activeEmployeesCount }}</strong><small>{{ data.newEmployeesThisMonth }} nouveau(x) ce mois</small></a>
+      <a routerLink="/admin/contracts/monitoring" class="mini-card warning"><span>Contrats expirant bientôt</span><strong>{{ data.expiringSoonContractsCount }}</strong><small>30 prochains jours</small></a>
+      <a routerLink="/admin/contracts/monitoring" class="mini-card danger"><span>Contrats expirés</span><strong>{{ data.expiredContractsCount }}</strong><small>Action RH requise</small></a>
+      <a routerLink="/admin/contracts/monitoring" class="mini-card danger"><span>Documents manquants</span><strong>{{ data.contractsMissingDocumentCount }}</strong><small>Contrats sans PDF signé</small></a>
+      <a routerLink="/admin/employee-exits" class="mini-card warning"><span>Sorties programmées</span><strong>{{ data.scheduledExitsCount }}</strong><small>Départs à suivre</small></a>
+    </div>
+  </section>
+
+  <section class="dashboard-section two-columns">
+    <article class="panel">
+      <div class="section-title">
+        <h2>Temps & Absences</h2>
+        <p>Situation opérationnelle du jour.</p>
+      </div>
+      <div class="status-list">
+        <a routerLink="/admin/attendance"><span>Présents aujourd’hui</span><strong>{{ data.presentTodayCount }}</strong></a>
+        <a routerLink="/admin/attendance"><span>En retard</span><strong>{{ data.lateTodayCount }}</strong></a>
+        <a routerLink="/admin/leave-calendar"><span>En congé</span><strong>{{ data.employeesOnLeaveToday }}</strong></a>
+        <a routerLink="/admin/attendance"><span>Pointages incomplets</span><strong>{{ data.incompleteAttendanceTodayCount }}</strong></a>
+        <a routerLink="/admin/leave-requests"><span>Demandes à revoir</span><strong>{{ data.leaveRequestsToReviewCount }}</strong></a>
+        <a routerLink="/admin/attendance"><span>Heures sup. ce mois</span><strong>{{ data.totalOvertimeMinutesThisMonth }} min</strong></a>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="section-title">
+        <h2>Paie</h2>
+        <p>Préparation et finalisation du mois courant.</p>
+      </div>
+      <div class="status-list">
+        <a routerLink="/admin/payroll-variables"><span>Variables à valider</span><strong>{{ data.draftPayrollVariablesThisMonth }}</strong></a>
+        <a routerLink="/admin/payroll-variables"><span>Variables validées</span><strong>{{ data.validatedPayrollVariablesThisMonth }}</strong></a>
+        <a routerLink="/admin/payroll-calculations"><span>Calculs brouillon</span><strong>{{ data.draftPayrollCalculationsThisMonth }}</strong></a>
+        <a routerLink="/admin/payroll-calculations"><span>Paies finalisées</span><strong>{{ data.finalizedPayrollCalculationsThisMonth }}</strong></a>
+        <a routerLink="/admin/payslips"><span>Bulletins générés</span><strong>{{ data.generatedPayslipsThisMonth }}</strong></a>
+        <a routerLink="/admin/payroll-calculations"><span>Masse brute</span><strong>{{ data.totalGrossPayrollThisMonth | number: '1.2-2' }}</strong></a>
+      </div>
+    </article>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-title">
+      <h2>Alertes</h2>
+      <p>Points qui nécessitent une action RH avant la clôture mensuelle.</p>
+    </div>
+    <div class="alerts-panel">
+      @for (alert of visibleAlerts(data.alerts); track alert.type) {
+        <a [routerLink]="alert.route" class="alert-row" [class]="alert.severity">
+          <div>
+            <span>{{ alert.title }}</span>
+            <p>{{ alert.message }}</p>
+          </div>
+          <strong>{{ alert.count }}</strong>
+          <em>{{ alert.actionLabel }}</em>
+        </a>
+      } @empty {
+        <div class="empty-state">
+          <strong>Aucune alerte critique</strong>
+          <p>Les principaux contrôles RH et paie sont à jour.</p>
+        </div>
+      }
+    </div>
+  </section>
+}

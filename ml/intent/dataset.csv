@@ -1,0 +1,1281 @@
+text,intent
+What questions can you answer,OUT_OF_SCOPE
+Il me reste combien de congés ?,LEAVE_BALANCE
+Montre le calendrier RH,LEAVE_CALENDAR
+solde annuel,LEAVE_BALANCE
+etapes pour preparer le mois de paie,FAQ_PAYROLL
+Qui quitte l'entreprise bientôt,EXIT_SUMMARY
+nombre de congés EN_ATTENTE,PENDING_LEAVES
+Tell me more about the background of your company's founders,OUT_OF_SCOPE
+Quels sont les avantages de vacances ?,FAQ_LEAVE
+Job search assistance,OUT_OF_SCOPE
+Where can I leave my information,OUT_OF_SCOPE
+où récupérer mes documents de sortie,MY_EXIT_DOCUMENTS
+calendrier leave,LEAVE_CALENDAR
+File d'attente des absences,PENDING_LEAVES
+présence du jour Ali,MY_ATTENDANCE
+Can you prove you're not a bot?,OUT_OF_SCOPE
+Brouillons de paie,PAYROLL_STATUS
+Je veux poser une journée de congé,CREATE_LEAVE_REQUEST
+Quel film voir ce soir,OUT_OF_SCOPE
+Valide 1 2,REVIEW_LEAVE_BATCH
+Family leave policy,FAQ_LEAVE
+heures sup comment c'est calculé,FAQ_ATTENDANCE
+Are sick days and vacation days separate in the PTO policy?,FAQ_LEAVE
+Congé payé,FAQ_LEAVE
+Comment l'entreprise soutient-elle les employés à distance ?,FAQ_LEAVE
+Liste de mes absences,MY_LEAVE_REQUESTS
+How much can I make working for you company?,FAQ_PAYROLL
+Contrats expirés,EXPIRING_CONTRACTS
+Do you provide working visa?,FAQ_PAYROLL
+mon contrat RH Paie,MY_CONTRACTS
+combien de demandes pending,PENDING_LEAVES
+Suivi de mes congés,MY_LEAVE_REQUESTS
+ai-je un contrat actif,MY_CONTRACTS
+Pouvez-vous m'en dire plus sur vos avantages,FAQ_PAYROLL
+période d'essai de mon contrat,MY_CONTRACTS
+Est-ce que j'ai pointé,MY_ATTENDANCE
+Pouvez-vous travailler dans n'importe quel bureau ?,FAQ_LEAVE
+paie encore en DRAFT ?,PAYROLL_STATUS
+CDD qui se terminent,EXPIRING_CONTRACTS
+President of the company,OUT_OF_SCOPE
+net figurant sur mon bulletin,MY_PAYSLIPS
+pièces visibles à mon départ,MY_EXIT_DOCUMENTS
+où est mon historique de salaire,MY_SALARIES
+combien de départs SCHEDULED,EXIT_SUMMARY
+Quelles sont les fourchettes salariales pour les différents postes ?,FAQ_PAYROLL
+Date de fin de mon contrat,MY_CONTRACTS
+j'ai une demande pending ?,MY_LEAVE_REQUESTS
+Pointage du jour,MY_ATTENDANCE
+affiche mon contrat en cours,MY_CONTRACTS
+échéance dans moins de 30 jours,EXPIRING_CONTRACTS
+Quel temps fait-il,OUT_OF_SCOPE
+Pouvez-vous me parler de la structure des bonus ?,FAQ_PAYROLL
+Comment faire un check-in,FAQ_ATTENDANCE
+dashboard statut paie,PAYROLL_STATUS
+Paid time off,FAQ_LEAVE
+How do you handle diversity?,OUT_OF_SCOPE
+documents manquants sur contrats,EXPIRING_CONTRACTS
+Comment l'entreprise gère-t-elle les congés payés ?,FAQ_LEAVE
+L'entreprise autorise-t-elle le travail à distance ?,FAQ_LEAVE
+What are the functions of the company teams?,OUT_OF_SCOPE
+I want to learn about company benefits,FAQ_PAYROLL
+Suivi des contrats,EXPIRING_CONTRACTS
+Où sont mes documents de sortie ?,MY_EXIT_DOCUMENTS
+Monitoring contrats,EXPIRING_CONTRACTS
+Sorties d'employés à venir,EXIT_SUMMARY
+How long is maternity leave?,FAQ_LEAVE
+Pose un congé payé du 2026-10-20 au 2026-10-21,CREATE_LEAVE_REQUEST
+mes documents employee exit,MY_EXIT_DOCUMENTS
+"The job post does not include a salary, how much is it?",FAQ_PAYROLL
+What are your salary ranges?,FAQ_PAYROLL
+télécharger solde de tout compte,MY_EXIT_DOCUMENTS
+où cliquer pour mon bulletin,MY_PAYSLIPS
+Do you allow flexible working?,FAQ_LEAVE
+Parlez-moi de la politique de télétravail,FAQ_LEAVE
+où sont les calculs de salaire,FAQ_PAYROLL
+c'est quoi mon solde actuel de congé,LEAVE_BALANCE
+ouvre mes payslips,MY_PAYSLIPS
+Do applicants need to submit a portfolio?,OUT_OF_SCOPE
+Maternity leave policy,FAQ_LEAVE
+Who is responsible for strategic direction?,OUT_OF_SCOPE
+Pouvez-vous me parler de la politique de congés rémunérés de l'entreprise ?,FAQ_LEAVE
+When was your company founded?,OUT_OF_SCOPE
+Comment la productivité est-elle mesurée pour le travail à distance ?,FAQ_LEAVE
+liste admin des départs,EXIT_SUMMARY
+Offrez-vous un soutien ou des ressources aux nouveaux parents pendant leur congé ?,FAQ_LEAVE
+What values does the company prioritize?,OUT_OF_SCOPE
+combien de congés me restent au compteur,LEAVE_BALANCE
+That's all,OUT_OF_SCOPE
+What is the starting salary?,FAQ_PAYROLL
+mon type de contrat actuel,MY_CONTRACTS
+Can you explain how paid time off accrues?,FAQ_LEAVE
+Do you have a nickname?,OUT_OF_SCOPE
+Are there any amenities available in the office?,OUT_OF_SCOPE
+L'entreprise propose-t-elle des options de travail à distance ?,FAQ_LEAVE
+totaux net brut du mois,PAYROLL_STATUS
+Quels outils et technologies sont fournis pour soutenir le travail à distance ?,FAQ_LEAVE
+Créer demande congé payé 2 jours,CREATE_LEAVE_REQUEST
+Annule ma demande en attente,CANCEL_LEAVE_REQUEST
+à quelle heure suis-je arrivé,MY_ATTENDANCE
+contrats qui expirent dans 30 jours,EXPIRING_CONTRACTS
+contrats de travail associés,MY_CONTRACTS
+Can you provide details on parental leave?,FAQ_LEAVE
+Quel est le salaire de base de l'ingénieur AQ ?,FAQ_PAYROLL
+Suivi des employee exits,EXIT_SUMMARY
+salaire net disponible ?,MY_SALARIES
+Book a leave request for tomorrow,CREATE_LEAVE_REQUEST
+Les employés peuvent-ils travailler à distance ?,FAQ_LEAVE
+mon brut et mon net,MY_SALARIES
+Annuler la demande 33,CANCEL_LEAVE_REQUEST
+détails de mon engagement,MY_CONTRACTS
+mes absences sur le planning,LEAVE_CALENDAR
+Can you tell me about these positions salaries?,FAQ_PAYROLL
+Supprimer ma demande en attente,CANCEL_LEAVE_REQUEST
+Je veux en savoir plus sur les avantages de l'entreprise,FAQ_PAYROLL
+S'agit-il d'une position éloignée ?,FAQ_LEAVE
+Historique de mes demandes,MY_LEAVE_REQUESTS
+Congés payés,FAQ_LEAVE
+Le congé parental est-il payé ?,FAQ_LEAVE
+il me reste combien de CP ?,LEAVE_BALANCE
+Can you provide examples of how PTO is calculated?,FAQ_LEAVE
+Solde de congés s'il te plaît,LEAVE_BALANCE
+mon contrat freelance,MY_CONTRACTS
+primes sur mon salaire,MY_SALARIES
+contrats à renouveler,EXPIRING_CONTRACTS
+Synthèse des sorties,EXIT_SUMMARY
+Puis-je pointer maintenant,MY_ATTENDANCE
+Totaux de paie du mois,PAYROLL_STATUS
+What does your company aim to become?,OUT_OF_SCOPE
+progress du mois de paie,PAYROLL_STATUS
+quel est mon crédit de congés,LEAVE_BALANCE
+mes calculs de rémunération,MY_SALARIES
+Où est le bouton arrivée,FAQ_ATTENDANCE
+contrats critiques à surveiller,EXPIRING_CONTRACTS
+rémunération mensuelle,MY_SALARIES
+fins de contrat à gérer,EXIT_SUMMARY
+mon salaire sur RH Paie,MY_SALARIES
+Can you provide details about the duration of maternity leave offered?,FAQ_LEAVE
+Politique de congé de paternité,FAQ_LEAVE
+Je veux créer une absence EN_ATTENTE,CREATE_LEAVE_REQUEST
+contrats bientôt terminés,EXPIRING_CONTRACTS
+ai-je une absence en attente,MY_LEAVE_REQUESTS
+Le télétravail est-il envisagé pour tous les postes ?,FAQ_LEAVE
+Pouvez-vous expliquer le processus de demande de télétravail ?,FAQ_LEAVE
+aide pour creer une demande d'absence,FAQ_LEAVE
+espace documents de départ,MY_EXIT_DOCUMENTS
+jours de congé non utilisés,LEAVE_BALANCE
+What powers your functions?,OUT_OF_SCOPE
+Je veux annuler ma demande en attente,CANCEL_LEAVE_REQUEST
+Demandes non validées,PENDING_LEAVES
+Do you possess the ability to comprehend context?,OUT_OF_SCOPE
+liste des PDF de paie,MY_PAYSLIPS
+Comment poser un congé dans l'appli,FAQ_LEAVE
+Parle-moi de tes sentiments,OUT_OF_SCOPE
+Y a-t-il de la place pour la négociation sur le salaire ?,FAQ_PAYROLL
+arrivée enregistrée ?,MY_ATTENDANCE
+How do the company's solutions align with market needs and trends?,OUT_OF_SCOPE
+Existe-t-il des options de congé parental non rémunéré ?,FAQ_LEAVE
+qui est en congé en octobre,LEAVE_CALENDAR
+Joue à un jeu avec moi,OUT_OF_SCOPE
+Greetings from here,OUT_OF_SCOPE
+Valide 1 refuse le reste 2,REVIEW_LEAVE_BATCH
+Mes documents de départ,MY_EXIT_DOCUMENTS
+Je veux un congé du 10 au 12,CREATE_LEAVE_REQUEST
+What´s the salary for that job?,FAQ_PAYROLL
+Pouvez-vous donner des exemples de la façon dont la prise de force est calculée ?,FAQ_LEAVE
+What benefits do you have?,FAQ_PAYROLL
+mon salaire du mois dernier,MY_SALARIES
+Does the company offer training benefits?,FAQ_PAYROLL
+Are there any employee perks?,FAQ_PAYROLL
+Travail à distance.,FAQ_LEAVE
+Y a-t-il des dates d'interdiction pour la prise de congés rémunérés ?,FAQ_LEAVE
+Qui a gagné la CAN,OUT_OF_SCOPE
+Are there any performance-based incentives?,FAQ_PAYROLL
+How often are employees required to be in the office?,FAQ_LEAVE
+Are there unpaid parental leave options?,FAQ_LEAVE
+Annuler mon congé demain,CANCEL_LEAVE_REQUEST
+Are there any internship opportunities?,OUT_OF_SCOPE
+Can you assist with complex inquiries?,OUT_OF_SCOPE
+How are study days handled?,FAQ_LEAVE
+Paternity leave policy,FAQ_LEAVE
+procedure complete du pointage,FAQ_ATTENDANCE
+How many salary adjustments are done every year?,FAQ_PAYROLL
+Why should I consider joining your company?,OUT_OF_SCOPE
+Contrat actuel,MY_CONTRACTS
+What are the salary bands for various positions?,FAQ_PAYROLL
+What are the expectations for remote work productivity?,FAQ_LEAVE
+Comment l'entreprise gère-t-elle les congés rémunérés pour les employés à temps partiel ?,FAQ_LEAVE
+What are [company_name]'s benefits?,FAQ_PAYROLL
+montre les absences à venir,LEAVE_CALENDAR
+Can you please tell me about the benefits you offer?,FAQ_PAYROLL
+Quelles sont vos fourchettes salariales ?,FAQ_PAYROLL
+How much can I anticipate my salary increasing annually with a strong performance?,FAQ_PAYROLL
+Je souhaite annuler ma demande,CANCEL_LEAVE_REQUEST
+Y a-t-il une période d'attente avant que les employés puissent prendre un congé de maternité ou de paternité ?,FAQ_LEAVE
+Mon check-out,MY_ATTENDANCE
+il m reste des congés ?,LEAVE_BALANCE
+fin de contrat proche,EXPIRING_CONTRACTS
+Mes salaires,MY_SALARIES
+Annuler demande n°12,CANCEL_LEAVE_REQUEST
+Statut de présence du jour,MY_ATTENDANCE
+les Jours de congés,FAQ_LEAVE
+synthèse des congés en attente,PENDING_LEAVES
+Seriously?,OUT_OF_SCOPE
+Résumé de la paie,PAYROLL_STATUS
+Combien font 12 fois 8,OUT_OF_SCOPE
+Are your salaries competitive in the market?,FAQ_PAYROLL
+Quelle est la fourchette salariale ?,FAQ_PAYROLL
+détail salarial employé,MY_SALARIES
+Refuse 1 et 2,REVIEW_LEAVE_BATCH
+What's your purpose?,OUT_OF_SCOPE
+Salaire pour ce poste,FAQ_PAYROLL
+avancement finalisation,PAYROLL_STATUS
+vue calendrier congés 2026,LEAVE_CALENDAR
+calculs FINALIZED pour moi,MY_SALARIES
+Absences prévues en septembre,LEAVE_CALENDAR
+Avez-vous des positions entièrement distantes ?,FAQ_LEAVE
+Puis-je choisir où travailler ?,FAQ_LEAVE
+Crée un congé pour tout le monde,OUT_OF_SCOPE
+check in check out du jour,MY_ATTENDANCE
+Do you offer any benefit to your employees?,FAQ_PAYROLL
+Tell me about it,OUT_OF_SCOPE
+Pending leave requests,PENDING_LEAVES
+Planning des congés du mois,LEAVE_CALENDAR
+Guide du pointage,FAQ_ATTENDANCE
+Do you allow remote work?,FAQ_LEAVE
+Quelles absences ce mois-ci,LEAVE_CALENDAR
+How far in advance do employees need to request PTO?,FAQ_LEAVE
+Je veux poser un congé,CREATE_LEAVE_REQUEST
+Les congés,FAQ_LEAVE
+Les jours de maladie et les jours de vacances sont-ils séparés dans la politique de congés rémunérés ?,FAQ_LEAVE
+Pouvez-vous décrire ces avantages ?,FAQ_PAYROLL
+Je veux un congé payé demain motif vacances,CREATE_LEAVE_REQUEST
+Y a-t-il des congés à approuver,PENDING_LEAVES
+Can you give me a salary range?,FAQ_PAYROLL
+How many employees work at this company?,OUT_OF_SCOPE
+Can you tell me about the company's teams?,OUT_OF_SCOPE
+solde congé 2026,LEAVE_BALANCE
+contrats à risque d'expiration,EXPIRING_CONTRACTS
+Télécharger ma fiche de paie,MY_PAYSLIPS
+où en est mon pointage,MY_ATTENDANCE
+qui pose une absence bientôt,LEAVE_CALENDAR
+"Tell me the benefits, please",FAQ_PAYROLL
+Je veux un congé du lundi au mardi,CREATE_LEAVE_REQUEST
+Reject 3,REVIEW_LEAVE_BATCH
+Quel est mon pointage aujourd'hui ?,MY_ATTENDANCE
+solde tout compte PDF,MY_EXIT_DOCUMENTS
+What kind of diversity actions does the company take?,OUT_OF_SCOPE
+Do you have remote and work from home policies?,FAQ_LEAVE
+tableau sorties d'entreprise,EXIT_SUMMARY
+je peux encore prendre des congés ?,LEAVE_BALANCE
+Quelle est la rémunération pour ce rôle ?,FAQ_PAYROLL
+mes bulletins 2026,MY_PAYSLIPS
+Montre-moi mes jours restants,LEAVE_BALANCE
+Quel est le salaire pour ce poste,FAQ_PAYROLL
+Is there a PTO policy?,FAQ_LEAVE
+Annule mon congé payé,CANCEL_LEAVE_REQUEST
+combien de dossiers de sortie,EXIT_SUMMARY
+Can you clarify the process for scheduling PTO?,FAQ_LEAVE
+où en sont les calculs RH,PAYROLL_STATUS
+présence et retard du jour,MY_ATTENDANCE
+combien de jours me restent,LEAVE_BALANCE
+What is the average salary for a QA,FAQ_PAYROLL
+Tell me about remote work policy,FAQ_LEAVE
+Quels sont les avantages pour les nouveaux pères ?,FAQ_LEAVE
+What amenities does the office have?,OUT_OF_SCOPE
+How is productivity measured for remote work?,FAQ_LEAVE
+Does the company allow remote work?,FAQ_LEAVE
+backlog des congés,PENDING_LEAVES
+liste monitoring contracts,EXPIRING_CONTRACTS
+What does a day in the life of an employee look like?,OUT_OF_SCOPE
+Combien de jours de congé me reste-t-il ?,LEAVE_BALANCE
+y a-t-il du pending leave,PENDING_LEAVES
+What is the salary range for QA engineer?,FAQ_PAYROLL
+où est le calendrier des absences,FAQ_LEAVE
+Mon CDI est où,MY_CONTRACTS
+Proposez-vous des congés familiaux ?,FAQ_LEAVE
+Il me reste des jours ou pas ?,LEAVE_BALANCE
+échéance CDD équipe,EXPIRING_CONTRACTS
+qui arrive en fin de CDD,EXPIRING_CONTRACTS
+Payroll status,PAYROLL_STATUS
+combien de jours me restent à poser,LEAVE_BALANCE
+stock de congés en attente,PENDING_LEAVES
+Cancel,OUT_OF_SCOPE
+What is the company's maternity leave policy?,FAQ_LEAVE
+solde de congés année dernière,LEAVE_BALANCE
+Y a-t'il d'autres avantages ?,FAQ_PAYROLL
+Je ne veux plus cette demande de congé,CANCEL_LEAVE_REQUEST
+Can I carry over unused vacation days to the next year?,FAQ_LEAVE
+statut CONTRACT actif,MY_CONTRACTS
+Informations sur les congés payés,FAQ_LEAVE
+Combien de fois par semaine dois-je me rendre au bureau ?,FAQ_LEAVE
+What are the compensation benefits?,FAQ_PAYROLL
+Où en est la paie de ce mois ?,PAYROLL_STATUS
+RH comment approuver les absences,FAQ_LEAVE
+How can I change the language of this conversation?,OUT_OF_SCOPE
+mon contrat se termine quand,MY_CONTRACTS
+Tell me about some social experiences in the company,OUT_OF_SCOPE
+Quelles sont les prestations de congé parental ?,FAQ_LEAVE
+What is the salary for this position?,FAQ_PAYROLL
+Mon net du mois,MY_SALARIES
+Are you able to learn from interactions?,OUT_OF_SCOPE
+Are remote work options available?,FAQ_LEAVE
+Back,OUT_OF_SCOPE
+Les positions sont-elles entièrement distantes ou hybrides ?,FAQ_LEAVE
+Lance le calcul de paie maintenant,OUT_OF_SCOPE
+RH m'a déposé des documents de sortie ?,MY_EXIT_DOCUMENTS
+j'ai déposé combien de congés,MY_LEAVE_REQUESTS
+Existe-t-il des exigences spécifiques pour le travail à distance ?,FAQ_LEAVE
+Comment l'admin corrige un pointage,FAQ_ATTENDANCE
+Heure d'arrivée aujourd'hui,MY_ATTENDANCE
+Quelle est votre politique en matière de congés rémunérés ?,FAQ_LEAVE
+Quelles sont les fourchettes salariales pour les postes ?,FAQ_PAYROLL
+Do you have a diversity policy?,OUT_OF_SCOPE
+mes fichiers de sortie,MY_EXIT_DOCUMENTS
+"Accepte 1, 2 et 3 refuse 4",REVIEW_LEAVE_BATCH
+Quels sont mes contrats ?,MY_CONTRACTS
+mon badgeage du jour,MY_ATTENDANCE
+Quelle est la politique de l'entreprise en matière de congé de maternité ?,FAQ_LEAVE
+Je retire ma demande de congé,CANCEL_LEAVE_REQUEST
+combien j'ai encore comme congés,LEAVE_BALANCE
+Existe-t-il des options pour les nouveaux parents ?,FAQ_LEAVE
+c'est quoi mon reliquat de congé,LEAVE_BALANCE
+Offrez-vous des avantages à vos employés ?,FAQ_PAYROLL
+certificat de travail RH,MY_EXIT_DOCUMENTS
+explique le cycle de paie,FAQ_PAYROLL
+Comment le salaire est-il déterminé ?,FAQ_PAYROLL
+combien en attente de validation,PENDING_LEAVES
+Salary for this job,FAQ_PAYROLL
+How can I enhance my skills for career advancement?,OUT_OF_SCOPE
+Je veux créer une demande de congé,CREATE_LEAVE_REQUEST
+voir le détail de mon contrat,MY_CONTRACTS
+Quelles sont les opportunités de revenus ?,FAQ_PAYROLL
+Reset,OUT_OF_SCOPE
+Dernier salaire net,MY_SALARIES
+statut de ma dernière demande,MY_LEAVE_REQUESTS
+liste des contrats expirés,EXPIRING_CONTRACTS
+Does the company support hybrid work models?,FAQ_LEAVE
+Combien de jours de vacances sont disponibles ?,FAQ_LEAVE
+Comment pointer,FAQ_ATTENDANCE
+Qui a un contrat qui finit ce mois,EXPIRING_CONTRACTS
+Qui pose des congés bientôt,LEAVE_CALENDAR
+sorties à venir sous 30 jours,EXIT_SUMMARY
+What benefits does the company offer?,FAQ_PAYROLL
+historique de mes nets,MY_SALARIES
+Find me a job,OUT_OF_SCOPE
+mon bulletin est-il prêt,MY_PAYSLIPS
+Bénéfices pour l&apos;entreprise,FAQ_PAYROLL
+Hello! What does [company_name] do?,OUT_OF_SCOPE
+What's the approval process for PTO requests?,FAQ_LEAVE
+contrats expirant bientôt,EXPIRING_CONTRACTS
+ai-je pointé ce matin,MY_ATTENDANCE
+Can you explain the roles of each team?,OUT_OF_SCOPE
+Je veux poser un CP demain,CREATE_LEAVE_REQUEST
+Comment créer un bulletin PDF,FAQ_PAYROLL
+Create a leave request from 2026-11-01 to 2026-11-02,CREATE_LEAVE_REQUEST
+Départs programmés ce mois,EXIT_SUMMARY
+je suis en retard ?,MY_ATTENDANCE
+Expliquez-moi les versements,FAQ_PAYROLL
+How can I gain more experience in my field?,OUT_OF_SCOPE
+Solde de tout compte,MY_EXIT_DOCUMENTS
+Quelles sont les politiques en matière de congés payés ?,FAQ_LEAVE
+How many vacation days does the company have?,FAQ_LEAVE
+How would I experience that culture as an employee?,OUT_OF_SCOPE
+Ces postes permettent-ils un travail à distance complet ?,FAQ_LEAVE
+Dont accept 4,REVIEW_LEAVE_BATCH
+I changed my mind,OUT_OF_SCOPE
+ai-je des validations en retard,PENDING_LEAVES
+Mon contrat de travail,MY_CONTRACTS
+Pouvez-vous fournir des détails sur la durée du congé de maternité offert ?,FAQ_LEAVE
+qui quitte ce mois,EXIT_SUMMARY
+What's your emotional state?,OUT_OF_SCOPE
+reliquat congés payés,LEAVE_BALANCE
+Are sick days included in the PTO policy?,FAQ_LEAVE
+Calcul salarial pour moi,MY_SALARIES
+Je veux mon payslip,MY_PAYSLIPS
+What is the remote work policy?,FAQ_LEAVE
+absences du service,LEAVE_CALENDAR
+Attestation de travail,MY_EXIT_DOCUMENTS
+Can you tell me about the company's PTO policy?,FAQ_LEAVE
+Paiement,FAQ_PAYROLL
+documents visibles employé sortie,MY_EXIT_DOCUMENTS
+That's okay,OUT_OF_SCOPE
+Quels emplois à distance avez-vous ?,FAQ_LEAVE
+How many global offices does your company have?,OUT_OF_SCOPE
+Approve 1 and 2,REVIEW_LEAVE_BATCH
+planning absences équipe,LEAVE_CALENDAR
+Étapes pour une demande de congé,FAQ_LEAVE
+attestation employeur,MY_EXIT_DOCUMENTS
+Je souhaite déposer une demande de congé,CREATE_LEAVE_REQUEST
+suivi des fins de contrat,EXPIRING_CONTRACTS
+Could you provide insights into the salary structure?,FAQ_PAYROLL
+What is included in the employee benefits package?,FAQ_PAYROLL
+Pourriez-vous expliquer le processus de transition vers le télétravail ?,FAQ_LEAVE
+il me reste  combien  de jours ?,LEAVE_BALANCE
+Faut-il un justificatif,FAQ_LEAVE
+What are the retirement benefits?,FAQ_PAYROLL
+y a-t-il un nouveau bulletin,MY_PAYSLIPS
+Does [company_name] offer work from home options?,FAQ_LEAVE
+Could you give me an overview of the company's culture?,OUT_OF_SCOPE
+combien j'ai été payé en mars,MY_SALARIES
+est-ce que je suis en retard,MY_ATTENDANCE
+affiche mon dernier bulletin,MY_PAYSLIPS
+Aide-moi à créer une demande de congé,CREATE_LEAVE_REQUEST
+Existe-t-il des postes éloignés ?,FAQ_LEAVE
+comment refuser une demande,FAQ_LEAVE
+Vacation days left,LEAVE_BALANCE
+Are the positions full remote or hybrid?,FAQ_LEAVE
+CDD à renouveler ce mois,EXPIRING_CONTRACTS
+Où télécharger les bulletins en tant qu'admin,FAQ_PAYROLL
+Combien de jours de vacances l'entreprise a-t-elle ?,FAQ_LEAVE
+employee exit summary,EXIT_SUMMARY
+J'ai combien de demandes en attente,MY_LEAVE_REQUESTS
+fins de contrat à venir,EXPIRING_CONTRACTS
+calendrier des congés admin,LEAVE_CALENDAR
+Pouvez-vous me parler des politiques de vacances ?,FAQ_LEAVE
+How can I apply for a job?,OUT_OF_SCOPE
+absences planifiées ce mois,LEAVE_CALENDAR
+Can you tell me about the company's benefits?,FAQ_PAYROLL
+I'm becoming frustrated.,OUT_OF_SCOPE
+What are the benefits for new fathers?,FAQ_LEAVE
+Pouvez-vous me parler des avantages de travailler ici ?,FAQ_PAYROLL
+What tools and technology are provided to support remote work?,FAQ_LEAVE
+temps de travail aujourd'hui,MY_ATTENDANCE
+Can you provide information on the company's holiday and PTO calendar?,FAQ_LEAVE
+Avez-vous des informations sur les salaires ou les indemnités ?,FAQ_PAYROLL
+Salaire offert/Salaire proposé,FAQ_PAYROLL
+départs DRAFT à finaliser,EXIT_SUMMARY
+What learning opportunities exist?,OUT_OF_SCOPE
+Give me an example of what you can do,OUT_OF_SCOPE
+Combien de congés en attente ?,PENDING_LEAVES
+Offboarding en attente,EXIT_SUMMARY
+Thanks a lot,OUT_OF_SCOPE
+What is the company's remote work policy?,FAQ_LEAVE
+Can you provide examples of successful remote work arrangements?,FAQ_LEAVE
+ou cliquer pour une demande de conge,FAQ_LEAVE
+mes absences validées,MY_LEAVE_REQUESTS
+Are any of your offices located in Canada?,OUT_OF_SCOPE
+What are the salary bands for each role?,FAQ_PAYROLL
+Quelles sont mes demandes de congé,MY_LEAVE_REQUESTS
+j'ai fait mon arrivée ?,MY_ATTENDANCE
+la RH a-t-elle traité ma demande,MY_LEAVE_REQUESTS
+Comment est le barème de rémunération dans l'entreprise ?,FAQ_PAYROLL
+Quels sont les avantages de l'entreprise ?,FAQ_PAYROLL
+What are the vacation benefits?,FAQ_LEAVE
+OK pour 1 et 2 refuse 3,REVIEW_LEAVE_BATCH
+What is the work from home policy here?,FAQ_LEAVE
+Can you provide details on the salary package?,FAQ_PAYROLL
+mon attendance today,MY_ATTENDANCE
+Are there health benefits?,FAQ_PAYROLL
+"Hi, what is your mission?",OUT_OF_SCOPE
+Montre mes leave requests,MY_LEAVE_REQUESTS
+Do you offer family leave?,FAQ_LEAVE
+Pouvez-vous fournir des informations sur le calendrier des congés et des congés rémunérés de l'entreprise ?,FAQ_LEAVE
+ai-je déjà pointé,MY_ATTENDANCE
+Fournissez-vous un visa de travail ?,FAQ_PAYROLL
+Annule la demande du 20 au 21,CANCEL_LEAVE_REQUEST
+Guide de la paie,FAQ_PAYROLL
+Quelles sont les attentes salariales ?,FAQ_PAYROLL
+la paie est-elle terminée,PAYROLL_STATUS
+Fournissez-vous des options de congé parental non rémunéré ?,FAQ_LEAVE
+présence aujourd'hui,MY_ATTENDANCE
+affiche mon dernier salaire,MY_SALARIES
+Donne-moi une recette de couscous,OUT_OF_SCOPE
+Annuler ma demande d'absence,CANCEL_LEAVE_REQUEST
+Can you explain maternity leave benefits?,FAQ_LEAVE
+"Come on, figure it out.",OUT_OF_SCOPE
+Can you tell me about the company's vision statement?,OUT_OF_SCOPE
+Are you feeling cheerful?,OUT_OF_SCOPE
+paie du mois close ?,PAYROLL_STATUS
+renouvellement contrats à faire,EXPIRING_CONTRACTS
+What are the paid time off policies?,FAQ_LEAVE
+Créer leave request demain,CREATE_LEAVE_REQUEST
+Pouvez-vous me parler des salaires ?,FAQ_PAYROLL
+Avantages,FAQ_PAYROLL
+Fourchette salariale de l',FAQ_PAYROLL
+dis-moi mon solde de congés,LEAVE_BALANCE
+Où trouver mes fiches de salaire,MY_PAYSLIPS
+Retirer mon absence en attente,CANCEL_LEAVE_REQUEST
+I really appreciate your assistance,OUT_OF_SCOPE
+Guide des congés,FAQ_LEAVE
+Historique de mes salaires,MY_SALARIES
+Existe-t-il des politiques spécifiques concernant les heures de travail à distance ?,FAQ_LEAVE
+papiers de clôture,MY_EXIT_DOCUMENTS
+Transfer me to a human representative,OUT_OF_SCOPE
+pièces de clôture de dossier,MY_EXIT_DOCUMENTS
+Quelle est la fourchette salariale pour l'ingénieur AQ ?,FAQ_PAYROLL
+Quel est le salaire moyen pour une AQ,FAQ_PAYROLL
+sortie du soir comment enregistrer,FAQ_ATTENDANCE
+Annuler leave request,CANCEL_LEAVE_REQUEST
+What is the company culture like?,OUT_OF_SCOPE
+L'entreprise offre-t-elle des avantages en matière de formation ?,FAQ_PAYROLL
+Combien de jours de vacances proposez-vous ?,FAQ_LEAVE
+Quel est le salaire pour ce poste ?,FAQ_PAYROLL
+télécharger mon dernier bulletin PDF,MY_PAYSLIPS
+y a-t-il des absences cette semaine,LEAVE_CALENDAR
+état du calcul salarial,PAYROLL_STATUS
+N accepte pas la 4,REVIEW_LEAVE_BATCH
+Quelles sont les conditions d’admission?,FAQ_LEAVE
+à valider côté congés,PENDING_LEAVES
+quel est le taux horaire?,FAQ_PAYROLL
+qui part bientôt de l'entreprise,EXIT_SUMMARY
+où voir l'historique de présence,FAQ_ATTENDANCE
+This is frustrating.,OUT_OF_SCOPE
+Ouvre une demande de congé,CREATE_LEAVE_REQUEST
+Les avantages sont-ils disponibles pour tous les employés ?,FAQ_PAYROLL
+statut payroll ce mois,PAYROLL_STATUS
+résumé pending leaves,PENDING_LEAVES
+heure de sortie prévue,MY_ATTENDANCE
+combien de contrats à échéance,EXPIRING_CONTRACTS
+Is the work environment flexible?,OUT_OF_SCOPE
+combien finalisés vs brouillons,PAYROLL_STATUS
+Are there any benefits or pay during maternity or paternity leave?,FAQ_LEAVE
+Comment le salaire se compare-t-il aux normes de l'industrie ?,FAQ_PAYROLL
+Can you tell me the salary range for a Machine Learning Engineer role?,FAQ_PAYROLL
+Nice :),OUT_OF_SCOPE
+montre l'état de mes demandes,MY_LEAVE_REQUESTS
+Combien de journées de vacances me reste-t-il?,FAQ_LEAVE
+Is any of those a remote position?,FAQ_LEAVE
+processus de sortie en cours,EXIT_SUMMARY
+Rejette 2 motif trop court,REVIEW_LEAVE_BATCH
+"Hi, how many vacation days do employees have?",FAQ_LEAVE
+Autorisez-vous le travail à distance ?,FAQ_LEAVE
+Pourriez-vous expliquer la politique de télétravail de l'entreprise ?,FAQ_LEAVE
+mes congés refusés,MY_LEAVE_REQUESTS
+Quelle est la politique de travail à domicile ici ?,FAQ_LEAVE
+statut des calculs salariaux,PAYROLL_STATUS
+Y a-t-il une limite maximale pour les congés rémunérés accumulés ?,FAQ_LEAVE
+What is the hourly rate?,FAQ_PAYROLL
+mes demandes rejetées cette année,MY_LEAVE_REQUESTS
+combien de sorties planifiées,EXIT_SUMMARY
+où ouvrir mes contrats,MY_CONTRACTS
+Ok what is the salary of this position?,FAQ_PAYROLL
+mes congés sur le calendrier,LEAVE_CALENDAR
+Can you tell me about employee benefits?,FAQ_PAYROLL
+How many employees does your company have,OUT_OF_SCOPE
+Nouveau congé du 20/10/2026 au 21/10/2026,CREATE_LEAVE_REQUEST
+puis-je sortir pointer,MY_ATTENDANCE
+Pouvez-vous expliquer la politique de congé d'adoption ?,FAQ_LEAVE
+Does your company offer remote working?,FAQ_LEAVE
+ai-je fait mon check-out,MY_ATTENDANCE
+Congés pending,PENDING_LEAVES
+suivi échéances RH,EXPIRING_CONTRACTS
+document contrat disponible,MY_CONTRACTS
+Can you explain the decision-making process within team structures?,OUT_OF_SCOPE
+Pouvez-vous expliquer comment les congés payés s'accumulent ?,FAQ_LEAVE
+What remote jobs do you have?,FAQ_LEAVE
+Are there specific policies regarding remote work hours?,FAQ_LEAVE
+planning congés du trimestre,LEAVE_CALENDAR
+détail pointage journée,MY_ATTENDANCE
+How does the paternity leave policy work at this company?,FAQ_LEAVE
+ne pointe pas a ma place,FAQ_ATTENDANCE
+What steps does the company take to promote equity?,OUT_OF_SCOPE
+Salary compensation,FAQ_PAYROLL
+voir toutes mes demandes de congé,MY_LEAVE_REQUESTS
+mon overtime aujourd'hui,MY_ATTENDANCE
+What internal programs do you offer?,FAQ_PAYROLL
+Pouvez-vous expliquer le paquet d'avantages ?,FAQ_PAYROLL
+Approuve toutes les demandes,OUT_OF_SCOPE
+résumé calculs de salaire,PAYROLL_STATUS
+Where are your company's offices located?,OUT_OF_SCOPE
+Où télécharger mon bulletin ?,MY_PAYSLIPS
+Supprime ma demande de congé,CANCEL_LEAVE_REQUEST
+What else can you tell me about your company,OUT_OF_SCOPE
+Puis-je joindre un PDF à ma demande,FAQ_LEAVE
+Quels programmes internes proposez-vous ?,FAQ_PAYROLL
+récupérer ma fiche de paie,MY_PAYSLIPS
+Processus de sortie RH,EXIT_SUMMARY
+PDF de paie,MY_PAYSLIPS
+Vos salaires sont-ils compétitifs sur le marché ?,FAQ_PAYROLL
+résumé des départs employés,EXIT_SUMMARY
+mon pointage svp,MY_ATTENDANCE
+retard comment ça se voit,FAQ_ATTENDANCE
+Start over,OUT_OF_SCOPE
+Procédure de demande d'absence,FAQ_LEAVE
+I'd like to hear more about the benefits you offer,FAQ_PAYROLL
+Votre entreprise propose-t-elle du télétravail ?,FAQ_LEAVE
+récupérer mon certificat,MY_EXIT_DOCUMENTS
+certificat de travail disponible,MY_EXIT_DOCUMENTS
+Pouvez-vous donner des exemples d'arrangements de travail à distance réussis ?,FAQ_LEAVE
+How does the company handle remote work?,FAQ_LEAVE
+état d'avancement de mes absences,MY_LEAVE_REQUESTS
+combien d'exits à venir,EXIT_SUMMARY
+indemnité compensatrice de traitement,FAQ_PAYROLL
+Démissions et fins de contrat,EXIT_SUMMARY
+Mes demandes en cours,MY_LEAVE_REQUESTS
+Do you offer any support or resources for new parents during their leave?,FAQ_LEAVE
+What is the pay scale for this position?,FAQ_PAYROLL
+Bot languages,OUT_OF_SCOPE
+Approve items 1 and 3,REVIEW_LEAVE_BATCH
+How much does the job pay?,FAQ_PAYROLL
+Pouvez-vous me parler des salaires de ces postes ?,FAQ_PAYROLL
+Je veux retirer ma demande,CANCEL_LEAVE_REQUEST
+primes et net ce mois,MY_SALARIES
+contrats liés à mon profil,MY_CONTRACTS
+What do I need to do to apply for that position?,OUT_OF_SCOPE
+apres les variables que faire,FAQ_PAYROLL
+Pose un congé pour vendredi,CREATE_LEAVE_REQUEST
+Comment finaliser la paie,FAQ_PAYROLL
+"Yes, you tell me.",OUT_OF_SCOPE
+Farewell,OUT_OF_SCOPE
+Are there any training or development programs available?,OUT_OF_SCOPE
+"Le travail à distance est-il autorisé et, dans l'affirmative, dans quelles conditions ?",FAQ_LEAVE
+Dans quelle mesure puis-je m'attendre à ce que mon salaire augmente chaque année avec une bonne performance ?,FAQ_PAYROLL
+combien de dossiers congé à valider,PENDING_LEAVES
+Pouvez-vous divulguer le package de rémunération ?,FAQ_PAYROLL
+Volume des demandes en attente,PENDING_LEAVES
+Jours de congé restants,LEAVE_BALANCE
+mes congés approuvés,MY_LEAVE_REQUESTS
+What's your PTO policy,FAQ_LEAVE
+demandes bloquées en attente,PENDING_LEAVES
+How many vacation days do I have?,FAQ_LEAVE
+What initiatives does your organization have in place to foster a positive work culture?,OUT_OF_SCOPE
+Annule la dernière demande,CANCEL_LEAVE_REQUEST
+Pose un congé sans solde la semaine prochaine,CREATE_LEAVE_REQUEST
+Avez-vous des congés de maternité ?,FAQ_LEAVE
+combien de calculs brouillon,PAYROLL_STATUS
+où télécharger la fiche de salaire,MY_PAYSLIPS
+Le travail à distance est-il possible ?,FAQ_LEAVE
+y a-t-il quelqu'un en congé,LEAVE_CALENDAR
+Aide-moi à hacker un compte,OUT_OF_SCOPE
+Retirer ma demande de congé,CANCEL_LEAVE_REQUEST
+heures travaillees comment c'est calcule,FAQ_ATTENDANCE
+What are the parental leave benefits?,FAQ_LEAVE
+L'entreprise propose-t-elle des congés rémunérés ?,FAQ_LEAVE
+offboarding du mois,EXIT_SUMMARY
+Can you tell me about the bonus structure?,FAQ_PAYROLL
+Fais une demande de congé pour lundi,CREATE_LEAVE_REQUEST
+attestation employeur disponible,MY_EXIT_DOCUMENTS
+liste des sorties à venir,EXIT_SUMMARY
+documents manquants échéance,EXPIRING_CONTRACTS
+Dernier bulletin,MY_PAYSLIPS
+Do you have info on salary?,FAQ_PAYROLL
+explique le check-in dans l'application,FAQ_ATTENDANCE
+contrat de travail PDF,MY_CONTRACTS
+Les avantages s'appliquent-ils à tous les sites de l'entreprise ?,FAQ_PAYROLL
+As-tu mon bulletin de mars,MY_PAYSLIPS
+Quels sont les avantages de [company_name] ?,FAQ_PAYROLL
+Comment RH approuve un congé,FAQ_LEAVE
+Quelles sont les attentes en matière de productivité du travail à distance ?,FAQ_LEAVE
+Are there parental leave options?,FAQ_LEAVE
+affiche mon net à payer,MY_SALARIES
+What about salary?,FAQ_PAYROLL
+qui est absent aujourd'hui,LEAVE_CALENDAR
+How many times a week do I need to go to the office?,FAQ_LEAVE
+Holidays,FAQ_LEAVE
+combien vaut mon net,MY_SALARIES
+Is remote job possible?,FAQ_LEAVE
+Benefits,FAQ_PAYROLL
+Company vision,OUT_OF_SCOPE
+Are there any other benefits?,FAQ_PAYROLL
+Quelle est la politique de télétravail ?,FAQ_LEAVE
+Goodbye,OUT_OF_SCOPE
+où en est ma demande du mois,MY_LEAVE_REQUESTS
+mes papiers de départ,MY_EXIT_DOCUMENTS
+Explain to me the payouts,FAQ_PAYROLL
+Is your company considered a startup or an established enterprise?,OUT_OF_SCOPE
+Quel est le salaire le plus élevé que vous offrez ?,FAQ_PAYROLL
+Mon solde actuel,LEAVE_BALANCE
+absences affichées ce mois,LEAVE_CALENDAR
+À quelle fréquence les employés sont-ils tenus d'être au bureau ?,FAQ_LEAVE
+What are the benefits for new mothers?,FAQ_LEAVE
+Do you provide any unpaid parental leave options?,FAQ_LEAVE
+ai-je oublié de pointer,MY_ATTENDANCE
+reste congés Ali,LEAVE_BALANCE
+qui a un contrat qui expire,EXPIRING_CONTRACTS
+ou sont les exports bancaires,FAQ_PAYROLL
+Quels avantages l'entreprise offre-t-elle ?,FAQ_PAYROLL
+Avez-vous des informations sur le salaire ?,FAQ_PAYROLL
+Y a-t-il des avantages pour le bien-être ?,FAQ_PAYROLL
+Où déclarer ma présence,FAQ_ATTENDANCE
+Can you clarify the team structure?,OUT_OF_SCOPE
+Is there a probation period before I can start using my vacation days?,FAQ_LEAVE
+exit documents for me,MY_EXIT_DOCUMENTS
+Can you clarify paternity leave benefits?,FAQ_LEAVE
+comment annuler une demande,FAQ_LEAVE
+Avancement payroll,PAYROLL_STATUS
+Is remote work permitted on a full-time basis?,FAQ_LEAVE
+Les jours de congés rémunérés non utilisés peuvent-ils être reportés à l'année suivante ?,FAQ_LEAVE
+Offrez-vous des postes à distance ?,FAQ_LEAVE
+Quels sont les avantages de la rémunération ?,FAQ_PAYROLL
+Pouvez-vous fournir des détails sur le congé parental ?,FAQ_LEAVE
+file des absences admin,PENDING_LEAVES
+Payment,FAQ_PAYROLL
+What is the salary for this job,FAQ_PAYROLL
+Can you suggest strategies for long-term career planning?,OUT_OF_SCOPE
+What's the salary for Legal Counsel position?,FAQ_PAYROLL
+Peux-tu créer ma demande de congé ?,CREATE_LEAVE_REQUEST
+How does the company ensure an inclusive work environment?,OUT_OF_SCOPE
+mes bulletins de l'année,MY_PAYSLIPS
+I'm certain,OUT_OF_SCOPE
+la paie avance comment,PAYROLL_STATUS
+l'assistant peut-il lancer la paie,FAQ_PAYROLL
+paie du mois en cours,PAYROLL_STATUS
+Can you provide details about [company_name]'s business model?,OUT_OF_SCOPE
+liste de mes documents de sortie,MY_EXIT_DOCUMENTS
+Comment l'entreprise gère-t-elle le travail à distance ?,FAQ_LEAVE
+Montre mes calculs de salaire,MY_SALARIES
+papiers offboarding,MY_EXIT_DOCUMENTS
+How much paid time off do employees receive?,FAQ_LEAVE
+How are the working hours?,FAQ_LEAVE
+qui est off cette semaine,LEAVE_CALENDAR
+I want to know about paternity leave,FAQ_LEAVE
+Comment demander un congé ?,FAQ_LEAVE
+What are the financial benefits?,FAQ_PAYROLL
+liste de mes leave requests,MY_LEAVE_REQUESTS
+I have questions about your capabilities...,OUT_OF_SCOPE
+"Dites-moi les avantages, s'il vous plaît",FAQ_PAYROLL
+mon last salary,MY_SALARIES
+bulletin du mois dernier,MY_PAYSLIPS
+Combien de départs en cours,EXIT_SUMMARY
+salaire sur mon bulletin,MY_PAYSLIPS
+Liste de mes bulletins,MY_PAYSLIPS
+Donne-moi le mot de passe admin,OUT_OF_SCOPE
+détail de mes congés déposés,MY_LEAVE_REQUESTS
+Combien d'ajustements salariaux sont effectués chaque année ?,FAQ_PAYROLL
+Avez-vous des politiques de télétravail et de travail à domicile ?,FAQ_LEAVE
+contrat lié à mon compte,MY_CONTRACTS
+brut net de mon dernier calcul,MY_SALARIES
+contrats sans document,EXPIRING_CONTRACTS
+Pouvez-vous fournir des détails sur les modalités de travail à distance ?,FAQ_LEAVE
+How does the company support remote employees?,FAQ_LEAVE
+documents de fin de relation,MY_EXIT_DOCUMENTS
+In which countries do you have an office?,OUT_OF_SCOPE
+où sont mes fiches de paie,MY_PAYSLIPS
+Je veux en savoir plus sur le congé de paternité,FAQ_LEAVE
+Documents de démission,MY_EXIT_DOCUMENTS
+Is there flexibility for remote work?,FAQ_LEAVE
+équipe en congé bientôt,LEAVE_CALENDAR
+où sont mes pièces de départ,MY_EXIT_DOCUMENTS
+demandes RH non validées,PENDING_LEAVES
+How is the salary determined?,FAQ_PAYROLL
+Existe-t-il un processus spécifique de demande de télétravail ?,FAQ_LEAVE
+congés qui attendent mon avis,PENDING_LEAVES
+Valide les demandes 1 et 2,REVIEW_LEAVE_BATCH
+Are there remote positions?,FAQ_LEAVE
+Can you tell me more about the experience required for the job?,OUT_OF_SCOPE
+Are you currently recruiting in Argentina?,OUT_OF_SCOPE
+"Great stuff, can I work in a hybrid model too?",FAQ_LEAVE
+Are there options for new parents?,FAQ_LEAVE
+Quels départs sont prévus ?,EXIT_SUMMARY
+ordre : variables puis calcul puis bulletin,FAQ_PAYROLL
+Je demande un congé pour demain,CREATE_LEAVE_REQUEST
+Pouvez-vous préciser les avantages du congé de paternité ?,FAQ_LEAVE
+résumé admin de la paie,PAYROLL_STATUS
+À combien s'élève le salaire initial?,FAQ_PAYROLL
+This is not good.,OUT_OF_SCOPE
+What are the eligibility requirements for PTO?,FAQ_LEAVE
+planning congés de l'équipe,LEAVE_CALENDAR
+Do you have information about wages or compensation?,FAQ_PAYROLL
+"Approve 1, reject 2",REVIEW_LEAVE_BATCH
+procedure complete des conges dans RH Paie,FAQ_LEAVE
+What is the salary,FAQ_PAYROLL
+l'assistant peut-il pointer pour moi,FAQ_ATTENDANCE
+Statut de la paie,PAYROLL_STATUS
+Are there employee resource groups for diversity?,OUT_OF_SCOPE
+combien de demandes j'ai faites,MY_LEAVE_REQUESTS
+Quels sont les avantages de travailler pour [company_name]',FAQ_PAYROLL
+What is the hiring process like?,OUT_OF_SCOPE
+That's not what I asked for,OUT_OF_SCOPE
+Diversity,OUT_OF_SCOPE
+Écris-moi un poème,OUT_OF_SCOPE
+Pouvez-vous fournir des détails sur la politique de vacances ?,FAQ_LEAVE
+L'un d'entre eux est-il une position éloignée ?,FAQ_LEAVE
+Pose un congé aujourd'hui,CREATE_LEAVE_REQUEST
+Paid time off information,FAQ_LEAVE
+How many employees you have?,OUT_OF_SCOPE
+où ouvrir mes docs offboarding,MY_EXIT_DOCUMENTS
+documents visibles pour moi à la sortie,MY_EXIT_DOCUMENTS
+Tell me about this company culture,OUT_OF_SCOPE
+Puis-je reporter les jours de vacances non utilisés à l'année suivante ?,FAQ_LEAVE
+What's the salary range?,FAQ_PAYROLL
+Are there any expectations regarding remote work hours?,FAQ_LEAVE
+sorties programmées bientôt,EXIT_SUMMARY
+combien de calculs annulés,PAYROLL_STATUS
+Cancel pending leave,CANCEL_LEAVE_REQUEST
+Can employees work remotely?,FAQ_LEAVE
+"Bonjour, combien de jours de vacances les employés ont-ils ?",FAQ_LEAVE
+How does the salary compare to industry standards?,FAQ_PAYROLL
+Tell me about the company culture and values that make it a great workplace.,OUT_OF_SCOPE
+Is there a limit on how many vacation days I can take consecutively?,FAQ_LEAVE
+Faire une demande de congé via le chat,CREATE_LEAVE_REQUEST
+dashboard employee exits,EXIT_SUMMARY
+Can you understand natural language effectively?,OUT_OF_SCOPE
+Où l'employé trouve sa fiche de paie,FAQ_PAYROLL
+Cancel my leave request,CANCEL_LEAVE_REQUEST
+mon salaire net 2026,MY_SALARIES
+synthèse offboarding admin,EXIT_SUMMARY
+Réserve un congé pour demain,CREATE_LEAVE_REQUEST
+historique de mes absences posées,MY_LEAVE_REQUESTS
+Avons-nous une fourchette salariale spécifique ?,FAQ_PAYROLL
+historique de mes bulletins,MY_PAYSLIPS
+Peux-tu annuler ma demande ?,CANCEL_LEAVE_REQUEST
+RH a publié mes docs de sortie ?,MY_EXIT_DOCUMENTS
+Travail à domicile,FAQ_LEAVE
+Affiche mon contrat,MY_CONTRACTS
+Demandes que j'ai créées,MY_LEAVE_REQUESTS
+expiring contracts,EXPIRING_CONTRACTS
+Is there a company bonus and benefits package?,FAQ_PAYROLL
+Qu'en est-il du salaire ?,FAQ_PAYROLL
+équipe absente cette semaine,LEAVE_CALENDAR
+Comment faire les variables de paie,FAQ_PAYROLL
+Alertes contrats,EXPIRING_CONTRACTS
+Combien j'ai été payé,MY_SALARIES
+balance de mes congés,LEAVE_BALANCE
+Politique de congé de maternité,FAQ_LEAVE
+mon stock de congés,LEAVE_BALANCE
+Can you clarify the expectations for remote work?,FAQ_LEAVE
+payslip PDF,MY_PAYSLIPS
+statut de mon pointage,MY_ATTENDANCE
+Pouvez-vous me donner une fourchette de salaire ?,FAQ_PAYROLL
+Comment les journées d'étude sont-elles gérées ?,FAQ_LEAVE
+télécharger mon contrat,MY_CONTRACTS
+période d'essai terminée ?,MY_CONTRACTS
+Combien de paies finalisées,PAYROLL_STATUS
+What are the teams within the company?,OUT_OF_SCOPE
+Processus de paie RH Paie,FAQ_PAYROLL
+Quels sont les avantages pour les nouvelles mères ?,FAQ_LEAVE
+Ok quel est le salaire de ce poste ?,FAQ_PAYROLL
+Can you tell me more about your benefits,FAQ_PAYROLL
+ouvre le calendrier des absences,LEAVE_CALENDAR
+validation absences backlog,PENDING_LEAVES
+volume à approuver cette semaine,PENDING_LEAVES
+What are the salary expectations?,FAQ_PAYROLL
+validation congés en retard,PENDING_LEAVES
+Approuver 1 rejeter 2,REVIEW_LEAVE_BATCH
+What about bonus?,FAQ_PAYROLL
+suivre ma demande de congé,MY_LEAVE_REQUESTS
+congés à traiter aujourd'hui,PENDING_LEAVES
+Comment valider une demande de congé ?,FAQ_LEAVE
+Qu'est-ce qui est inclus dans le package d'avantages sociaux des employés ?,FAQ_PAYROLL
+Est-ce que j'ai un CDD,MY_CONTRACTS
+Contrats bientôt finis,EXPIRING_CONTRACTS
+vue mois des congés,LEAVE_CALENDAR
+Quelle est la durée du congé de maternité ?,FAQ_LEAVE
+Est-ce que RH a répondu à ma demande,MY_LEAVE_REQUESTS
+combien de jours disponibles,LEAVE_BALANCE
+Can you elaborate on your global footprint??,OUT_OF_SCOPE
+Are the jobs remote?,FAQ_LEAVE
+How big is the engineering team?,OUT_OF_SCOPE
+file d'attente validation RH,PENDING_LEAVES
+Can you explain the process for requesting remote work?,FAQ_LEAVE
+où récupérer le bulletin,MY_PAYSLIPS
+Quelle est la procédure de demande de congés payés ?,FAQ_LEAVE
+Type de mon contrat,MY_CONTRACTS
+Quel est le salaire,FAQ_PAYROLL
+Calculs de paie du mois,PAYROLL_STATUS
+Combien puis-je gagner en travaillant pour votre entreprise ?,FAQ_PAYROLL
+où voir mes demandes d'absence,MY_LEAVE_REQUESTS
+Ma rémunération ce mois,MY_SALARIES
+How do you notify candidates about the results of their interviews?,OUT_OF_SCOPE
+"Thanks a lot, you're awesome!",OUT_OF_SCOPE
+combien j'ai touché ce mois,MY_SALARIES
+Can you tell me a bit more about your business?,OUT_OF_SCOPE
+L'entreprise propose-t-elle des congés payés en plus des congés rémunérés ?,FAQ_LEAVE
+I'd like to speak with a live person,OUT_OF_SCOPE
+Contrats à échéance,EXPIRING_CONTRACTS
+tableau de bord des sorties,EXIT_SUMMARY
+y a-t-il des départs cette semaine,EXIT_SUMMARY
+liste admin des congés pending,PENDING_LEAVES
+Comment fonctionnent les fêtes nationales ?,FAQ_LEAVE
+I'm thankful,OUT_OF_SCOPE
+solde congés restants SVP,LEAVE_BALANCE
+Paie mars est-elle close,PAYROLL_STATUS
+documents de fin de contrat,MY_EXIT_DOCUMENTS
+Puis-je pointer en congé,FAQ_ATTENDANCE
+Demande de congé du 15 au 16,CREATE_LEAVE_REQUEST
+Pouvez-vous clarifier le processus de planification des congés rémunérés ?,FAQ_LEAVE
+fiche de salaire à télécharger,MY_PAYSLIPS
+Are there specific requirements for remote work?,FAQ_LEAVE
+attestation de travail à télécharger,MY_EXIT_DOCUMENTS
+voir mon historique de contrats,MY_CONTRACTS
+Is this a remote position?,FAQ_LEAVE
+Quelles sont les heures de travail ?,FAQ_LEAVE
+Comment générer la paie,FAQ_PAYROLL
+sortie : quels documents j'ai,MY_EXIT_DOCUMENTS
+Approuve 1 et refuse 2,REVIEW_LEAVE_BATCH
+L'entreprise prend-elle en charge les modèles de travail hybrides ?,FAQ_LEAVE
+Work from home,FAQ_LEAVE
+Can you work at any office?,FAQ_LEAVE
+détail de ma rémunération,MY_SALARIES
+départs brouillon vs planifiés,EXIT_SUMMARY
+ma paie personnelle,MY_SALARIES
+date de début de mon contrat,MY_CONTRACTS
+Accepte 1 et 2,REVIEW_LEAVE_BATCH
+What is it like to work at [company_name]?,OUT_OF_SCOPE
+Quelle est la durée du congé de paternité offert par l'entreprise ?,FAQ_LEAVE
+documents bulletin de paie,MY_PAYSLIPS
+Enregistre une demande de congé pour moi,CREATE_LEAVE_REQUEST
+Parle-moi de football,OUT_OF_SCOPE
+solde leave balance,LEAVE_BALANCE
+Mes congés déposés,MY_LEAVE_REQUESTS
+où est mon contrat signé,MY_CONTRACTS
+mon payslip du mois,MY_PAYSLIPS
+ai-je des docs de sortie,MY_EXIT_DOCUMENTS
+What are the salary ranges for the positions?,FAQ_PAYROLL
+synthèse paie admin,PAYROLL_STATUS
+"Super, est-ce que je peux aussi travailler dans un modèle hybride ?",FAQ_LEAVE
+Salary offered,FAQ_PAYROLL
+Do you have any special features?,OUT_OF_SCOPE
+ou ouvrir mon ecran de pointage,FAQ_ATTENDANCE
+mes demandes EN_ATTENTE,MY_LEAVE_REQUESTS
+Existe-t-il des opportunités d'emploi à distance au sein de l'entreprise ?,FAQ_LEAVE
+tableau des congés à valider,PENDING_LEAVES
+comment passer un calcul en finalise,FAQ_PAYROLL
+qui est en vacances maintenant,LEAVE_CALENDAR
+Rejette 4 parce que planning,REVIEW_LEAVE_BATCH
+What do I get if I join your company?,OUT_OF_SCOPE
+Comment enregistrer ma sortie,FAQ_ATTENDANCE
+jours restants pour 2025,LEAVE_BALANCE
+Créer une demande de congé,CREATE_LEAVE_REQUEST
+combien de demandes non lues,PENDING_LEAVES
+Dois-je me rendre au bureau ?,FAQ_LEAVE
+bulletins employé,MY_PAYSLIPS
+salaires calculés pour moi,MY_SALARIES
+Les travaux sont-ils distants ?,FAQ_LEAVE
+Are there any restrictions on taking paid time off?,FAQ_LEAVE
+Where do I submit my cv,OUT_OF_SCOPE
+l'assistant ne doit pas valider lui-meme,FAQ_LEAVE
+Where are the headquarters located? Do you have branches around the world?,OUT_OF_SCOPE
+Qu'advient-il des congés rémunérés non utilisés à la fin de l'année ?,FAQ_LEAVE
+Are there any educational benefits?,FAQ_PAYROLL
+Could you explain the process for transitioning to remote work?,FAQ_LEAVE
+mon salaire finalisé,MY_SALARIES
+What is the highest salary you offer?,FAQ_PAYROLL
+Mes documents de contrat,MY_CONTRACTS
+Je souhaite cancel leave request,CANCEL_LEAVE_REQUEST
+alertes contractuelles,EXPIRING_CONTRACTS
+reste-t-il des jours de congé,LEAVE_BALANCE
+Documents de fin de contrat visibles,MY_EXIT_DOCUMENTS
+Y a-t-il une prime de performance disponible ?,FAQ_PAYROLL
+Is there a waiting period before employees can take maternity or paternity leave?,FAQ_LEAVE
+What steps should I take to progress in my career?,OUT_OF_SCOPE
+Accepte 2 refuse 1,REVIEW_LEAVE_BATCH
+This makes me feel sad,OUT_OF_SCOPE
+Can you tell me about the vacations policies?,FAQ_LEAVE
+Mes documents d'offboarding,MY_EXIT_DOCUMENTS
+Could you explain the remote work policy of the company?,FAQ_LEAVE
+Existe-t-il une flexibilité pour le travail à distance ?,FAQ_LEAVE
+Do I have to go to the office?,FAQ_LEAVE
+How do national holidays work?,FAQ_LEAVE
+pending requests count,PENDING_LEAVES
+Don't think so,OUT_OF_SCOPE
+informations sur mon contrat,MY_CONTRACTS
+mes demandes ouvertes,MY_LEAVE_REQUESTS
+vue d'ensemble offboarding,EXIT_SUMMARY
+fiche paie mars,MY_PAYSLIPS
+Quels sont les principaux avantages de travailler chez [company_name] ?,FAQ_PAYROLL
+calendrier collaborateur,LEAVE_CALENDAR
+Combien de jours de vacances les employés reçoivent-ils chaque année ?,FAQ_LEAVE
+Are there any commuter benefits?,FAQ_PAYROLL
+Is parental leave paid?,FAQ_LEAVE
+Quelles sont les prestations de retraite ?,FAQ_PAYROLL
+Qu'en est-il des bonus ?,FAQ_PAYROLL
+Are there any specific guidelines for using PTO?,FAQ_LEAVE
+What's the scale of the company in terms of employment?,OUT_OF_SCOPE
+qui finit son contrat bientôt,EXPIRING_CONTRACTS
+Heures travaillées aujourd'hui,MY_ATTENDANCE
+I am not sure yet,OUT_OF_SCOPE
+What are the values of the company?,OUT_OF_SCOPE
+Combien le boulot paie-t-il ?,FAQ_PAYROLL
+Déposer un congé payé demain,CREATE_LEAVE_REQUEST
+Stop ma demande de congé,CANCEL_LEAVE_REQUEST
+historique salarial,MY_SALARIES
+What is [company_name]´s culture?,OUT_OF_SCOPE
+Accepte 1 2 3 refuse 4,REVIEW_LEAVE_BATCH
+J'aimerais en savoir plus sur les avantages que vous offrez,FAQ_PAYROLL
+où trouver mon contrat PDF,MY_CONTRACTS
+What is the base salary for the QA Engineer?,FAQ_PAYROLL
+heures faites aujourd'hui,MY_ATTENDANCE
+docs de démission disponibles,MY_EXIT_DOCUMENTS
+Y a-t-il des avantages éducatifs ?,FAQ_PAYROLL
+calendrier du mois en cours,LEAVE_CALENDAR
+combien d'employés calculés,PAYROLL_STATUS
+How do the teams collaborate within the company?,OUT_OF_SCOPE
+fiche de paie disponible ?,MY_PAYSLIPS
+statut de mon contrat,MY_CONTRACTS
+Quelle est la politique de télétravail de l'entreprise ?,FAQ_LEAVE
+où voir mes salaires,MY_SALARIES
+marche a suivre demande de conge,FAQ_LEAVE
+montre le solde acquis consommé restant,LEAVE_BALANCE
+départs à traiter,EXIT_SUMMARY
+Existe-t-il un ensemble de primes et d'avantages sociaux pour les entreprises ?,FAQ_PAYROLL
+Quel est le salaire pour le poste de conseiller juridique ?,FAQ_PAYROLL
+Où en sont mes demandes de congé ?,MY_LEAVE_REQUESTS
+Existe-t-il des directives établies pour le travail à distance ?,FAQ_LEAVE
+bouton arrivee ou se trouve-t-il,FAQ_ATTENDANCE
+Company salary range,FAQ_PAYROLL
+ai-je un bulletin pour avril,MY_PAYSLIPS
+si je suis en conge je peux pointer ?,FAQ_ATTENDANCE
+Quelle est l'échelle de rémunération pour ce poste ?,FAQ_PAYROLL
+Can you provide details on the vacation policy?,FAQ_LEAVE
+Autorisez-vous le travail flexible ?,FAQ_LEAVE
+"As an employee, what would my experience of the company culture be like?",OUT_OF_SCOPE
+What's the company phone number?,OUT_OF_SCOPE
+"Is remote work permitted, and if so, under what conditions?",FAQ_LEAVE
+Y a-t-il des avantages pour la santé ?,FAQ_PAYROLL
+Do employees do volunteer work?,FAQ_LEAVE
+alertes échéance contrat,EXPIRING_CONTRACTS
+Procédure de check-out,FAQ_ATTENDANCE
+statut présence RH,MY_ATTENDANCE
+Which are the skills needed for the job?,OUT_OF_SCOPE
+absences à traiter par RH,PENDING_LEAVES
+Quel est mon salaire ?,MY_SALARIES
+Quels sont les avantages financiers ?,FAQ_PAYROLL
+guide admin paie RH Paie,FAQ_PAYROLL
+Solutions portfolio,OUT_OF_SCOPE
+What are the benefits of working for [company_name]',FAQ_PAYROLL
+Company benefits,FAQ_PAYROLL
+How can I advance in my career?,OUT_OF_SCOPE
+What is the procedure for requesting paid time off?,FAQ_LEAVE
+Quel est le processus d'approbation des demandes de congés rémunérés ?,FAQ_LEAVE
+Can unused PTO days be carried over to the next year?,FAQ_LEAVE
+Soumets une demande de congé maladie,CREATE_LEAVE_REQUEST
+Y a-t-il des avantages pour les navetteurs ?,FAQ_PAYROLL
+export excel de la paie comment,FAQ_PAYROLL
+"Well that's all then, thank you very much!",OUT_OF_SCOPE
+Ma dernière demande de congé,MY_LEAVE_REQUESTS
+Can you disclose the compensation package?,FAQ_PAYROLL
+Work remotely,FAQ_LEAVE
+Do benefits apply to all company locations?,FAQ_PAYROLL
+Do you have fully remote positions?,FAQ_LEAVE
+Combien de temps à l'avance les employés doivent-ils demander une prise de force ?,FAQ_LEAVE
+I'm curious about what you're capable of.,OUT_OF_SCOPE
+combien de jours acquis vs restants,LEAVE_BALANCE
+Accepte uniquement 1,REVIEW_LEAVE_BATCH
+Is there a performance bonus available?,FAQ_PAYROLL
+Est-ce que ma demande a été validée ?,MY_LEAVE_REQUESTS
+Étapes du calcul de paie,FAQ_PAYROLL
+Comment exporter le journal de paie,FAQ_PAYROLL
+Le travail à distance est-il autorisé à temps plein ?,FAQ_LEAVE
+Pouvez-vous me parler des avantages que vous offrez ?,FAQ_PAYROLL
+Soumettre une demande d'absence,CREATE_LEAVE_REQUEST
+demandes d'absence non traitées,PENDING_LEAVES
+Existe-t-il des incitations basées sur la performance ?,FAQ_PAYROLL
+Pouvez-vous me parler des avantages de l'entreprise ?,FAQ_PAYROLL
+Télécharger mon certificat de travail,MY_EXIT_DOCUMENTS
+comment produire les bulletins PDF,FAQ_PAYROLL
+Quelestle salaire pour ce poste ?,FAQ_PAYROLL
+What type of events does [company_name] host?,OUT_OF_SCOPE
+Does the company offer paid holidays in addition to PTO?,FAQ_LEAVE
+comment valider les variables,FAQ_PAYROLL
+[company_name] propose-t-il des options de travail à domicile ?,FAQ_LEAVE
+Is there a maximum limit on accumulated PTO?,FAQ_LEAVE
+quel est mon statut contractuel,MY_CONTRACTS
+Calendrier des congés,LEAVE_CALENDAR
+Resume later,OUT_OF_SCOPE
+Do you have maternity leaves?,FAQ_LEAVE
+mes jours restants svp,LEAVE_BALANCE
+Je veux annuler mon congé,CANCEL_LEAVE_REQUEST
+Pouvez-vous expliquer les prestations de congé de maternité ?,FAQ_LEAVE
+Annuler ma demande de congé,CANCEL_LEAVE_REQUEST
+Can you explain the adoption leave policy?,FAQ_LEAVE
+monitoring des départs,EXIT_SUMMARY
+suivi paie mensuelle,PAYROLL_STATUS
+Payez-vous des commissions dans les postes de vente ? Quel est le salaire moyen d'un commercial ?,FAQ_PAYROLL
+Pose-moi un congé du 1er au 3 octobre,CREATE_LEAVE_REQUEST
+Pouvez-vous fournir des détails sur les prestations d'assurance ?,FAQ_PAYROLL
+Mon check-in,MY_ATTENDANCE
+How many offices does your company operate?,OUT_OF_SCOPE
+planning de la semaine absences,LEAVE_CALENDAR
+Voir mes salaires finalisés,MY_SALARIES
+What ethics does the company follow?,OUT_OF_SCOPE
+Créer une demande d'absence maintenant,CREATE_LEAVE_REQUEST
+paie close ou encore brouillon,PAYROLL_STATUS
+How does the company handle PTO for part-time employees?,FAQ_LEAVE
+Y a-t-il des avantages pour les employés ?,FAQ_PAYROLL
+Is remote work considered for all positions?,FAQ_LEAVE
+comment joindre un justificatif,FAQ_LEAVE
+mon bulletin de paie SVP,MY_PAYSLIPS
+Are there remote job opportunities within the company?,FAQ_LEAVE
+montre mon bulletin,MY_PAYSLIPS
+Can you comprehend languages besides English?,OUT_OF_SCOPE
+export virement bancaire,FAQ_PAYROLL
+qui manque demain au bureau,LEAVE_CALENDAR
+PTO,FAQ_LEAVE
+Raconte une blague,OUT_OF_SCOPE
+Demandes de congé à valider,PENDING_LEAVES
+How many vacation days are available?,FAQ_LEAVE
+montre mon pointage,MY_ATTENDANCE
+suivi des sorties RH,EXIT_SUMMARY
+l'assistant peut-il approuver mon congé,FAQ_LEAVE
+Pose un congé demain,CREATE_LEAVE_REQUEST
+mon CDD se termine quand,MY_CONTRACTS
+affiche mes demandes RH,MY_LEAVE_REQUESTS
+Pouvez-vous fournir des détails sur le package salarial ?,FAQ_PAYROLL
+guide presence RH Paie,FAQ_ATTENDANCE
+Can you describe those benefits?,FAQ_PAYROLL
+Can I choose where to work from?,FAQ_LEAVE
+Can you tell me who you are?,OUT_OF_SCOPE
+The benefits are available for all employees?,FAQ_PAYROLL
+Les employés font-ils du bénévolat ?,FAQ_LEAVE
+Cancel leave n°5,CANCEL_LEAVE_REQUEST
+Comment l'entreprise soutient-elle les nouveaux parents ?,FAQ_LEAVE
+I want to discuss this with a person,OUT_OF_SCOPE
+payroll du mois en cours,PAYROLL_STATUS
+Les congés de maladie sont-ils inclus dans la politique de congés rémunérés ?,FAQ_LEAVE
+avancement du calcul de paie,PAYROLL_STATUS
+ai-je encore des jours de congé ?,LEAVE_BALANCE
+"You're the best, thank you!",OUT_OF_SCOPE
+What is the compensation for this role?,FAQ_PAYROLL
+Combien de demandes RH dois-je traiter,PENDING_LEAVES
+Y a-t-il une limite au nombre de jours de vacances que je peux prendre consécutivement ?,FAQ_LEAVE
+Liste des congés en attente,PENDING_LEAVES
+Pouvez-vous décrire la politique de télétravail de l'entreprise ?,FAQ_LEAVE
+How is the compensation scale in the company?,FAQ_PAYROLL
+monitoring fin de contrat,EXPIRING_CONTRACTS
+What are some of the company’s achievements and awards?,OUT_OF_SCOPE
+Where does [company_name] have offices?,OUT_OF_SCOPE
+où en est le cycle de paie,PAYROLL_STATUS
+Can you tell me about the perks of working here?,FAQ_PAYROLL
+Can you explain the benefits package?,FAQ_PAYROLL
+How long is paternity leave?,FAQ_LEAVE
+Des options de travail à distance sont-elles disponibles ?,FAQ_LEAVE
+Mon dernier net sur le bulletin,MY_PAYSLIPS
+Existe-t-il des restrictions sur la prise de congés payés ?,FAQ_LEAVE
+Fine,OUT_OF_SCOPE
+Can you provide details on the insurance benefits?,FAQ_PAYROLL
+Pose une absence du 5 au 7 septembre,CREATE_LEAVE_REQUEST
+voir mon calcul de paie employé,MY_SALARIES
+Y a-t-il des limites au travail à distance ?,FAQ_LEAVE
+Are there any flexible leave arrangements?,FAQ_LEAVE
+Are there any wellness benefits?,FAQ_PAYROLL
+Qui est le président,OUT_OF_SCOPE
+Can you outline the company's remote working policy?,FAQ_LEAVE
+Do you offer remote positions?,FAQ_LEAVE
+Existe-t-il des emplois de développeur avec un salaire divulgué ?,FAQ_PAYROLL
+C'est quoi le bitcoin,OUT_OF_SCOPE
+Vacation days,FAQ_LEAVE
+état finalisation paie,PAYROLL_STATUS
+Can you tell me about salaries?,FAQ_PAYROLL
+ordre des étapes paie,FAQ_PAYROLL
+Can you direct me to a person?,OUT_OF_SCOPE
+How can I improve my chances for promotion?,OUT_OF_SCOPE
+Please cancel my pending leave,CANCEL_LEAVE_REQUEST
+Existe-t-il une fourchette salariale pour ce poste ?,FAQ_PAYROLL
+Do those positions allow for full remote work?,FAQ_LEAVE
+Les employés peuvent-ils encaisser les congés rémunérés inutilisés ?,FAQ_LEAVE
+Refuse la 3,REVIEW_LEAVE_BATCH
+télécharger mon CDI,MY_CONTRACTS
+contrats à traiter avant fin,EXPIRING_CONTRACTS
+Is there a salary range for this job?,FAQ_PAYROLL
+ouvre mes salaires,MY_SALARIES
+Pouvez-vous me parler des avantages du personnel ?,FAQ_PAYROLL
+combien de bulletins finalisés,PAYROLL_STATUS
+How is the company organization?,OUT_OF_SCOPE
+Existe-t-il des options de congé parental ?,FAQ_LEAVE
+Je veux une absence payée demain,CREATE_LEAVE_REQUEST
+Quelle est la durée du congé de paternité ?,FAQ_LEAVE
+What is the duration of paternity leave offered by the company?,FAQ_LEAVE
+Can employees cash out unused PTO?,FAQ_LEAVE
+Accepte 1-3,REVIEW_LEAVE_BATCH
+Is there room for negotiation on salary?,FAQ_PAYROLL
+calendrier des conges comment l'ouvrir,FAQ_LEAVE
+Excellent job,OUT_OF_SCOPE
+état du run de paie,PAYROLL_STATUS
+Quels contrats expirent bientôt ?,EXPIRING_CONTRACTS
+Pouvez-vous expliquer le processus de demande de congé de maternité ou de paternité ?,FAQ_LEAVE
+combien de leave à approuver,PENDING_LEAVES
+"Thanks, that helped me",OUT_OF_SCOPE
+sortie enregistrée aujourd'hui,MY_ATTENDANCE
+L'entreprise parrainera-t-elle un visa de travail aux États-Unis ?,FAQ_PAYROLL
+What do you go by?,OUT_OF_SCOPE
+affiche mon solde d'absence,LEAVE_BALANCE
+Does the company have an inclusion strategy?,OUT_OF_SCOPE
+pointage manuel admin,FAQ_ATTENDANCE
+Qui est absent demain,LEAVE_CALENDAR
+Demande un congé maladie demain,CREATE_LEAVE_REQUEST
+ma demande a été refusée ?,MY_LEAVE_REQUESTS
+Échéances contractuelles,EXPIRING_CONTRACTS
+Are there developer jobs with disclosed salary?,FAQ_PAYROLL
+Combien de congés payés les employés reçoivent-ils ?,FAQ_LEAVE
+comment marche le solde en attente,FAQ_LEAVE
+dashboard contrats à échéance,EXPIRING_CONTRACTS
+How many staff members are there at the company?,OUT_OF_SCOPE
+Annule demande id 8,CANCEL_LEAVE_REQUEST
+où télécharger mon attestation,MY_EXIT_DOCUMENTS
+dernier payslip disponible,MY_PAYSLIPS
+What is the minimum required GPA for internships?,OUT_OF_SCOPE
+Do you pay commissions in sales positions? What is the average salary of a sales rep?,FAQ_PAYROLL
+Is there a specific process for requesting remote work?,FAQ_LEAVE
+What are the earning opportunities?,FAQ_PAYROLL
+mes salaires de l'année,MY_SALARIES
+je cherche ma fiche de paie,MY_PAYSLIPS
+Are there blackout dates for taking PTO?,FAQ_LEAVE
+Can you explain the process for applying for maternity or paternity leave?,FAQ_LEAVE
+Traduis ce texte en anglais n'importe quoi,OUT_OF_SCOPE
+Quel est mon solde de congé ?,LEAVE_BALANCE
+"L'offre d'emploi n'inclut pas de salaire, quel est son montant ?",FAQ_PAYROLL
+Quels sont vos avantages ?,FAQ_PAYROLL
+congés waiting for approval,PENDING_LEAVES
+Are there established guidelines for remote work?,FAQ_LEAVE
+Pose congé 2026-12-01 au 2026-12-02 motif familial,CREATE_LEAVE_REQUEST
+admin comment ajuster un pointage,FAQ_ATTENDANCE
+mon retard en minutes,MY_ATTENDANCE
+Existe-t-il des modalités de congé flexibles ?,FAQ_LEAVE
+statut mes leave,MY_LEAVE_REQUESTS
+How can I apply for a position?,OUT_OF_SCOPE
+What are the company benefits?,FAQ_PAYROLL
+Hi. What are the company values?,OUT_OF_SCOPE
+Do we have a specific salary range?,FAQ_PAYROLL
+Existe-t-il des directives spécifiques pour l'utilisation de la prise de force ?,FAQ_LEAVE
+Pouvez-vous clarifier les attentes en matière de télétravail ?,FAQ_LEAVE
+Vue calendrier des absences,LEAVE_CALENDAR
+demandes EN_ATTENTE,PENDING_LEAVES
+Y a-t-il des attentes concernant les heures de travail à distance ?,FAQ_LEAVE
+Can you provide details on remote work arrangements?,FAQ_LEAVE
+Is this job currently taking candidates?,OUT_OF_SCOPE
+Does the company offer remote work options?,FAQ_LEAVE
+Hi! I would like to have some info about the culture in your company.,OUT_OF_SCOPE
+heures supplémentaires aujourd'hui,MY_ATTENDANCE
+Pouvez-vous me dire la fourchette salariale pour un poste d'ingénieur en apprentissage automatique ?,FAQ_PAYROLL
+How many vacation days do employees get each year?,FAQ_LEAVE
+"Hi there! First, I'd like to know more about the company.",OUT_OF_SCOPE
+détail de mon salaire,MY_SALARIES
+Reject request 2,REVIEW_LEAVE_BATCH
+Y a-t-il une période d'essai avant que je puisse commencer à utiliser mes jours de vacances ?,FAQ_LEAVE
+Quelles sont les fourchettes salariales pour chaque poste ?,FAQ_PAYROLL
+Comment fonctionne la politique de congé de paternité dans cette entreprise ?,FAQ_LEAVE
+ouvre mon leave calendar,LEAVE_CALENDAR
+Mes bulletins de paie,MY_PAYSLIPS
+I do not need anything else,OUT_OF_SCOPE
+Refuse 3,REVIEW_LEAVE_BATCH
+Statut de mes congés,MY_LEAVE_REQUESTS
+Kudos to you!,OUT_OF_SCOPE
+"I'm curious, are you a machine or a person?",OUT_OF_SCOPE
+offboarding backlog,EXIT_SUMMARY
+état de ma présence,MY_ATTENDANCE
+Mes absences cette année,MY_LEAVE_REQUESTS
+Lancer une demande d'absence,CREATE_LEAVE_REQUEST
+Are there any limitations on remote work?,FAQ_LEAVE
+How does the company handle paid time off?,FAQ_LEAVE
+Où est ma fiche de paie,MY_PAYSLIPS
+Can you provide your name?,OUT_OF_SCOPE
+Mon retard aujourd'hui,MY_ATTENDANCE
+How many vacation days you offer?,FAQ_LEAVE
+Pourriez-vous nous donner un aperçu de la structure salariale ?,FAQ_PAYROLL
+Quelle est la capitale de l'Italie,OUT_OF_SCOPE
+How about the salary?,FAQ_PAYROLL
+N'accepte pas 4,REVIEW_LEAVE_BATCH
+What are the main benefits of working at [company_name]?,FAQ_PAYROLL
+je ne dois pas lancer la paie via le chat,FAQ_PAYROLL
+Politique de congés familiaux,FAQ_LEAVE
+liste des échéances,EXPIRING_CONTRACTS
+Existe-t-il une politique de congés rémunérés ?,FAQ_LEAVE
+explique comment deposer un conge,FAQ_LEAVE
+Can you provide information about diversity training programs?,OUT_OF_SCOPE
+What about the job requirements?,OUT_OF_SCOPE
+Comment ça marche le pointage,FAQ_ATTENDANCE
+absences sur le calendrier RH,LEAVE_CALENDAR
+Voir mes contrats,MY_CONTRACTS
+liste de mes contrats,MY_CONTRACTS
+la paie est-elle finalisée,PAYROLL_STATUS
+Annuler congé PENDING,CANCEL_LEAVE_REQUEST
+suivi mensuel payroll,PAYROLL_STATUS
+démissions en cours,EXIT_SUMMARY
+Quelle est ta couleur préférée,OUT_OF_SCOPE
+que dois-je valider comme congés,PENDING_LEAVES
+Does the company offers PTO?,FAQ_LEAVE
+Pièces de sortie d'entreprise,MY_EXIT_DOCUMENTS
+Are there any on-site amenities for employees?,OUT_OF_SCOPE
+Annuler l'absence en attente,CANCEL_LEAVE_REQUEST
+départs dans les 30 jours,EXIT_SUMMARY
+mon contrat est-il expiré,MY_CONTRACTS
+Y a-t-il des avantages ou une rémunération pendant le congé de maternité ou de paternité ?,FAQ_LEAVE
+Où créer une demande de congé,FAQ_LEAVE
+processus de validation RH,FAQ_LEAVE
+qui a une sortie planifiée,EXIT_SUMMARY
+est-ce que mon congé est validé,MY_LEAVE_REQUESTS
+faut-il un document pour un conge maladie,FAQ_LEAVE
+How does the company support new parents?,FAQ_LEAVE
+What ethical standards does your company uphold in the workplace?,OUT_OF_SCOPE
+What happens to unused PTO at the end of the year?,FAQ_LEAVE
+Will company sponsor working visa in the US?,FAQ_PAYROLL
+Combien de congés il me reste cette année,LEAVE_BALANCE
+Qui est en congé cette semaine ?,LEAVE_CALENDAR
+fin de mon contrat de stage,MY_CONTRACTS
+You are not giving me an answer,OUT_OF_SCOPE
+calendrier RH des congés,LEAVE_CALENDAR
+Créer ma demande de congé payé,CREATE_LEAVE_REQUEST
+Mon calendrier des absences,LEAVE_CALENDAR

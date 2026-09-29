@@ -1,0 +1,124 @@
+<div class="chat-widget">
+  <button
+    type="button"
+    class="chat-trigger"
+    (click)="toggle()"
+    [class.active]="open() && !minimized()"
+    [attr.aria-expanded]="open() && !minimized()"
+    aria-label="Assistant RH"
+  >
+    <span>💬</span>
+  </button>
+
+  @if (minimized()) {
+    <div class="chat-dock">
+      <button type="button" class="dock-open" (click)="restore()" aria-label="Ouvrir l’assistant RH">
+        <span class="dock-dot" aria-hidden="true"></span>
+        <span class="dock-title">Assistant RH</span>
+      </button>
+      <button type="button" class="dock-close" (click)="close()" aria-label="Fermer">×</button>
+    </div>
+  }
+
+  @if (open() && !minimized()) {
+    <section
+      class="chat-panel"
+      [style.width.px]="width()"
+      [style.height.px]="height()"
+      role="dialog"
+      aria-label="Assistant RH"
+    >
+      <button
+        type="button"
+        class="resize-handle"
+        (pointerdown)="startResize($event)"
+        aria-label="Redimensionner"
+      ></button>
+
+      <div class="panel-head">
+        <div>
+          <h3>Assistant RH</h3>
+          <small>Congés, contrats, paie</small>
+        </div>
+        <div class="head-actions">
+          <button type="button" class="window-button" (click)="minimize()" aria-label="Réduire">−</button>
+          <button type="button" class="window-button" (click)="close()" aria-label="Fermer">×</button>
+        </div>
+      </div>
+
+      <div class="thread" #thread>
+        @for (message of messages(); track $index; let i = $index) {
+          <article class="bubble" [class.user]="message.role === 'user'" [class.assistant]="message.role === 'assistant'">
+            <p class="bubble-text">{{ message.text }}</p>
+            @if (message.role === 'assistant' && message.sourceLabel) {
+              <small class="source" [attr.data-kind]="message.sourceKind">
+                {{ message.sourceLabel }}
+                @if (message.intent) {
+                  <span>({{ message.intent }})</span>
+                }
+              </small>
+            }
+            @if (message.role === 'assistant' && message.proposedAction && !message.actionResolved) {
+              <div class="action-row" [class.stale]="message.actionStale">
+                @if (message.actionStale) {
+                  <p class="stale-note">Remplacée par une confirmation plus récente.</p>
+                }
+                <button
+                  type="button"
+                  class="confirm-button"
+                  (click)="confirmAction(i, message.proposedAction!)"
+                  [disabled]="loading() || message.actionStale"
+                >
+                  Confirmer
+                </button>
+                <button
+                  type="button"
+                  class="cancel-button"
+                  (click)="cancelAction(i)"
+                  [disabled]="loading() || message.actionStale"
+                >
+                  Annuler
+                </button>
+              </div>
+            }
+            @if (message.role === 'assistant' && message.link) {
+              <button type="button" class="link-button" (click)="openLink(message.link)">
+                {{ message.linkLabel || 'Ouvrir' }}
+              </button>
+            }
+          </article>
+        }
+        @if (loading()) {
+          <p class="pending">L’assistant rédige une réponse…</p>
+        }
+      </div>
+
+      <div class="chips">
+        @for (suggestion of suggestions(); track suggestion) {
+          <button type="button" (click)="useSuggestion(suggestion)" [disabled]="loading()">
+            {{ suggestion }}
+          </button>
+        }
+      </div>
+
+      @if (draftOpen()) {
+        <div class="draft-banner">
+          <span>Brouillon en cours</span>
+          <button type="button" (click)="discardOpenDraft()" [disabled]="loading()">Annuler</button>
+        </div>
+      }
+
+      <form class="composer" (submit)="$event.preventDefault(); send()">
+        <input
+          type="text"
+          [value]="draft()"
+          (input)="onDraft($event)"
+          placeholder="Posez votre question…"
+          maxlength="1000"
+          [disabled]="loading()"
+        />
+        <button type="submit" [disabled]="loading() || !draft().trim()">Envoyer</button>
+      </form>
+    </section>
+  }
+</div>

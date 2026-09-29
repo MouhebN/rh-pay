@@ -1,0 +1,123 @@
+<section class="page-head">
+  <div>
+    <span>Absences</span>
+    <h1>Calendrier des absences</h1>
+    <p>Visualisez les demandes en attente et les absences approuvées par période.</p>
+  </div>
+  <a routerLink="/admin/leave-requests">Demandes d'absence</a>
+</section>
+
+<form class="filters-panel" [formGroup]="filterForm" (ngSubmit)="loadEvents()">
+  <select formControlName="departmentId">
+    <option [ngValue]="null">Tous les départements</option>
+    @for (department of departments(); track department.id) {
+      <option [ngValue]="department.id">{{ department.name }}</option>
+    }
+  </select>
+
+  <select formControlName="status">
+    <option value="">Statut</option>
+    @for (status of statuses; track status) {
+      <option [value]="status">{{ statusLabel(status) }}</option>
+    }
+  </select>
+
+  <select formControlName="type">
+    <option value="">Type d'absence</option>
+    @for (type of types; track type) {
+      <option [value]="type">{{ typeLabel(type) }}</option>
+    }
+  </select>
+
+  <button type="submit"><app-icon name="filter" /> Filtrer</button>
+  <button class="secondary" type="button" (click)="resetFilters()">Réinit.</button>
+</form>
+
+<section class="calendar-shell">
+  <div class="calendar-toolbar">
+    <button class="month-button" type="button" (click)="previousMonth()" aria-label="Mois précédent">
+      <span aria-hidden="true">←</span>
+      Précédent
+    </button>
+    <div class="month-title">
+      <span>Vue mensuelle</span>
+      <h2>{{ monthLabel() }}</h2>
+    </div>
+    <button class="month-button primary" type="button" (click)="nextMonth()" aria-label="Mois suivant">
+      Suivant
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item pending"><i></i> En attente</span>
+    <span class="legend-item approved"><i></i> Approuvée</span>
+    <span class="legend-item rejected"><i></i> Refusée</span>
+    <span class="legend-item cancelled"><i></i> Annulée</span>
+  </div>
+
+  @if (loading()) {
+    <p class="loading">Chargement du calendrier...</p>
+  }
+
+  <div class="calendar-grid">
+    @for (dayName of weekDays; track dayName) {
+      <div class="weekday">{{ dayName }}</div>
+    }
+
+    @for (day of days(); track day.date) {
+      <article class="day-cell" [class.outside]="!day.inMonth" [class.today]="day.today">
+        <strong>{{ day.date | date: 'd' }}</strong>
+        <div class="events-list">
+          @for (event of eventsForDay(day.date); track event.leaveRequestId) {
+            <button
+              type="button"
+              class="event-chip"
+              [class.pending-event]="event.status === 'PENDING'"
+              [class.approved-event]="event.status === 'APPROVED'"
+              [class.rejected-event]="event.status === 'REJECTED'"
+              [class.cancelled-event]="event.status === 'CANCELLED'"
+              (click)="openEvent(event)"
+            >
+              <i aria-hidden="true"></i>
+              <span>{{ event.title }}</span>
+              <small>{{ statusLabel(event.status) }} · {{ event.totalDays }} j</small>
+            </button>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+@if (selectedEvent(); as event) {
+  <div class="modal-backdrop" (click)="closeEvent()">
+    <section class="details-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <span
+            class="status-pill"
+            [class.pending-event]="event.status === 'PENDING'"
+            [class.approved-event]="event.status === 'APPROVED'"
+            [class.rejected-event]="event.status === 'REJECTED'"
+            [class.cancelled-event]="event.status === 'CANCELLED'"
+          >
+            {{ statusLabel(event.status) }}
+          </span>
+          <h2>{{ event.employeeFullName }}</h2>
+          <p>{{ typeLabel(event.type) }}</p>
+        </div>
+        <button type="button" (click)="closeEvent()"><app-icon name="x" /> Fermer</button>
+      </div>
+
+      <dl>
+        <div><dt>Période</dt><dd>{{ event.startDate | date: 'dd/MM/yyyy' }} - {{ event.endDate | date: 'dd/MM/yyyy' }}</dd></div>
+        <div><dt>Durée</dt><dd>{{ event.totalDays }} jour(s)</dd></div>
+        <div><dt>Département</dt><dd>{{ event.departmentName || 'Non affecté' }}</dd></div>
+        <div><dt>Poste</dt><dd>{{ event.jobPositionName || 'Non affecté' }}</dd></div>
+      </dl>
+
+      <a [routerLink]="['/admin/leave-requests', event.leaveRequestId]">Voir la demande</a>
+    </section>
+  </div>
+}

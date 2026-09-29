@@ -1,0 +1,99 @@
+@if (loading()) {
+  <section class="employee-shell loading-state">Chargement de votre espace...</section>
+} @else if (summary(); as data) {
+  <section class="employee-hero">
+    <div>
+      <span>Espace employé</span>
+      <h1>Bonjour, {{ data.employeeFullName }}</h1>
+      <p>{{ data.departmentName || 'Département non affecté' }} · {{ data.jobPositionName || 'Poste non affecté' }}</p>
+    </div>
+    <div class="hero-actions">
+      <a routerLink="/employee/leave-requests/create"><app-icon name="plus" /> Absence</a>
+      <a routerLink="/employee/my-payslips" class="secondary"><app-icon name="file" /> Bulletins</a>
+    </div>
+  </section>
+
+  <section class="quick-card-grid">
+    <a routerLink="/employee/leave-requests/create" class="quick-card">
+      <app-icon name="calendar" />
+      <strong>Absence</strong>
+      <span>Nouvelle</span>
+    </a>
+    <button type="button" class="quick-card" [disabled]="!canCheckIn(data)" (click)="checkIn()">
+      <app-icon name="clock" />
+      <strong>Pointer l’arrivée</strong>
+      <span>{{ data.todayCheckInTime || 'Disponible' }}</span>
+    </button>
+    <button type="button" class="quick-card" [disabled]="!canCheckOut(data)" (click)="checkOut()">
+      <app-icon name="clock" />
+      <strong>Pointer la sortie</strong>
+      <span>{{ data.todayCheckOutTime || 'Après arrivée' }}</span>
+    </button>
+    <a routerLink="/employee/my-contracts" class="quick-card">
+      <app-icon name="file" />
+      <strong>Contrats</strong>
+      <span>{{ contractTypeLabel(data.currentContractType) }}</span>
+    </a>
+  </section>
+
+  <section class="personal-grid">
+    <article class="summary-card success">
+      <span>Solde congé restant</span>
+      <strong>{{ data.leaveBalanceRemaining | number: '1.1-1' }}</strong>
+      <small>Jour(s) disponibles</small>
+    </article>
+    <article class="summary-card warning">
+      <span>Mes demandes en attente</span>
+      <strong>{{ data.pendingLeaveRequestsCount }}</strong>
+      <small>Demandes non traitées</small>
+    </article>
+    <article class="summary-card info">
+      <span>Pointage aujourd’hui</span>
+      <strong>{{ attendanceStatusLabel(data.todayAttendanceStatus) }}</strong>
+      <small>{{ data.todayCheckInTime || '-' }} / {{ data.todayCheckOutTime || '-' }}</small>
+    </article>
+    <article class="summary-card primary">
+      <span>Dernier salaire net</span>
+      <strong>{{ data.latestNetSalary !== null ? (data.latestNetSalary | number: '1.2-2') : '-' }}</strong>
+      <small>{{ monthLabel(data.latestSalaryMonth) }} {{ data.latestSalaryYear || '' }}</small>
+    </article>
+    <article class="summary-card">
+      <span>Dernier bulletin</span>
+      <strong>{{ data.latestPayslipAvailable ? 'Disponible' : 'Indisponible' }}</strong>
+      <small>Bulletin PDF généré</small>
+    </article>
+    <article class="summary-card">
+      <span>Mon contrat actuel</span>
+      <strong>{{ contractTypeLabel(data.currentContractType) }}</strong>
+      <small>{{ data.currentContractEndDate ? ('Fin le ' + data.currentContractEndDate) : 'Sans date de fin' }}</small>
+    </article>
+  </section>
+
+  <section class="employee-section two-columns">
+    <article class="panel">
+      <div class="section-title">
+        <h2>Activité récente</h2>
+        <p>Vos raccourcis personnels les plus utilisés.</p>
+      </div>
+      <div class="activity-list">
+        <a routerLink="/employee/my-leave-requests"><span>Demandes d’absence approuvées cette année</span><strong>{{ data.approvedLeaveRequestsThisYear }}</strong></a>
+        <a routerLink="/employee/my-attendance"><span>Heures travaillées aujourd’hui</span><strong>{{ data.workedHoursToday ?? '-' }}</strong></a>
+        <a routerLink="/employee/my-payslips"><span>Bulletins de paie</span><strong>{{ data.latestPayslipAvailable ? 'À consulter' : 'Aucun nouveau' }}</strong></a>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="section-title">
+        <h2>Accès rapide</h2>
+        <p>Consultez vos informations RH personnelles.</p>
+      </div>
+      <div class="shortcut-list">
+        <a routerLink="/employee/my-leave-requests"><app-icon name="calendar" /> Mes demandes</a>
+        <a routerLink="/employee/my-attendance"><app-icon name="clock" /> Mon pointage</a>
+        <a routerLink="/employee/my-salaries"><app-icon name="wallet" /> Mes salaires</a>
+        <a routerLink="/employee/my-payslips"><app-icon name="file" /> Mes bulletins</a>
+        <a routerLink="/employee/profile"><app-icon name="users" /> Mon profil</a>
+      </div>
+    </article>
+  </section>
+}

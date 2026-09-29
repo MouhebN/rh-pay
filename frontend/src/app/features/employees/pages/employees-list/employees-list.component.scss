@@ -1,0 +1,11 @@
+@use '../../../users/pages/users-list/users-list.component';
+
+td select {
+  min-width: 120px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 7px 8px;
+  background: #ffffff;
+  font: inherit;
+  font-size: 13px;
+}

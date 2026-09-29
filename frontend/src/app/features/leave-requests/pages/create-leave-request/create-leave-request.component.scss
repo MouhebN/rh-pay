@@ -1,0 +1,165 @@
+@use '../../../users/pages/user-form';
+
+.form-page {
+  max-width: 760px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #ffffff;
+  font: inherit;
+  resize: vertical;
+}
+
+.days-preview {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(49, 80, 168, 0.22);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(49, 80, 168, 0.08);
+}
+
+.balance-preview {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.75fr) minmax(0, 1fr);
+  gap: 10px;
+  border: 1px solid rgba(49, 80, 168, 0.22);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(49, 80, 168, 0.06);
+}
+
+.balance-preview span {
+  color: #737373;
+  font-weight: 700;
+}
+
+.balance-preview strong {
+  display: block;
+  margin-top: 8px;
+  color: #3150a8;
+  font-size: 18px;
+}
+
+.balance-preview dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.balance-preview dl div {
+  border-radius: 8px;
+  padding: 10px;
+  background: #ffffff;
+}
+
+.balance-preview dt {
+  color: #737373;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.balance-preview dd {
+  margin: 5px 0 0;
+  color: #171717;
+  font-weight: 800;
+}
+
+.days-preview span {
+  color: #737373;
+  font-weight: 700;
+}
+
+.days-preview strong {
+  color: #3150a8;
+}
+
+.validation-message {
+  margin: 0;
+  color: #c10007;
+  font-weight: 700;
+}
+
+.info-message {
+  margin: 0;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fffbeb;
+  color: #92400e;
+  font-weight: 800;
+}
+
+.document-upload {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 10px;
+  background: #ffffff;
+}
+
+.document-upload span,
+.document-upload small {
+  display: block;
+  color: #737373;
+  font-weight: 700;
+}
+
+.document-upload strong {
+  display: block;
+  margin-top: 5px;
+  color: #171717;
+}
+
+.document-upload small {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.document-upload label {
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #3150a8;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.document-upload input {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-preview,
+  .balance-preview dl,
+  .document-upload {
+    grid-template-columns: 1fr;
+  }
+
+  .document-upload {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

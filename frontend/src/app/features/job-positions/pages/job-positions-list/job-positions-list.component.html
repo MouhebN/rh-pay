@@ -1,0 +1,60 @@
+<section class="page-header">
+  <div>
+    <h1>Postes</h1>
+    <p>Fonctions et salaires de base par département.</p>
+  </div>
+  <a routerLink="/admin/job-positions/create" class="primary-action">
+    <app-icon name="plus" />
+    Nouveau poste
+  </a>
+</section>
+
+<section class="table-panel">
+  @if (loading()) {
+    <app-loading-spinner label="Chargement des postes..." />
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Poste</th>
+          <th>Département</th>
+          <th>Salaire de base</th>
+          <th>Créé le</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (jobPosition of jobPositions(); track jobPosition.id) {
+          <tr>
+            <td>
+              <strong>{{ jobPosition.title }}</strong>
+              <span>{{ jobPosition.description || '-' }}</span>
+            </td>
+            <td>{{ jobPosition.department?.name || '-' }}</td>
+            <td>{{ jobPosition.baseSalary !== null ? (jobPosition.baseSalary | currency: 'TND':'symbol':'1.3-3') : '-' }}</td>
+            <td>{{ jobPosition.createdAt | date: 'short' }}</td>
+            <td class="actions">
+              <a class="icon-link" [routerLink]="['/admin/job-positions', jobPosition.id, 'edit']" title="Modifier" aria-label="Modifier">
+                <app-icon name="pencil" />
+              </a>
+              <app-icon-action-button icon="trash" tooltip="Supprimer" variant="danger" (action)="confirmDelete(jobPosition)" />
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" class="empty">Aucun poste trouvé.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+@if (jobPositionToDelete(); as jobPosition) {
+  <app-confirm-dialog
+    title="Supprimer le poste"
+    [message]="'Supprimer le poste ' + jobPosition.title + ' ?'"
+    (confirmed)="deleteJobPosition()"
+    (cancelled)="jobPositionToDelete.set(null)"
+  />
+}
